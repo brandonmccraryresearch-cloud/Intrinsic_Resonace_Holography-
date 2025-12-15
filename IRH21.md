@@ -1014,7 +1014,11 @@ The mechanism for electroweak symmetry breaking and the generation of masses for
 1.  **Higgs Field as Order Parameter:** The Higgs field $\Phi(x)$ emerges as the order parameter of the condensate, associated with the spontaneous breaking of the internal $\mathrm{SU}(2)$ symmetry of $G_{\text{inf}}$ (specifically, the $\mathrm{SU}(2)$ factor within the $G_{\text{inf}}$ that generates the weak $\mathrm{SU}(2)$). The Higgs VEV, $v_*$, is fixed by the minimum of the fixed-point effective potential for this emergent scalar field (Eq. 3.7).
 2.  **Gauge Boson Mass Generation:** The interaction of the emergent gauge fields with the non-zero Higgs VEV leads to the standard Higgs mechanism.
     *   The W and Z bosons acquire masses:
-        $$m_W = \frac{g_2 v_*}{2}, \quad m_Z = \frac{\sqrt{g_2^2 + g_1^2} v_*}{2}$$
+        
+        $$
+        m_W = \frac{g_2 v_*}{2}, \quad m_Z = \frac{\sqrt{g_2^2 + g_1^2} v_*}{2}
+        $$
+        
         where $g_1$ and $g_2$ are the emergent $\mathrm{U}(1)$ and $\mathrm{SU}(2)$ gauge couplings, computationally derived from the cGFT fixed-point values.
     *   The photon (associated with a $\mathrm{U}(1)$ subgroup) remains massless due to unbroken electromagnetic symmetry.
 3.  **Higgs Boson Mass (Computationally Derived Analytically):** The Higgs boson itself corresponds to the excitation of the radial mode of the Higgs field. The Higgs self-coupling $\lambda_H$ is computationally derived analytically from the fixed-point properties of the cGFT condensate and the effective potential for $\Phi(x)$, yielding:
@@ -1915,7 +1919,9 @@ This research program aims to uncover a deeper layer of mathematical necessity i
 ### G.1 The Non-Commutativity Challenge
 
 The kinetic term:
-$$S_{\text{kin}} = \int \Bigl[\prod_{i=1}^4 dg_i\Bigr]\;
+
+$$
+S_{\text{kin}} = \int \Bigl[\prod_{i=1}^4 dg_i\Bigr]\;
 \bar{\phi}(g_1,g_2,g_3,g_4)\;
 \Bigl(\sum_{a=1}^{3}\sum_{i=1}^{4} \Delta_a^{(i)}\Bigr)\,
 \phi(g_1,g_2,g_3,g_4)
