@@ -61,18 +61,21 @@ def encode_quaternion(q: Quaternion, n_bits: int = 64) -> bytes:
         Binary encoding of quaternion
     """
     # Quantize to fixed precision
-    scale = 2 ** (n_bits // 4 - 1)
+    bits_per_component = n_bits // 4
+    scale = 2 ** (bits_per_component - 1)
+    bytes_per_component = (bits_per_component + 7) // 8
+    
     components = [
-        int(q.w * scale) & ((1 << (n_bits // 4)) - 1),
-        int(q.x * scale) & ((1 << (n_bits // 4)) - 1),
-        int(q.y * scale) & ((1 << (n_bits // 4)) - 1),
-        int(q.z * scale) & ((1 << (n_bits // 4)) - 1),
+        int(q.w * scale) & ((1 << bits_per_component) - 1),
+        int(q.x * scale) & ((1 << bits_per_component) - 1),
+        int(q.y * scale) & ((1 << bits_per_component) - 1),
+        int(q.z * scale) & ((1 << bits_per_component) - 1),
     ]
     
     # Pack into bytes
     result = b''
     for c in components:
-        result += c.to_bytes(n_bits // 32 + 1, 'big')
+        result += c.to_bytes(bytes_per_component, 'big')
     
     return result
 
@@ -101,9 +104,11 @@ def encode_GInf_element(g: GInfElement, n_bits: int = 64) -> bytes:
     su2_bytes = encode_quaternion(g.su2.quaternion, n_bits=n_bits * 4 // 5)
     
     # Encode U(1) part (phase)
-    phase_scale = 2 ** (n_bits // 5)
+    phase_bits = n_bits // 5
+    phase_scale = 2 ** phase_bits
+    phase_bytes = (phase_bits + 7) // 8
     phase_quantized = int((g.u1.phase / (2 * math.pi)) * phase_scale) % phase_scale
-    u1_bytes = phase_quantized.to_bytes(n_bits // 40 + 1, 'big')
+    u1_bytes = phase_quantized.to_bytes(phase_bytes, 'big')
     
     return su2_bytes + u1_bytes
 

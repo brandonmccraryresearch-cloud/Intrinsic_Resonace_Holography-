@@ -373,14 +373,15 @@ def instrumented(
         def compute_kinetic_action(phi):
             ...
     """
+    import functools
+    
     def decorator(func: Callable) -> Callable:
+        @functools.wraps(func)
         def wrapper(*args, **kwargs):
             logger = IRHLogger.get_instance()
             with logger.operation(func.__name__, theoretical_ref, formula):
                 result = func(*args, **kwargs)
             return result
-        wrapper.__name__ = func.__name__
-        wrapper.__doc__ = func.__doc__
         return wrapper
     return decorator
 

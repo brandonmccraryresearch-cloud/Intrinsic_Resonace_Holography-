@@ -260,6 +260,13 @@ class U1Phase:
         U(1) = {e^{iφ} : φ ∈ [0, 2π)}
         Group operation: phase addition mod 2π
         
+    Holonomic Interpretation:
+        In IRH, "holonomic" refers to the phase acquired by parallel
+        transport around closed loops in the group manifold. The U(1)_φ
+        factor captures this geometric phase, analogous to Berry phase
+        in quantum mechanics. Together with SU(2), it forms G_inf which
+        encodes the 4 degrees of freedom underlying emergent spacetime.
+        
     Attributes
     ----------
     phase : float
