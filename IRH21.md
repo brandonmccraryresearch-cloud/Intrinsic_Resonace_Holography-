@@ -1,7 +1,8 @@
----
 
-# Intrinsic Resonance Holography: The Unified Theory of Emergent Reality (v21.0)
+
+# Intrinsic Resonance Holography: The Unified Theory of Emergent Reality 
 ### Analytically Verified Unification of QM, GR, and the Standard Model with Full Ontological and Mathematical Closure, and Rigorously Bounded Precision
+**v21***
 
 **Author:** Brandon D. McCrary  
 *Independent Theoretical Physics Researcher*
@@ -12,9 +13,9 @@
 
 **GitHub:** [https://github.com/dragonspider1991/Intrinsic-Resonance-Holography-.git](https://github.com/dragonspider1991/Intrinsic-Resonance-Holography-.git)
 
----
+-----
 
-## Prolegomenon: The Epistemological Architecture of Fundamental Theory (v21.0 Reconstruction)
+## Prologue: The Epistemological Architecture of Fundamental Theory
 
 The endeavor to construct a unified theoretical framework that derives the observed structure of physical reality from axiomatically minimal principles represents the apex of scientific ambition. Intrinsic Resonance Holography (IRH) v21.0 culminates this pursuit, not merely as a technical update, but as a **reconstructed theoretical edifice** forged through rigorous meta-theoretical critique and dialectical synthesis. This version explicitly embraces the **Epistemic Stratification Principle**, recognizing that fundamental theory must stratify into: (a) *primitive ontology* (axiomatic commitments), (b) *structural dynamics* (mathematical laws governing primitives), and (c) *phenomenological emergence* (observable consequences). IRH v21.0 achieves maximal compression by minimizing its primitive ontology while maximizing its explanatory range.
 
