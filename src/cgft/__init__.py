@@ -29,27 +29,41 @@ Last Updated: 2026-Q2 (synchronized with IRH21.md v21.0)
 __version__ = "21.0.0"
 __theoretical_foundation__ = "IRH21.md §1.1"
 
+# Import from actions module (Eqs. 1.1-1.4)
+from .actions import (
+    compute_kinetic_action,
+    compute_interaction_action,
+    compute_holographic_action,
+    compute_total_action,
+    LAMBDA_STAR,
+    GAMMA_STAR,
+    MU_STAR,
+)
+
 __all__ = [
-    # fields exports
-    'QuaternionicField',
-    'create_field',
-    'field_conjugate',
-    
-    # actions exports
+    # actions exports (Eqs. 1.1-1.4)
     'compute_kinetic_action',
     'compute_interaction_action',
     'compute_holographic_action',
     'compute_total_action',
+    'LAMBDA_STAR',
+    'GAMMA_STAR',
+    'MU_STAR',
     
-    # operators exports
+    # fields exports (placeholder)
+    'QuaternionicField',
+    'create_field',
+    'field_conjugate',
+    
+    # operators exports (placeholder)
     'laplace_beltrami_SU2',
     'functional_derivative',
     
-    # interactions exports
+    # interactions exports (placeholder)
     'interaction_kernel',
     'QNCD_weighted_kernel',
     
-    # symmetries exports
+    # symmetries exports (placeholder)
     'gauge_transform',
     'verify_gauge_invariance',
 ]
