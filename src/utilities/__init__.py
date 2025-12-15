@@ -7,6 +7,7 @@ be used independently of the IRH-specific modules.
 
 Modules:
     instrumentation: Theoretical logging and traceability (Phase II)
+    output_contextualization: Standardized outputs with provenance (Phase III)
     integration: Numerical quadrature on group manifolds
     optimization: Fixed-point solvers, minimizers
     special_functions: Bessel, hypergeometric, etc.
@@ -41,6 +42,18 @@ from .instrumentation import (
     configure_logging,
 )
 
+# Import output contextualization module (Phase III)
+from .output_contextualization import (
+    ComputationType,
+    TheoreticalContext,
+    ComputationalProvenance,
+    ObservableResult,
+    UncertaintyTracker,
+    IRHOutputWriter,
+    create_output_writer,
+    format_observable,
+)
+
 __all__ = [
     # instrumentation exports (Phase II)
     'IRHLogLevel',
@@ -50,6 +63,16 @@ __all__ = [
     'instrumented',
     'get_logger',
     'configure_logging',
+    
+    # output_contextualization exports (Phase III)
+    'ComputationType',
+    'TheoreticalContext',
+    'ComputationalProvenance',
+    'ObservableResult',
+    'UncertaintyTracker',
+    'IRHOutputWriter',
+    'create_output_writer',
+    'format_observable',
     
     # integration exports (placeholder)
     'integrate_SU2',
