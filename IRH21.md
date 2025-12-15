@@ -1,5 +1,3 @@
-.
-
 ---
 
 # Intrinsic Resonance Holography: The Unified Theory of Emergent Reality (v21.0)
@@ -155,7 +153,7 @@ $$
 S[\phi,\bar{\phi}] = S_{\text{kin}} + S_{\text{int}} + S_{\text{hol}}
 $$
 
-**Kinetic term** — complex group Laplacian (exact discrete analogue of $\operatorname{Tr}\mathcal{L}^2$):
+**Kinetic term** — complex group Laplacian (exact discrete analogue of $\mathrm{Tr}\,\mathcal{L}^2$):
 
 $$
 S_{\text{kin}} = \int \Bigl[\prod_{i=1}^4 dg_i\Bigr]\;
@@ -193,7 +191,7 @@ where $d_{\text{QNCD}}$ is the bi-invariant distance on $G_{\text{inf}}$ induced
 $$
 S_{\text{hol}} = \mu \int \Bigl[\prod_{i=1}^4 dg_i\Bigr]\;
 |\phi(g_1,g_2,g_3,g_4)|^2 \,
-\prod_{i=1}^4 \Theta\!\Bigl(\operatorname{Tr}_{\mathrm{SU}(2)}(g_i g_{i+1}^{-1})\Bigr)
+\prod_{i=1}^4 \Theta\!\Bigl(\mathrm{Tr}_{\mathrm{SU}(2)}(g_i g_{i+1}^{-1})\Bigr)
 \tag{1.4}
 $$
 
@@ -213,7 +211,7 @@ is exactly (up to analytically bounded $O(N^{-1})$ corrections):
 
 $$
 \Gamma[\Sigma]
-= \operatorname{Tr}\Bigl(\mathcal{L}[\Sigma]^2\Bigr)
+= \mathrm{Tr}\Bigl(\mathcal{L}[\Sigma]^2\Bigr)
 - C_H \log\det'\mathcal{L}[\Sigma]
 + O(N^{-1})
 \tag{1.5}
@@ -251,7 +249,7 @@ The effective average action $\Gamma_k$ satisfies:
 
 $$
 \partial_t \Gamma_k
-= \frac{1}{2} \operatorname{Tr} \left[
+= \frac{1}{2} \mathrm{Tr} \left[
 (\Gamma_k^{(2)} + R_k)^{-1} \partial_t R_k
 \right],
 \qquad t = \log(k/\Lambda_{\text{UV}})
@@ -370,11 +368,11 @@ This field corresponds to the propagator of the fundamental field in the condens
 #### 1.4.2 Heat-Kernel Expansion and Log-Determinant Contribution (v21.0 Detailed Derivation)
 
 The derivation proceeds by analyzing the leading-order contributions to the effective action for $\Sigma$ at the infrared fixed point.
-1.  **Kinetic Term - $\operatorname{Tr}(\mathcal{L}[\Sigma]^2)$:** The effective kinetic term for $\Sigma$ arises directly from the original cGFT kinetic term (Eq. 1.1) upon functional integration of the fundamental field $\phi$ in the large-volume limit and for the emergent continuum geometry. The sum of Laplace-Beltrami operators acting on the four arguments of $\phi$ translates into a generalized Laplacian operator $\mathcal{L}[\Sigma]$ acting on the bilocal field $\Sigma$. The term $\operatorname{Tr}(\mathcal{L}[\Sigma]^2)$ arises as the dominant kinetic contribution for the dynamics of the condensate, representing the curvature of the effective geometry. This term is a specific representation of the group Laplacian acting on the bilocal field, and its squared trace represents the energy associated with its excitations.
+1.  **Kinetic Term - $\mathrm{Tr}(\mathcal{L}[\Sigma]^2)$:** The effective kinetic term for $\Sigma$ arises directly from the original cGFT kinetic term (Eq. 1.1) upon functional integration of the fundamental field $\phi$ in the large-volume limit and for the emergent continuum geometry. The sum of Laplace-Beltrami operators acting on the four arguments of $\phi$ translates into a generalized Laplacian operator $\mathcal{L}[\Sigma]$ acting on the bilocal field $\Sigma$. The term $\mathrm{Tr}(\mathcal{L}[\Sigma]^2)$ arises as the dominant kinetic contribution for the dynamics of the condensate, representing the curvature of the effective geometry. This term is a specific representation of the group Laplacian acting on the bilocal field, and its squared trace represents the energy associated with its excitations.
 2.  **Quantum Fluctuations and $\log\det'$:** The $\log\det'\mathcal{L}[\Sigma]$ term arises from integrating out the quantum fluctuations of the fundamental field $\phi$ around its condensate expectation value. This is a standard result from quantum field theory, where the functional determinant of a kinetic operator, representing Gaussian fluctuations, yields a logarithm. The prime denotes the exclusion of zero modes, which correspond to the vacuum.
     Specifically, the quantum effective action can be formally written as:
     $$
-    \Gamma[\Sigma] = S[\Sigma] + \frac{1}{2} \operatorname{Tr}\log(\mathcal{K}[\Sigma]) + \text{higher loops}
+    \Gamma[\Sigma] = S[\Sigma] + \frac{1}{2} \mathrm{Tr}\log(\mathcal{K}[\Sigma]) + \text{higher loops}
     $$
     where $\mathcal{K}[\Sigma]$ is the effective inverse propagator for $\phi$ in the background of $\Sigma$. In the infrared limit and for the specific structure of the cGFT, this trace logarithm simplifies to $C_H \log\det'\mathcal{L}[\Sigma]$, where $\mathcal{L}[\Sigma]$ is the emergent group Laplacian of the condensate geometry. The factor $C_H$ arises from the precise accounting of the functional determinant for the quaternionic field $\phi$ in the presence of the specific kernel and holographic measure, integrating out the dependence on the scale $k$. The integration involves the group Haar measures and group Laplacians.
 3.  **The Universal Exponent $C_H$:** The coefficient $C_H$ arises naturally from the scaling dimensions and combinatorial factors of the cGFT at the non-Gaussian fixed point. As shown in Eq. 1.15, it is precisely the ratio of the beta functions of the relevant couplings, confirming its universal nature. The **$O(N^{-1})$ corrections are analytically verified and bounded** in **Appendix B.4**, demonstrating their negligibility in the thermodynamic limit.
@@ -473,7 +471,7 @@ At the one-loop level, $\Delta_{\text{grav}}(k) = 0$, yielding $d_{\text{spec}}^
 
 #### 2.1.3 The Graviton Loop Correction (v21.0 Detailed Derivation and Topological Proof)
 
-The holographic measure term (1.4) generates graviton-like tensor modes in the effective action via the closure constraint $\prod_{i=1}^4 \Theta(\operatorname{Tr}_{\mathrm{SU}(2)}(g_i g_{i+1}^{-1}))$. These tensor fluctuations contribute a positive $\Delta_{\text{grav}} > 0$ that **exactly cancels** the $-2/11$ deficit. This correction is **analytically proven to be a topologically quantized invariant**, specifically related to a Chern-Simons secondary characteristic class for the emergent gravitational connection, explaining its precise value (detailed in **Appendix C.3**).
+The holographic measure term (1.4) generates graviton-like tensor modes in the effective action via the closure constraint $\prod_{i=1}^4 \Theta(\mathrm{Tr}_{\mathrm{SU}(2)}(g_i g_{i+1}^{-1}))$. These tensor fluctuations contribute a positive $\Delta_{\text{grav}} > 0$ that **exactly cancels** the $-2/11$ deficit. This correction is **analytically proven to be a topologically quantized invariant**, specifically related to a Chern-Simons secondary characteristic class for the emergent gravitational connection, explaining its precise value (detailed in **Appendix C.3**).
 
 The $\Delta_{\text{grav}}(k)$ term specifically quantifies the backreaction of the emergent graviton degrees of freedom on the propagation of heat (which defines spectral dimension). In IRH v21.0, the precise value of $-2/11$ for the shift in spectral dimension arises from the contribution of the emergent graviton to the effective action. This is computed by analyzing the one-loop diagram for the propagation of a scalar field in the background of the emergent metric, where the metric fluctuations are sourced by the cGFT condensates. The $-2/11$ factor arises from the specific counting of degrees of freedom in the effective 4D emergent spacetime and is a known result in effective quantum gravity models.
 The HarmonyOptimizer, solving the full Wetterich equation with tensor modes included, yields the **exact result**:
@@ -576,14 +574,14 @@ $$
 $$
 
 **Proof.**
-The Harmony Functional is defined as $S_H[g] = \operatorname{Tr}(\mathcal{L}[g]^2) - C_H \log\det'\mathcal{L}[g]$. At the infrared fixed point, the structure of the effective action for the metric degrees of freedom (derived from the cGFT via its RG flow) takes the form:
+The Harmony Functional is defined as $S_H[g] = \mathrm{Tr}(\mathcal{L}[g]^2) - C_H \log\det'\mathcal{L}[g]$. At the infrared fixed point, the structure of the effective action for the metric degrees of freedom (derived from the cGFT via its RG flow) takes the form:
 $$
 \Gamma_*[g] = \int d^4 x \sqrt{-g} \left( \frac{1}{16\pi G_*} (R[g] - 2\Lambda_*) + \dots \right)
 \tag{2.14}
 $$
 where the ellipsis denotes higher-order curvature invariants that are suppressed at macroscopic scales (analytically proven in Section 2.2.5). The identification $S_H[g] \equiv \Gamma_*[g]$ is rigorously established (Theorem 1.1 and **Section 1.4**).
 
-Varying this effective action with respect to $g_{\mu\nu}(x)$ involves standard variational calculus techniques, treating the emergent metric $g_{\mu\nu}(x)$ as the fundamental field. The non-trivial aspect is to show that the specific structure of $\operatorname{Tr}(\mathcal{L}[g]^2) - C_H \log\det'\mathcal{L}[g]$ yields precisely the Einstein-Hilbert term. This is achieved by performing a **gradient expansion of the functional $\mathcal{L}[g]$** in terms of powers of the emergent metric. The leading order terms (in powers of $g_{\mu\nu}$) are rigorously proven to be proportional to the Ricci scalar and the cosmological constant. The coefficients $G_*$ and $\Lambda_*$ are then directly related to the fixed-point parameters and the value of $C_H$. This proof is detailed in **Appendix C.5**.
+Varying this effective action with respect to $g_{\mu\nu}(x)$ involves standard variational calculus techniques, treating the emergent metric $g_{\mu\nu}(x)$ as the fundamental field. The non-trivial aspect is to show that the specific structure of $\mathrm{Tr}(\mathcal{L}[g]^2) - C_H \log\det'\mathcal{L}[g]$ yields precisely the Einstein-Hilbert term. This is achieved by performing a **gradient expansion of the functional $\mathcal{L}[g]$** in terms of powers of the emergent metric. The leading order terms (in powers of $g_{\mu\nu}$) are rigorously proven to be proportional to the Ricci scalar and the cosmological constant. The coefficients $G_*$ and $\Lambda_*$ are then directly related to the fixed-point parameters and the value of $C_H$. This proof is detailed in **Appendix C.5**.
 
 **The Gravitational Constant $G_*$ and the Cosmological Constant $\Lambda_*$ are now analytical predictions of the RG flow.**
 *   $G_*$ emerges as a semi-analytical prediction from the fixed-point value of the kinetic term for the graviton in the effective action. It is specifically related to $\tilde{\lambda}_*$ and combinatorial factors from the group manifold.
@@ -1016,7 +1014,11 @@ The mechanism for electroweak symmetry breaking and the generation of masses for
 1.  **Higgs Field as Order Parameter:** The Higgs field $\Phi(x)$ emerges as the order parameter of the condensate, associated with the spontaneous breaking of the internal $\mathrm{SU}(2)$ symmetry of $G_{\text{inf}}$ (specifically, the $\mathrm{SU}(2)$ factor within the $G_{\text{inf}}$ that generates the weak $\mathrm{SU}(2)$). The Higgs VEV, $v_*$, is fixed by the minimum of the fixed-point effective potential for this emergent scalar field (Eq. 3.7).
 2.  **Gauge Boson Mass Generation:** The interaction of the emergent gauge fields with the non-zero Higgs VEV leads to the standard Higgs mechanism.
     *   The W and Z bosons acquire masses:
-        $$m_W = \frac{g_2 v_*}{2}, \quad m_Z = \frac{\sqrt{g_2^2 + g_1^2} v_*}{2}$$
+        
+        $$
+        m_W = \frac{g_2 v_*}{2}, \quad m_Z = \frac{\sqrt{g_2^2 + g_1^2} v_*}{2}
+        $$
+        
         where $g_1$ and $g_2$ are the emergent $\mathrm{U}(1)$ and $\mathrm{SU}(2)$ gauge couplings, computationally derived from the cGFT fixed-point values.
     *   The photon (associated with a $\mathrm{U}(1)$ subgroup) remains massless due to unbroken electromagnetic symmetry.
 3.  **Higgs Boson Mass (Computationally Derived Analytically):** The Higgs boson itself corresponds to the excitation of the radial mode of the Higgs field. The Higgs self-coupling $\lambda_H$ is computationally derived analytically from the fixed-point properties of the cGFT condensate and the effective potential for $\Phi(x)$, yielding:
@@ -1526,7 +1528,7 @@ This quantitative analysis, extending across the entire classification of compac
 
 The core of our non-perturbative RG approach is the Wetterich equation (Eq. 1.12), which governs the scale-dependence of the effective average action $\Gamma_k$:
 $$
-\partial_t \Gamma_k = \frac{1}{2} \operatorname{Tr} \left[ (\Gamma_k^{(2)} + R_k)^{-1} \partial_t R_k \right], \quad t = \log(k/\Lambda_{\text{UV}})
+\partial_t \Gamma_k = \frac{1}{2} \mathrm{Tr} \left[ (\Gamma_k^{(2)} + R_k)^{-1} \partial_t R_k \right], \quad t = \log(k/\Lambda_{\text{UV}})
 $$
 Here, $\Gamma_k^{(2)}$ is the second functional derivative of $\Gamma_k$ with respect to the quaternionic field $\phi$, representing the inverse propagator, and $R_k$ is an infrared regulator function. This equation is exact and captures all orders of perturbation theory and non-perturbative effects.
 
@@ -1639,13 +1641,13 @@ The fixed-point value of $\tilde{\mu}_*$ is related to the effective cosmologica
 ### C.5 Gradient Expansion of the Harmony Functional (Analytical Proof)
 
 **Theorem C.3 (Einstein-Hilbert Term from Harmony Functional Gradient Expansion):**
-The leading-order terms of the Harmony Functional $\Gamma[\Sigma] = \operatorname{Tr}(\mathcal{L}[\Sigma]^2) - C_H \log\det'\mathcal{L}[\Sigma]$, when expanded in terms of the emergent metric $g_{\mu\nu}(x)$ and its derivatives (i.e., a gradient expansion), analytically yield the Einstein-Hilbert action with a cosmological constant.
+The leading-order terms of the Harmony Functional $\Gamma[\Sigma] = \mathrm{Tr}(\mathcal{L}[\Sigma]^2) - C_H \log\det'\mathcal{L}[\Sigma]$, when expanded in terms of the emergent metric $g_{\mu\nu}(x)$ and its derivatives (i.e., a gradient expansion), analytically yield the Einstein-Hilbert action with a cosmological constant.
 
 **Proof:**
 This proof is a direct application of the techniques used to derive effective actions for composite operators. The emergent Laplacian $\mathcal{L}[\Sigma]$ (where $\Sigma$ depends on the metric) can be expanded in powers of the curvature.
 1.  **Expansion of $\mathcal{L}[\Sigma]$:** The group Laplacian $\mathcal{L}[\Sigma]$ is a differential operator acting on functions on the group manifold. When interpreted as an operator on the emergent spacetime, its leading terms in a gradient expansion are related to the Laplace-Beltrami operator on the emergent metric.
-2.  **Heat Kernel Expansion:** The $\operatorname{Tr}(\mathcal{L}[\Sigma]^2)$ term directly yields terms quadratic in derivatives of the metric, related to $R^2$ and similar higher-curvature invariants. The $\log\det'\mathcal{L}[\Sigma]$ term is explicitly evaluated using a heat-kernel expansion for general differential operators on curved manifolds. The leading terms in this expansion are known to be proportional to $\int d^4 x \sqrt{-g}$ (yielding the cosmological constant) and $\int d^4 x \sqrt{-g} R$ (yielding the Einstein-Hilbert term).
-3.  **Coefficient Matching:** By carefully matching the coefficients from the heat-kernel expansion and the $\operatorname{Tr}(\mathcal{L}[\Sigma]^2)$ term, and utilizing the fixed-point value of $C_H$, it is analytically proven that the Harmony Functional, in the infrared limit, reduces precisely to the Einstein-Hilbert action with a cosmological constant. The higher-order terms in the expansion (higher-curvature invariants) are suppressed by inverse powers of the Planck scale, as proven in Theorem 2.7.
+2.  **Heat Kernel Expansion:** The $\mathrm{Tr}(\mathcal{L}[\Sigma]^2)$ term directly yields terms quadratic in derivatives of the metric, related to $R^2$ and similar higher-curvature invariants. The $\log\det'\mathcal{L}[\Sigma]$ term is explicitly evaluated using a heat-kernel expansion for general differential operators on curved manifolds. The leading terms in this expansion are known to be proportional to $\int d^4 x \sqrt{-g}$ (yielding the cosmological constant) and $\int d^4 x \sqrt{-g} R$ (yielding the Einstein-Hilbert term).
+3.  **Coefficient Matching:** By carefully matching the coefficients from the heat-kernel expansion and the $\mathrm{Tr}(\mathcal{L}[\Sigma]^2)$ term, and utilizing the fixed-point value of $C_H$, it is analytically proven that the Harmony Functional, in the infrared limit, reduces precisely to the Einstein-Hilbert action with a cosmological constant. The higher-order terms in the expansion (higher-curvature invariants) are suppressed by inverse powers of the Planck scale, as proven in Theorem 2.7.
 
 This theorem provides the complete analytical derivation of the Einstein-Hilbert action from the fundamental cGFT.
 
@@ -1917,7 +1919,9 @@ This research program aims to uncover a deeper layer of mathematical necessity i
 ### G.1 The Non-Commutativity Challenge
 
 The kinetic term:
-$$S_{\text{kin}} = \int \Bigl[\prod_{i=1}^4 dg_i\Bigr]\;
+
+$$
+S_{\text{kin}} = \int \Bigl[\prod_{i=1}^4 dg_i\Bigr]\;
 \bar{\phi}(g_1,g_2,g_3,g_4)\;
 \Bigl(\sum_{a=1}^{3}\sum_{i=1}^{4} \Delta_a^{(i)}\Bigr)\,
 \phi(g_1,g_2,g_3,g_4)
