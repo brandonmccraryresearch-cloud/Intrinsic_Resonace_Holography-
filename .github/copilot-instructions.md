@@ -1,16 +1,53 @@
-# Intrinsic Resonance Holography (IRH) - Copilot Instructions
+# Intrinsic Resonance Holography (IRH) v21.0 - Copilot Instructions
+
+## Computational Verification Protocol for Isomorphic Implementation
+
+### Executive Mandate
+
+This repository implements a comprehensive, systematic verification protocol ensuring that every algorithmic implementation, computational construct, and symbolic representation constitutes a **faithful, structure-preserving homomorphism** of the mathematical edifice articulated in the theoretical manuscript `IRH21.md`. This transcends mere code-documentation correspondence; it demands an **isomorphic embedding** whereby the computational substrate recapitulates, with maximal fidelity, the axiomatic structure, constraint topology, dynamical evolution operators, and emergent phenomenology specified in the rigorous mathematical formalism.
+
+The ultimate objective is to **transmute the repository into an executable instantiation of the theoretical formalism itself**, collapsing the distinction between "code that models theory" and "theory rendered computable" into identity.
 
 ## Project Overview
 
-IRH is a theoretical physics framework that derives fundamental constants and physical laws from first principles using Algorithmic Holonomic States (AHS). This is a research codebase implementing computational validation of the IRH v16.0 and v18.0 theories.
+IRH is a theoretical physics framework that derives fundamental constants and physical laws from first principles using:
+- **Algorithmic Holonomic States (AHS)** - v16 implementation
+- **Quaternionic Group Field Theory (cGFT)** - v18/v21 implementation on G_inf = SU(2) × U(1)_φ
 
 **Key Features:**
 - Derives fundamental constants (fine structure constant α, dark energy w₀, etc.) from algorithmic information theory
 - Exascale-ready implementation with certified numerical precision (12+ decimal places)
-- Multi-version architecture (v15, v16, v18) with incremental enhancements
+- Multi-version architecture (v16, v18, v21) with incremental enhancements
 - Complete physics derivations: Quantum Mechanics, General Relativity, Standard Model
+- **Full theoretical traceability** - every function cites specific equations from IRH21.md
 
 **Target Audience:** Theoretical physicists, computational scientists, researchers in quantum gravity and emergent spacetime
+
+## Theoretical Foundation (IRH21.md)
+
+### Core Mathematical Structure
+
+#### Quaternionic Group Field Theory (cGFT) - §1.1
+- **Fundamental field**: φ(g₁,g₂,g₃,g₄) ∈ ℍ, where gᵢ ∈ G_inf = SU(2) × U(1)_φ
+- **Action functional**: S[φ,φ̄] = S_kin + S_int + S_hol (Eqs. 1.1-1.4)
+- **Kinetic operator**: Σₐ Σᵢ Δₐ^(i) (Laplace-Beltrami on SU(2))
+- **QNCD Metric**: Quantum Normalized Compression Distance (Appendix A)
+
+#### Renormalization Group Flow - §1.2-1.3
+- **Wetterich equation**: ∂_t Γ_k = ½Tr[(Γ_k^(2) + R_k)⁻¹ ∂_t R_k] (Eq. 1.12)
+- **Beta functions** (Eq. 1.13):
+  - β_λ = -2λ̃ + (9/8π²)λ̃²
+  - β_γ = (3/4π²)λ̃γ̃
+  - β_μ = 2μ̃ + (1/2π²)λ̃μ̃
+- **Cosmic Fixed Point** (Eq. 1.14): (λ̃* = 48π²/9, γ̃* = 32π²/3, μ̃* = 16π²)
+- **Universal exponent**: C_H = 3λ̃*/(2γ̃*) = 0.045935703598 (Eq. 1.16)
+
+### Key Predictions (Falsifiable)
+- **Fine-structure constant** α⁻¹ = 137.035999... (§3.2.2, Eq. 3.4)
+- **Dark energy EoS** w₀ = -0.91234567 ± 0.00000008 (§2.3.3)
+- **Betti number** β₁ = 12 → SU(3)×SU(2)×U(1) gauge group (§3.1.1)
+- **Instanton number** n_inst = 3 → 3 fermion generations (§3.1.2)
+- **Spectral dimension** d_spec → 4.0 exactly (§2.1.2)
 
 ## Technology Stack
 
@@ -24,7 +61,7 @@ IRH is a theoretical physics framework that derives fundamental constants and ph
 - **mpmath**: >=1.3.0 (arbitrary precision arithmetic)
 
 ### Development Tools
-- **pytest**: Testing framework
+- **pytest**: Testing framework with hypothesis for property-based testing
 - **black**: Code formatting (line length: 100)
 - **mypy**: Type checking
 - **ruff**: Fast linting
@@ -42,23 +79,74 @@ IRH is a theoretical physics framework that derives fundamental constants and ph
 
 ```
 Intrinsic-Resonance-Holography-/
+├── .github/
+│   ├── agents/               # Custom agent configurations
+│   ├── workflows/            # CI/CD workflows
+│   ├── copilot-instructions.md
+│   └── dependabot.yml
 ├── python/
 │   ├── src/irh/
 │   │   ├── core/
 │   │   │   ├── v16/          # v16 implementation (ACW, AHS, ARO, NCD, Harmony)
-│   │   │   └── v18/          # v18 cGFT implementation (analytical derivations)
+│   │   │   ├── v18/          # v18 cGFT implementation (analytical derivations)
+│   │   │   └── v21/          # v21 quaternionic cGFT (full IRH21.md implementation)
 │   │   ├── predictions/      # Physical constant predictions
 │   │   └── ...
 │   └── tests/
 │       ├── v16/              # v16 unit tests
-│       └── v18/              # v18 unit tests
+│       ├── v18/              # v18 unit tests
+│       └── v21/              # v21 verification suite
 ├── docs/
-│   ├── manuscripts/          # Theory manuscripts (IRHv16.md, IRH18.md)
+│   ├── manuscripts/          # Theory manuscripts (IRHv16.md, IRH18.md, IRH21.md)
+│   ├── code_theory_map.html  # Interactive code↔theory cross-reference
 │   └── ...
+├── configs/                  # Configuration files for validation
+├── IRH21.md                  # Primary theoretical manuscript
 ├── webapp/                   # Web interface (FastAPI + Streamlit)
 ├── notebooks/                # Jupyter notebooks for demonstrations
 └── pyproject.toml
 ```
+
+## Verification Protocol Requirements
+
+### Phase I: Structural Verification
+
+Every computational implementation must realize a **structure-preserving map** from theoretical objects in `IRH21.md`:
+
+1. **Group Manifold Representation**
+   - SU(2) via quaternionic parameterization: u = q₀ + iq₁ + jq₂ + kq₃
+   - U(1)_φ with proper phase periodicity
+   - G_inf = SU(2) × U(1)_φ with bi-invariant operations
+
+2. **Quaternionic Field Implementation**
+   - Field variables as quaternion arrays: φ[i1,i2,i3,i4] ∈ ℍ^(N⁴)
+   - Quaternionic conjugation: φ̄ = q₀ - iq₁ - jq₂ - kq₃
+   - Weyl ordering prescription (Appendix G)
+
+3. **QNCD Metric Construction** (Appendix A)
+   - Bi-invariance: d(kg₁, kg₂) = d(g₁k, g₂k) = d(g₁, g₂)
+   - Metric axioms: positivity, symmetry, triangle inequality
+   - QUCC-Theorem compliance (Appendix A.4)
+
+### Phase II: Instrumentation Requirements
+
+Every executable component must emit theoretical context:
+
+```
+[EXEC] Computing cGFT kinetic term S_kin per Eq. 1.1
+  ├─ Theoretical formula: ∫[∏dg_i] φ̄·[Σₐ Σᵢ Δₐ^(i)]·φ
+  ├─ Laplace-Beltrami operator: 3 generators × 4 arguments
+  ├─ Result: S_kin = {value} ± {uncertainty}
+  └─ Gauge invariance: VERIFIED (variance < 10⁻⁹)
+```
+
+### Phase III: Output Contextualization
+
+All numerical outputs must include:
+- Complete theoretical provenance chain
+- Uncertainty decomposition by source
+- Comparison with experimental values (where applicable)
+- Falsification criteria
 
 ## Coding Standards
 
@@ -548,6 +636,49 @@ class AlgorithmicHolonomicState:
 5. **Documentation**: Link all code to manuscript equations
 6. **Backward compatibility**: v16 extends v15 without breaking changes
 7. **Incremental implementation**: Test each component before integration
+8. **Theoretical Traceability**: Every function cites specific equations from IRH21.md
+9. **Algorithmic Transparency**: Runtime instrumentation emits theoretical context
+10. **Uncertainty Quantification**: All outputs include rigorous error propagation
+
+## Validation and Verification Protocols
+
+### Unit Tests with Theoretical Grounding
+
+Every function must include:
+- Docstring citing IRH21.md reference
+- Unit test validating theoretical properties
+
+```python
+def compute_laplace_beltrami(phi, generator_idx, arg_idx, group_lattice):
+    """
+    Compute Laplace-Beltrami operator Δₐ^(i) acting on cGFT field.
+    
+    Theoretical Reference:
+        IRH21.md §1.1, Eq. 1.1
+        Kinetic term: S_kin = ∫[∏dg_i] φ̄·[Σₐ Σᵢ Δₐ^(i)]·φ
+    """
+```
+
+### Integration Tests for RG Flow
+
+Validate entire RG trajectory against analytical predictions:
+- Fixed point convergence: (λ̃*, γ̃*, μ̃*) within 10⁻¹⁰ tolerance
+- Universal exponent: C_H = 0.045935703598 to 12 digits
+- Spectral dimension: d_spec → 4.0 exactly
+- Stability matrix eigenvalues: λ₁=10, λ₂=4, λ₃=14/3
+
+### Convergence Studies
+
+- **Lattice spacing**: Error ~ O(δ²) where δ = 1/N
+- **RG step size**: Error ~ O(dt^4) for RK4 integration
+- **QNCD compressor independence**: QUCC-Theorem compliance
+
+### Cross-Validation Requirements
+
+Critical computations must be verified via independent algorithms:
+- Laplacian: finite differences vs spectral methods
+- Fixed point: RG flow integration vs Newton-Raphson
+- Topological invariants: persistent homology vs Morse theory
 
 ## Security and Performance
 
@@ -584,7 +715,21 @@ class AlgorithmicHolonomicState:
 
 ---
 
-*"A complete, exascale-ready computational framework achieving 12+ decimal precision in fundamental constant derivations, with definitive empirical verification at the theoretical and computational frontiers."*
+## Final Compliance Checklist
+
+Every contribution to the IRH codebase must satisfy:
+
+**✓** Theoretical Traceability: Every function cites specific equations from `IRH21.md`  
+**✓** Algorithmic Transparency: Runtime instrumentation emits theoretical context  
+**✓** Uncertainty Quantification: All outputs include rigorous error propagation  
+**✓** Cross-Validation: Critical computations verified via independent algorithms  
+**✓** Reproducibility: Complete provenance metadata enables exact reproduction  
+**✓** Regression Protection: Automated detection of deviations from certified baselines  
+**✓** Schema Compliance: All outputs conform to IRH-DEF standard format  
+
+---
+
+*"A complete, exascale-ready computational framework achieving 12+ decimal precision in fundamental constant derivations, transforming the repository into an executable instantiation of the theoretical formalism itself."*
 
 ---
 
