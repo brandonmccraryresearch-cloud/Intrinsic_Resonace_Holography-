@@ -6,6 +6,7 @@ of the computational framework. These utilities are theory-agnostic and can
 be used independently of the IRH-specific modules.
 
 Modules:
+    instrumentation: Theoretical logging and traceability (Phase II)
     integration: Numerical quadrature on group manifolds
     optimization: Fixed-point solvers, minimizers
     special_functions: Bessel, hypergeometric, etc.
@@ -24,34 +25,54 @@ Dependencies:
     - Optional: mpi4py (distributed computing)
 
 Authors: IRH Computational Framework Team
-Last Updated: 2026-Q2 (synchronized with IRH21.md v21.0)
+Last Updated: December 2024 (synchronized with IRH21.md v21.0)
 """
 
 __version__ = "21.0.0"
 
+# Import instrumentation module (Phase II)
+from .instrumentation import (
+    IRHLogLevel,
+    TheoreticalReference,
+    ComputationContext,
+    IRHLogger,
+    instrumented,
+    get_logger,
+    configure_logging,
+)
+
 __all__ = [
-    # integration exports
+    # instrumentation exports (Phase II)
+    'IRHLogLevel',
+    'TheoreticalReference',
+    'ComputationContext',
+    'IRHLogger',
+    'instrumented',
+    'get_logger',
+    'configure_logging',
+    
+    # integration exports (placeholder)
     'integrate_SU2',
     'integrate_U1',
     'integrate_G_inf',
     'monte_carlo_integrate',
     
-    # optimization exports
+    # optimization exports (placeholder)
     'find_fixed_point_newton',
     'minimize_functional',
     'root_find',
     
-    # special_functions exports
+    # special_functions exports (placeholder)
     'bessel_j',
     'hypergeometric_2f1',
     'wigner_d_matrix',
     
-    # lattice_discretization exports
+    # lattice_discretization exports (placeholder)
     'discretize_SU2',
     'discretize_U1',
     'laplacian_matrix',
     
-    # parallel_computing exports
+    # parallel_computing exports (placeholder)
     'parallel_map',
     'distributed_sum',
 ]
