@@ -1,0 +1,17 @@
+irh-desktop (21.0.0-1) unstable; urgency=medium
+
+  * Initial release of IRH Desktop Application
+  * PyQt6-based graphical interface
+  * Engine Manager for repository integration
+  * Transparency Console for verbose output
+  * Configuration management with profiles
+  * Setup wizard for first-time installation
+  
+  * Phase VI implementation includes:
+    - Main window with module navigator
+    - Workspace for running computations
+    - Real-time transparency output
+    - Dark/light theme support
+    - Computation progress tracking
+
+ -- Brandon D. McCrary <brandon@irhresearch.org>  Mon, 16 Dec 2024 00:00:00 +0000

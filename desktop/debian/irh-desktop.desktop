@@ -1,0 +1,32 @@
+[Desktop Entry]
+Name=IRH Desktop
+GenericName=Physics Computation Framework
+Comment=Intrinsic Resonance Holography v21.0 - Derive fundamental physics from first principles
+Exec=irh-desktop %F
+Icon=irh-desktop
+Terminal=false
+Type=Application
+Categories=Science;Physics;Education;Math;
+Keywords=physics;quantum;gravity;unified;theory;GFT;cosmology;
+MimeType=application/x-irh-config;application/x-irh-results;
+StartupWMClass=irh-desktop
+StartupNotify=true
+
+# Actions for quick computations
+Actions=VerifyFixedPoint;ComputeAlpha;SpectralDimension;Setup;
+
+[Desktop Action VerifyFixedPoint]
+Name=Verify Cosmic Fixed Point
+Exec=irh-desktop --compute fixed_point
+
+[Desktop Action ComputeAlpha]
+Name=Compute Fine-Structure Constant
+Exec=irh-desktop --compute alpha_inverse
+
+[Desktop Action SpectralDimension]
+Name=Spectral Dimension Flow
+Exec=irh-desktop --compute spectral_dimension
+
+[Desktop Action Setup]
+Name=Setup Wizard
+Exec=irh-desktop --setup

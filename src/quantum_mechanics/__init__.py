@@ -14,10 +14,8 @@ Key Results:
     - §5.2.1: Quantifiable observer back-reaction
 
 Modules:
+    born_rule: Born rule, Lindblad equation, decoherence, measurement
     hilbert_space: Emergent ℋ from wave interference (Appendix I.1)
-    born_rule: Probability derivation (Appendix I.2)
-    decoherence: Lindblad equation, pointer basis
-    measurement: Algorithmic Selection, observer back-reaction
     entanglement: Quantum correlations from QNCD
 
 Dependencies:
@@ -27,32 +25,50 @@ Dependencies:
     - src.emergent_spacetime (Layer 3)
 
 Authors: IRH Computational Framework Team
-Last Updated: 2026-Q2 (synchronized with IRH21.md v21.0)
+Last Updated: 2024-12 (synchronized with IRH21.md v21.0)
 """
 
 __version__ = "21.0.0"
 __theoretical_foundation__ = "IRH21.md §5, Appendix I"
 
+# Import from born_rule module
+from .born_rule import (
+    BornRule,
+    DecoherenceRate,
+    LindbladEquation,
+    PointerBasis,
+    MeasurementResolution,
+    EmergentHilbertSpace,
+    QuantumMechanicsEmergence,
+    derive_born_rule,
+    compute_decoherence_rate,
+    derive_lindblad_equation,
+    compute_pointer_basis,
+    resolve_measurement_problem,
+    derive_hilbert_space,
+    compute_qm_emergence,
+    compute_decoherence_time_estimate,
+    verify_qm_emergence,
+)
+
 __all__ = [
-    # hilbert_space exports
+    # Classes
+    'BornRule',
+    'DecoherenceRate',
+    'LindbladEquation',
+    'PointerBasis',
+    'MeasurementResolution',
     'EmergentHilbertSpace',
-    'emergent_inner_product',
+    'QuantumMechanicsEmergence',
     
     # born_rule exports
-    'born_probability',
-    'verify_born_rule',
-    
-    # decoherence exports
-    'lindblad_equation',
-    'decoherence_rate',
-    'pointer_basis',
-    
-    # measurement exports
-    'algorithmic_selection',
-    'measurement_outcome',
-    'observer_backreaction',
-    
-    # entanglement exports
-    'entanglement_entropy',
-    'qncd_correlations',
+    'derive_born_rule',
+    'compute_decoherence_rate',
+    'derive_lindblad_equation',
+    'compute_pointer_basis',
+    'resolve_measurement_problem',
+    'derive_hilbert_space',
+    'compute_qm_emergence',
+    'compute_decoherence_time_estimate',
+    'verify_qm_emergence',
 ]

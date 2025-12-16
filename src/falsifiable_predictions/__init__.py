@@ -22,27 +22,65 @@ Falsification Timeline (§8.7):
 
 Modules:
     lorentz_violation: LIV parameter ξ (Eq. 2.24-2.26)
-    generation_specific_liv: 𝒦_f-dependent thresholds (Appendix J.1)
-    gravitational_sidebands: Recursive VWP signatures (Appendix J.2)
     muon_g_minus_2: Anomalous magnetic moment (Appendix J.3)
-    higgs_trilinear: λ_HHH prediction (Appendix J.4)
-    observer_backreaction: Quantifiable measurement cost (Eq. 5.2)
+    gravitational_sidebands: GW sidebands from discrete spacetime (Appendix J.2)
 
 Dependencies:
     - All previous layers (0-7)
 
 Authors: IRH Computational Framework Team
-Last Updated: 2026-Q2 (synchronized with IRH21.md v21.0)
+Last Updated: 2024-12 (synchronized with IRH21.md v21.0)
 """
 
 __version__ = "21.0.0"
 __theoretical_foundation__ = "IRH21.md §8, Appendix J"
 
-# Predicted LIV parameter (Eq. 2.26)
-XI_LIV = 1.93e-4  # Lorentz Invariance Violation parameter
+# Import from lorentz_violation module
+from .lorentz_violation import (
+    LIVParameter,
+    ModifiedDispersion,
+    GenerationLIV,
+    PhotonDispersion,
+    GammaRayTest,
+    XI_LIV,
+    XI_CERTIFIED,
+    compute_liv_parameter,
+    compute_modified_dispersion,
+    compute_generation_liv,
+    compute_photon_time_delay,
+    analyze_grb_liv_test,
+    verify_liv_predictions,
+    compute_cta_sensitivity,
+)
+
+# Import from muon_g_minus_2 module
+from .muon_g_minus_2 import (
+    MuonAnomalousMMResult,
+    A_MU_EXPERIMENTAL,
+    A_MU_SM,
+    A_MU_ANOMALY,
+    compute_qed_contribution,
+    compute_irh_vwp_contribution,
+    compute_muon_g_minus_2,
+    analyze_anomaly_resolution,
+    verify_muon_g2_predictions,
+)
+
+# Import from gravitational_sidebands module
+from .gravitational_sidebands import (
+    GWSideband,
+    GWDetectorSensitivity,
+    SpacetimeGranularity,
+    DETECTORS,
+    compute_gw_sidebands,
+    analyze_detectability,
+    compute_spacetime_granularity,
+    predict_binary_merger_sidebands,
+    verify_gw_sideband_predictions,
+)
 
 # Muon g-2 anomaly prediction (Eq. J.1)
-DELTA_G_MINUS_2_MUON = 251e-11  # ± 50×10⁻¹¹
+DELTA_G_MINUS_2_MUON = A_MU_ANOMALY
 
 # Higgs trilinear coupling prediction (Eq. J.2)
 LAMBDA_HHH = 125.25  # GeV, ± 1.25 GeV
@@ -50,30 +88,45 @@ LAMBDA_HHH = 125.25  # GeV, ± 1.25 GeV
 __all__ = [
     # Constants
     'XI_LIV',
+    'XI_CERTIFIED',
     'DELTA_G_MINUS_2_MUON',
     'LAMBDA_HHH',
+    'A_MU_EXPERIMENTAL',
+    'A_MU_SM',
+    'A_MU_ANOMALY',
+    'DETECTORS',
+    
+    # Classes
+    'LIVParameter',
+    'ModifiedDispersion',
+    'GenerationLIV',
+    'PhotonDispersion',
+    'GammaRayTest',
+    'MuonAnomalousMMResult',
+    'GWSideband',
+    'GWDetectorSensitivity',
+    'SpacetimeGranularity',
     
     # lorentz_violation exports
     'compute_liv_parameter',
-    'energy_dependent_velocity',
-    
-    # generation_specific_liv exports
-    'liv_threshold_fermion',
-    'generation_dependent_xi',
-    
-    # gravitational_sidebands exports
-    'gw_sideband_spacing',
-    'recursive_vwp_signature',
+    'compute_modified_dispersion',
+    'compute_generation_liv',
+    'compute_photon_time_delay',
+    'analyze_grb_liv_test',
+    'verify_liv_predictions',
+    'compute_cta_sensitivity',
     
     # muon_g_minus_2 exports
-    'muon_anomalous_moment',
-    'g_minus_2_irh_contribution',
+    'compute_qed_contribution',
+    'compute_irh_vwp_contribution',
+    'compute_muon_g_minus_2',
+    'analyze_anomaly_resolution',
+    'verify_muon_g2_predictions',
     
-    # higgs_trilinear exports
-    'higgs_trilinear_coupling',
-    'delta_hhh_correction',
-    
-    # observer_backreaction exports
-    'observer_energy_cost',
-    'measurement_backreaction',
+    # gravitational_sidebands exports
+    'compute_gw_sidebands',
+    'analyze_detectability',
+    'compute_spacetime_granularity',
+    'predict_binary_merger_sidebands',
+    'verify_gw_sideband_predictions',
 ]

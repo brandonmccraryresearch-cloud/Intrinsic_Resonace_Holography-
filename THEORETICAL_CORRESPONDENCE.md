@@ -1,6 +1,6 @@
 # IRH v21.0: Code ↔ Theory Correspondence Map
 
-**Last Updated**: 2026-Q2  
+**Last Updated**: 2025-Q4  
 **Manuscript Version**: IRH21.md v21.0  
 **Repository Commit**: `[auto-generated]`
 

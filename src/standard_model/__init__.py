@@ -16,7 +16,7 @@ Key Results:
 Modules:
     gauge_groups: SU(3)×SU(2)×U(1) from β₁=12
     fermion_masses: Yukawa couplings (Eq. 3.6), 𝒦_f values (Table 3.1)
-    gauge_bosons: W, Z, γ, g masses and couplings
+    mixing_matrices: CKM and PMNS matrices from VWP overlaps
     higgs_sector: VEV, λ_H, electroweak symmetry breaking
     neutrinos: Masses, mixing, Majorana nature (Appendix E.3)
     strong_cp: Algorithmic axion, θ-angle resolution
@@ -29,7 +29,7 @@ Dependencies:
     - src.topology (Layer 4)
 
 Authors: IRH Computational Framework Team
-Last Updated: 2026-Q2 (synchronized with IRH21.md v21.0)
+Last Updated: December 2024 (synchronized with IRH21.md v21.0)
 """
 
 __version__ = "21.0.0"
@@ -45,6 +45,59 @@ from .fermion_masses import (
     HIGGS_VEV,
 )
 
+# Import from gauge_groups module (§3.1.1, Appendix D.1)
+from .gauge_groups import (
+    GaugeGroup,
+    StandardModelGaugeStructure,
+    GaugeCouplingUnification,
+    SU3_COLOR,
+    SU2_WEAK,
+    U1_HYPERCHARGE,
+    derive_gauge_group,
+    verify_su3_su2_u1,
+    compute_gauge_coupling_running,
+    BETTI_1,
+)
+
+# Import from mixing_matrices module (§3.2.3)
+from .mixing_matrices import (
+    CKMMatrix,
+    PMNSMatrix,
+    compute_ckm_matrix,
+    compute_pmns_matrix,
+    verify_mixing_matrices,
+)
+
+# Import from higgs_sector module (§3.3)
+from .higgs_sector import (
+    HiggsSector,
+    GaugeBosonMasses,
+    compute_higgs_sector,
+    compute_gauge_boson_masses,
+    verify_electroweak_sector,
+    HIGGS_MASS_EXP,
+)
+
+# Import from neutrinos module (§3.2.4, Appendix E.3)
+from .neutrinos import (
+    NeutrinoMasses,
+    MajoranaNature,
+    compute_neutrino_masses,
+    compute_majorana_nature,
+    verify_neutrino_sector,
+    neutrino_hierarchy,
+    K_NU,
+)
+
+# Import from strong_cp module (§3.4)
+from .strong_cp import (
+    StrongCPResolution,
+    AlgorithmicAxion,
+    compute_strong_cp_resolution,
+    compute_algorithmic_axion,
+    verify_strong_cp_sector,
+)
+
 # Topological complexity eigenvalues (Appendix E.1)
 K_1 = 1.000          # First generation (electron, u, d)
 K_2 = 206.77         # Second generation (muon, c, s)
@@ -55,6 +108,10 @@ __all__ = [
     'K_1',
     'K_2',
     'K_3',
+    'BETTI_1',
+    'HIGGS_VEV',
+    'HIGGS_MASS_EXP',
+    'K_NU',
     
     # fermion_masses exports (§3.2, Eq. 3.6)
     'compute_fermion_mass',
@@ -62,28 +119,44 @@ __all__ = [
     'mass_hierarchy',
     'verify_mass_ratios',
     'TOPOLOGICAL_COMPLEXITY',
-    'HIGGS_VEV',
     
-    # gauge_groups exports (placeholder)
+    # gauge_groups exports (§3.1.1)
+    'GaugeGroup',
+    'StandardModelGaugeStructure',
+    'GaugeCouplingUnification',
+    'SU3_COLOR',
+    'SU2_WEAK',
+    'U1_HYPERCHARGE',
     'derive_gauge_group',
     'verify_su3_su2_u1',
+    'compute_gauge_coupling_running',
     
-    # gauge_bosons exports (placeholder)
-    'w_boson_mass',
-    'z_boson_mass',
-    'gluon_properties',
+    # mixing_matrices exports (§3.2.3)
+    'CKMMatrix',
+    'PMNSMatrix',
+    'compute_ckm_matrix',
+    'compute_pmns_matrix',
+    'verify_mixing_matrices',
     
-    # higgs_sector exports (placeholder)
-    'higgs_vev',
-    'higgs_mass',
-    'higgs_quartic_coupling',
+    # higgs_sector exports (§3.3)
+    'HiggsSector',
+    'GaugeBosonMasses',
+    'compute_higgs_sector',
+    'compute_gauge_boson_masses',
+    'verify_electroweak_sector',
     
-    # neutrinos exports (placeholder)
-    'neutrino_masses',
-    'pmns_matrix',
-    'verify_normal_hierarchy',
+    # neutrinos exports (§3.2.4, Appendix E.3)
+    'NeutrinoMasses',
+    'MajoranaNature',
+    'compute_neutrino_masses',
+    'compute_majorana_nature',
+    'verify_neutrino_sector',
+    'neutrino_hierarchy',
     
-    # strong_cp exports (placeholder)
-    'algorithmic_axion',
-    'theta_angle',
+    # strong_cp exports (§3.4)
+    'StrongCPResolution',
+    'AlgorithmicAxion',
+    'compute_strong_cp_resolution',
+    'compute_algorithmic_axion',
+    'verify_strong_cp_sector',
 ]

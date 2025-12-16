@@ -1,0 +1,86 @@
+#!/bin/bash
+# postinst - Post-installation script for irh-desktop
+# 
+# This script runs after the package is installed to set up
+# the IRH Desktop application.
+
+set -e
+
+case "$1" in
+    configure)
+        echo ""
+        echo "╔══════════════════════════════════════════════════════════════════════════╗"
+        echo "║                                                                          ║"
+        echo "║        IRH Desktop v21.0 - Post-Installation Configuration               ║"
+        echo "║                                                                          ║"
+        echo "╚══════════════════════════════════════════════════════════════════════════╝"
+        echo ""
+        
+        # Create system directories
+        echo "[INFO] Creating system directories..."
+        mkdir -p /opt/irh/engine
+        mkdir -p /opt/irh/config
+        mkdir -p /opt/irh/data
+        mkdir -p /var/log/irh
+        
+        # Set appropriate permissions
+        echo "[INFO] Setting permissions..."
+        chmod 755 /opt/irh
+        chmod 755 /opt/irh/engine
+        chmod 755 /opt/irh/config
+        chmod 755 /opt/irh/data
+        chmod 755 /var/log/irh
+        
+        # Create user-writable directories if running as root
+        if [ -n "$SUDO_USER" ]; then
+            USER_HOME=$(getent passwd "$SUDO_USER" | cut -d: -f6)
+            USER_CONFIG="$USER_HOME/.config/irh"
+            USER_DATA="$USER_HOME/.local/share/irh"
+            
+            mkdir -p "$USER_CONFIG"
+            mkdir -p "$USER_DATA"
+            chown -R "$SUDO_USER:$SUDO_USER" "$USER_CONFIG"
+            chown -R "$SUDO_USER:$SUDO_USER" "$USER_DATA"
+        fi
+        
+        # Update icon cache
+        echo "[INFO] Updating icon cache..."
+        if command -v gtk-update-icon-cache &> /dev/null; then
+            gtk-update-icon-cache -f /usr/share/icons/hicolor 2>/dev/null || true
+        fi
+        
+        # Update desktop database
+        echo "[INFO] Updating desktop database..."
+        if command -v update-desktop-database &> /dev/null; then
+            update-desktop-database /usr/share/applications 2>/dev/null || true
+        fi
+        
+        # Display completion message
+        echo ""
+        echo "╔══════════════════════════════════════════════════════════════════════════╗"
+        echo "║                                                                          ║"
+        echo "║        IRH Desktop v21.0 installed successfully!                         ║"
+        echo "║                                                                          ║"
+        echo "║  To install the IRH computational engine, run:                           ║"
+        echo "║                                                                          ║"
+        echo "║        irh-desktop --setup                                               ║"
+        echo "║                                                                          ║"
+        echo "║  Or launch IRH Desktop from your application menu.                       ║"
+        echo "║                                                                          ║"
+        echo "║  Documentation: https://github.com/brandonmccraryresearch-cloud/         ║"
+        echo "║                 Intrinsic_Resonace_Holography-                           ║"
+        echo "║                                                                          ║"
+        echo "╚══════════════════════════════════════════════════════════════════════════╝"
+        echo ""
+        ;;
+        
+    abort-upgrade|abort-remove|abort-deconfigure)
+        ;;
+        
+    *)
+        echo "postinst called with unknown argument '$1'" >&2
+        exit 1
+        ;;
+esac
+
+exit 0

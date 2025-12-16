@@ -13,8 +13,7 @@ Key Results:
     - Appendix C.6-C.8: Running fundamental constants c(k), ℏ(k), G(k)
 
 Modules:
-    holographic_hum: ρ_hum, Λ* calculation (Eq. 2.17-2.19)
-    dark_energy: w(z) equation of state (Eq. 2.21-2.23)
+    dark_energy: Dark energy EoS w₀, Holographic Hum, vacuum energy
     running_constants: c(k), ℏ(k), G(k) (Appendix C.6-C.8)
     primordial_universe: Early universe, inflation signatures
 
@@ -27,35 +26,50 @@ Dependencies:
     - src.standard_model (Layer 5)
 
 Authors: IRH Computational Framework Team
-Last Updated: 2026-Q2 (synchronized with IRH21.md v21.0)
+Last Updated: 2024-12 (synchronized with IRH21.md v21.0)
 """
 
 __version__ = "21.0.0"
 __theoretical_foundation__ = "IRH21.md §2.3"
 
+# Import from dark_energy module
+from .dark_energy import (
+    HolographicHum,
+    DarkEnergyEoS,
+    VacuumEnergyCancellation,
+    CosmologicalConstant,
+    W0_PREDICTION,
+    W0_UNCERTAINTY,
+    compute_holographic_hum,
+    compute_dark_energy_eos,
+    compute_dark_energy_density,
+    compute_vacuum_energy_cancellation,
+    compute_cosmological_constant,
+    verify_dark_energy_predictions,
+    compute_hubble_tension_resolution,
+)
+
 # Predicted dark energy equation of state (Eq. 2.23)
-W_0_PREDICTED = -0.91234567  # w₀ with 8-digit precision
+W_0_PREDICTED = W0_PREDICTION  # w₀ with 8-digit precision
 
 __all__ = [
     # Constants
     'W_0_PREDICTED',
+    'W0_PREDICTION',
+    'W0_UNCERTAINTY',
     
-    # holographic_hum exports
-    'compute_rho_hum',
-    'holographic_hum_density',
-    'cosmological_constant',
+    # Classes
+    'HolographicHum',
+    'DarkEnergyEoS',
+    'VacuumEnergyCancellation',
+    'CosmologicalConstant',
     
     # dark_energy exports
-    'equation_of_state',
-    'w_of_z',
-    'dark_energy_density',
-    
-    # running_constants exports
-    'speed_of_light_running',
-    'planck_constant_running',
-    'gravitational_constant_running',
-    
-    # primordial_universe exports
-    'inflation_parameters',
-    'primordial_spectrum',
+    'compute_holographic_hum',
+    'compute_dark_energy_eos',
+    'compute_dark_energy_density',
+    'compute_vacuum_energy_cancellation',
+    'compute_cosmological_constant',
+    'verify_dark_energy_predictions',
+    'compute_hubble_tension_resolution',
 ]
