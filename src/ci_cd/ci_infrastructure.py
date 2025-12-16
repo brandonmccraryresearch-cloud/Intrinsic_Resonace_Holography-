@@ -886,8 +886,8 @@ class BaselineManager:
                 else:
                     # Empty file - use defaults
                     self.baselines = dict(RegressionDetector.BASELINES)
-        except json.JSONDecodeError:
-            # Invalid JSON - use defaults
+        except (json.JSONDecodeError, FileNotFoundError, PermissionError, OSError):
+            # Invalid JSON or file access error - use defaults
             self.baselines = dict(RegressionDetector.BASELINES)
     
     def save(self) -> None:
