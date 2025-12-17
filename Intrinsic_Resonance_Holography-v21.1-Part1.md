@@ -1,4 +1,4 @@
-# Intrinsic Resonance Holography: The Unified Theory of Emergent Reality
+# Intrinsic Resonance Holography: Analytically Verified Unification of Quantum Mechanics, General Relativity, and the Standard Model from a Quantum-Informational Field Theory
 
 **Author:** Brandon D. McCrary
 *Independent Theoretical Physics Researcher*
