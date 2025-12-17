@@ -1,6 +1,3 @@
----
-
-
 # Intrinsic Resonance Holography: The Unified Theory of Emergent Reality
 ### Analytically Verified Unification of QM, GR, and the Standard Model
 
