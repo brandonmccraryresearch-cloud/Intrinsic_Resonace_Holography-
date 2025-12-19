@@ -772,11 +772,22 @@ Every contribution to the IRH codebase must satisfy:
   curl http://localhost:8000/api/v1/fixed-point
   curl http://localhost:8000/api/v1/observables/alpha
   ```
+- **Web Frontend quick start**:
+  ```bash
+  # Start frontend dev server
+  cd webapp/frontend
+  npm install
+  npm run dev
+  
+  # Frontend at http://localhost:3000
+  # Pages: Dashboard, Fixed Point, RG Flow, Observables, Standard Model, Falsification
+  ```
 - **Conventions**: PEP 8, line length 100, NumPy docstrings with equation refs; phase wrapping via `np.mod(angle, 2*np.pi)` and `_wrapped_phase_difference` with `PHASE_TOLERANCE=1e-10`; input normalization via `_to_bytes`; wrap `np.exp(...)` in `complex(...)`.
 - **CI signals**: `.github/workflows/ci.yml` (pytest on `tests/`, ruff on `src/`, mypy on `src/irh_v10`) and `ci-cd.yml` (black/mypy, v16 legacy tests, python package tests/coverage, docs check, benchmarks, Wolfram notice, release stub). Prefer Python 3.12 and correct PYTHONPATH to mirror CI.
 - **Agent reminders**: keep changes minimal, place new code in `python/src/irh/...` with matching tests in `python/tests/...`, avoid new deps unless required, and trust these instructions before searching.
 - **Repository organization**: Status documents in `docs/status/`, handoff docs in `docs/handoff/`, legacy files in `archive/`, webapp in `webapp/`.
-- **Current Phase**: Tier 4 Phase 4.1 - Web Interface (Backend complete ✅, Frontend next)
+- **Current Phase**: Tier 4 Phase 4.2 - Cloud Deployment (Docker/K8s) - Phase 4.1 Web Interface complete ✅
+- **Notebook findings**: See `docs/NOTEBOOK_FINDINGS.md` for computational discrepancies (beta functions, fermion masses)
 
 ## v18 Module Summary (15 modules)
 

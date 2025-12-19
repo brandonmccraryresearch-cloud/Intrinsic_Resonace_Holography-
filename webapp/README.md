@@ -2,22 +2,60 @@
 
 Web-based interface for Intrinsic Resonance Holography (IRH) computations.
 
+**Status**: Phase 4.1 - Frontend implementation complete ✅
+
 ## Architecture
 
-- **Backend**: FastAPI REST API (`/backend`)
-- **Frontend**: React/Vue application (`/frontend`) - Coming soon
+```
+webapp/
+├── backend/           # FastAPI REST API (✅ Complete)
+│   ├── app.py        # Main API application (13 endpoints)
+│   ├── requirements.txt
+│   └── tests/        # API tests
+└── frontend/          # React + Vite frontend (✅ Complete)
+    ├── src/
+    │   ├── components/   # React components (6 pages)
+    │   ├── styles/       # CSS styles
+    │   ├── api.js       # API client
+    │   └── App.jsx      # Main app with routing
+    ├── package.json
+    └── vite.config.js
+```
 
-## Backend Setup
+## Quick Start
+
+### Backend
 
 ```bash
-cd backend
+cd webapp/backend
 pip install -r requirements.txt
-uvicorn app:app --reload
+uvicorn app:app --reload --port 8000
 ```
 
 API documentation available at:
 - Swagger UI: http://localhost:8000/docs
 - ReDoc: http://localhost:8000/redoc
+
+### Frontend
+
+```bash
+cd webapp/frontend
+npm install
+npm run dev
+```
+
+Frontend available at: http://localhost:3000
+
+## Frontend Pages
+
+| Page | Description | Reference |
+|------|-------------|-----------|
+| Dashboard | Overview with key observables | - |
+| Fixed Point | Cosmic Fixed Point details | Eq. 1.14 |
+| RG Flow | Interactive RG flow explorer | Eq. 1.12-1.13 |
+| Observables | Physical constants (α⁻¹, C_H, w₀, ξ) | §3.2 |
+| Standard Model | Gauge group and fermion emergence | §3.1 |
+| Falsification | Testable predictions timeline | §7 |
 
 ## API Endpoints
 
@@ -52,8 +90,15 @@ All computations are based on the IRH v21.1 Manuscript:
 
 Phase 4.1 implementation per docs/ROADMAP.md.
 
-Next steps:
-- [ ] React frontend with interactive visualizations
+**Completed**:
+- [x] FastAPI backend with 13 endpoints
+- [x] React frontend with 6 pages
+- [x] Interactive RG flow explorer
+- [x] Observables display
+- [x] Falsification timeline
+
+**Next steps (Phase 4.2)**:
 - [ ] WebSocket support for real-time computation updates
 - [ ] Celery task queue for long computations
-- [ ] Docker containerization (Phase 4.2)
+- [ ] Docker containerization
+- [ ] Cloud deployment (Kubernetes)
