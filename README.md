@@ -372,6 +372,27 @@ npm run dev
 | **Standard Model** | Gauge group and fermion emergence | §3.1 |
 | **Falsification** | Testable predictions timeline | §7 |
 
+### Google Cloud Run Deployment (Recommended)
+
+**One-command deployment to serverless cloud:**
+
+```bash
+# Quick deploy (automated)
+./deploy-to-cloudrun.sh YOUR_PROJECT_ID
+
+# Or use Cloud Build directly
+gcloud builds submit --config cloudbuild.yaml
+```
+
+**Features:**
+- ✅ **Fully serverless**: Auto-scaling from 0 to N instances
+- ✅ **Cost-effective**: Pay only for actual request time
+- ✅ **Fast deployment**: 5-10 minutes from code to production
+- ✅ **HTTPS included**: Automatic TLS certificates
+- ✅ **Global CDN**: Low latency worldwide
+
+See [`CLOUD_RUN_DEPLOYMENT.md`](./CLOUD_RUN_DEPLOYMENT.md) for complete guide.
+
 ### Docker Deployment
 
 ```bash
