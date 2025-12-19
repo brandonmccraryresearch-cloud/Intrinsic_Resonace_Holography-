@@ -8,10 +8,10 @@
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![Tests](https://img.shields.io/badge/tests-850%2B%20passing-brightgreen.svg)](./tests/)
+[![Tests](https://img.shields.io/badge/tests-970%2B%20passing-brightgreen.svg)](./tests/)
 [![Coverage](https://img.shields.io/badge/critical%20equations-100%25-brightgreen.svg)](./THEORETICAL_CORRESPONDENCE.md)
 
-**A complete computational framework deriving fundamental physics from quantum-informational first principles—with desktop application and 100% theoretical coverage.**
+**A complete computational framework deriving fundamental physics from quantum-informational first principles—with web interface, desktop application, ML surrogates, and 100% theoretical coverage.**
 
 ---
 
@@ -35,11 +35,14 @@
 **Intrinsic Resonance Holography (IRH) v21.1** is a unified theory deriving all fundamental physical laws, constants, and observable phenomena from axiomatically minimal quantum-informational principles. This repository provides the complete computational implementation, achieving:
 
 - ✅ **100% theoretical coverage**: All 17 critical equations from the IRH v21.1 Manuscript ([Part 1](./Intrinsic_Resonance_Holography-v21.1-Part1.md), [Part 2](./Intrinsic_Resonance_Holography-v21.1-Part2.md)) implemented
-- ✅ **894+ passing tests**: Comprehensive validation across 6 implementation phases + optimization tiers
+- ✅ **970+ passing tests**: Comprehensive validation across 6 implementation phases + optimization tiers + ML
+- ✅ **Web interface**: FastAPI backend + React frontend with interactive visualizations
 - ✅ **Desktop application**: User-friendly GUI with transparency engine and auto-updates
+- ✅ **ML surrogate models**: Neural network approximations for fast RG flow evaluation
 - ✅ **12-digit precision**: Fine-structure constant α⁻¹ = 137.035999084 and other predictions
 - ✅ **MPI parallelization**: Distributed computing support for HPC clusters
 - ✅ **GPU acceleration**: JAX/CuPy backends with automatic CPU fallback
+- ✅ **Cloud-ready**: Docker/Kubernetes deployment configurations
 
 ### Core Framework
 
@@ -83,8 +86,10 @@
 | **Phase VI** | Desktop Application (GUI, packaging) | 36+ | ✅ Complete |
 | **Enhancement** | Visualization, Reporting, Logging | 101+ | ✅ Complete |
 | **Tier 3** | Performance Optimization (8/8 phases) | 254+ | ✅ Complete |
+| **Tier 4.1-4.2** | Web Interface + Cloud Deployment | 13+ | ✅ Complete |
+| **Tier 4.3** | ML Surrogate Models (NEW) | 31+ | ✅ Complete |
 
-**Total**: 894+ tests | 100% critical equation coverage (17/17)
+**Total**: 970+ tests | 100% critical equation coverage (17/17)
 
 ---
 
@@ -329,6 +334,139 @@ print(f"Metric axioms satisfied: {axioms['all_passed']}")
 ```
 
 </details>
+
+---
+
+## 🌐 Web Interface
+
+The IRH framework includes a modern web interface for interactive exploration.
+
+### Quick Start
+
+**Backend** (FastAPI):
+```bash
+cd webapp/backend
+pip install -r requirements.txt
+uvicorn app:app --reload --port 8000
+```
+
+**Frontend** (React):
+```bash
+cd webapp/frontend
+npm install
+npm run dev
+```
+
+**Access**:
+- **Frontend**: http://localhost:3000
+- **API Documentation**: http://localhost:8000/docs (Swagger UI)
+
+### Web Interface Features
+
+| Page | Description | Reference |
+|------|-------------|-----------|
+| **Dashboard** | Key observables and system overview | - |
+| **Fixed Point** | Cosmic Fixed Point visualization | Eq. 1.14 |
+| **RG Flow** | Interactive β-function explorer | Eq. 1.12-1.13 |
+| **Observables** | Physical constants (α⁻¹, C_H, w₀, ξ) | §3.2 |
+| **Standard Model** | Gauge group and fermion emergence | §3.1 |
+| **Falsification** | Testable predictions timeline | §7 |
+
+### Docker Deployment
+
+```bash
+# Build and run with Docker Compose
+cd deploy/docker
+docker-compose up -d
+
+# Access at http://localhost:3000
+```
+
+### Kubernetes Deployment
+
+```bash
+# Deploy to Kubernetes cluster
+kubectl apply -f deploy/kubernetes/
+
+# Check status
+kubectl get pods -n irh
+```
+
+See [`deploy/README.md`](./deploy/README.md) for production deployment details.
+
+---
+
+## 🤖 ML Surrogate Models (Phase 4.3)
+
+Neural network surrogate models enable fast RG flow evaluation while tracking uncertainty.
+
+### Quick Example
+
+```python
+from src.ml import RGFlowSurrogate, SurrogateConfig
+
+# Create and train surrogate
+config = SurrogateConfig(
+    hidden_layers=[32, 64, 32],
+    n_ensemble=5,
+    max_epochs=100,
+)
+surrogate = RGFlowSurrogate(config)
+surrogate.train(n_trajectories=100, verbose=True)
+
+# Fast prediction with uncertainty
+import numpy as np
+initial = np.array([50.0, 100.0, 150.0])
+mean, std = surrogate.predict_with_uncertainty(initial, t=0.0)
+print(f"Predicted couplings: {mean} ± {std}")
+```
+
+### ML Module Components
+
+| Module | Description | Use Case |
+|--------|-------------|----------|
+| `RGFlowSurrogate` | Neural network for RG flow | Fast trajectory prediction |
+| `EnsembleUncertainty` | Ensemble-based uncertainty | Error bounds for predictions |
+| `BayesianOptimizer` | Gaussian Process optimization | Parameter space exploration |
+| `ActiveLearningOptimizer` | Informative point selection | Surrogate model improvement |
+
+### Bayesian Parameter Optimization
+
+```python
+from src.ml import optimize_parameters, FIXED_POINT
+import numpy as np
+
+# Find couplings that minimize distance to fixed point
+def objective(x):
+    return np.linalg.norm(x - FIXED_POINT)
+
+result = optimize_parameters(objective, n_iterations=50, verbose=True)
+print(f"Best found: {result['best_x']}, value: {result['best_y']}")
+```
+
+---
+
+## 📓 Interactive Notebooks
+
+Explore IRH with interactive Jupyter notebooks - click "Open in Colab" to run directly!
+
+| Notebook | Description | Colab |
+|----------|-------------|-------|
+| **00_quickstart** | Quick introduction | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/00_quickstart.ipynb) |
+| **01_group_manifold_visualization** | G_inf visualization | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/01_group_manifold_visualization.ipynb) |
+| **02_rg_flow_interactive** | RG flow explorer | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/02_rg_flow_interactive.ipynb) |
+| **03_observable_extraction** | Physical constants | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/03_observable_extraction.ipynb) |
+| **04_falsification_analysis** | Predictions | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/04_falsification_analysis.ipynb) |
+| **05_full_stack_execution** | **Complete demo with scale selection** | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/05_full_stack_execution.ipynb) |
+
+The **05_full_stack_execution** notebook features a computation scale selector:
+
+| Scale | Time | Description |
+|-------|------|-------------|
+| **quick** | ~30s | Fast demo |
+| **standard** | ~2-5 min | Regular usage |
+| **full** | ~10-30 min | Research |
+| **exascale** | ~1+ hour | Maximum fidelity |
 
 ---
 

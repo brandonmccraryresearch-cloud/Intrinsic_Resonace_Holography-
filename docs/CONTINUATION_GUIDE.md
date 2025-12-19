@@ -449,84 +449,68 @@ This document provides a comprehensive continuation guide for developers, contri
 - ✅ Complete Standard Model emergence demonstrated
 - ✅ All falsifiable predictions computed
 
-### 2.2 Current Phase: Web Interface (Tier 4, Phase 4.1) - COMPLETE ✅
+### 2.2 Current Phase: ML Surrogate Models (Tier 4, Phase 4.3) - COMPLETE ✅
 
-**Goal**: Implement FastAPI backend with React/Vue frontend for browser-based access
+**Goal**: Implement neural network surrogate models for fast RG flow evaluation
 
 **Completed** (December 2025):
 
-**Backend** (`webapp/backend/`):
-- ✅ FastAPI backend (`webapp/backend/app.py`)
-- ✅ 13 REST API endpoints for all core computations
-- ✅ 13 passing tests (`webapp/backend/tests/test_api.py`)
-- ✅ API documentation via Swagger UI and ReDoc
+**ML Module** (`src/ml/`):
+- ✅ `rg_flow_surrogate.py` - Neural network surrogate for RG flow
+  - `RGFlowSurrogate` class with ensemble support
+  - `SimpleNeuralNetwork` NumPy-based implementation
+  - `generate_training_data()` for trajectory generation
+  - `predict_rg_trajectory()` unified interface
+  - Fast trajectory prediction with uncertainty estimation
+- ✅ `uncertainty_quantification.py` - Error bounds estimation
+  - `EnsembleUncertainty` from model ensembles
+  - `MCDropoutUncertainty` from dropout sampling
+  - `UncertaintyResult` dataclass with statistics
+  - `compute_uncertainty()` unified interface
+- ✅ `parameter_optimizer.py` - Bayesian/active learning optimization
+  - `BayesianOptimizer` Gaussian Process-based
+  - `ActiveLearningOptimizer` for informative sampling
+  - `SimpleGaussianProcess` NumPy-based implementation
+  - `optimize_parameters()` and `suggest_next_point()` utilities
 
-**Frontend** (`webapp/frontend/`):
-- ✅ React + Vite frontend with 6 pages
-- ✅ Dashboard with key observables overview
-- ✅ Fixed Point page with verification details
-- ✅ RG Flow interactive explorer with parameter controls
-- ✅ Observables display (α⁻¹, C_H, w₀, ξ)
-- ✅ Standard Model emergence with fermion mass notes
-- ✅ Falsification analysis with timeline visualization
-- ✅ Modern dark theme CSS styling
-- ✅ React Query for data fetching
-- ✅ React Router for navigation
+**Test Count**: 31 tests passing in `tests/unit/test_ml/`
 
-**API Endpoints**:
-- `GET /api/v1/fixed-point` - Cosmic Fixed Point (Eq. 1.14)
-- `POST /api/v1/rg-flow` - RG flow integration (Eq. 1.12-1.13)
-- `GET /api/v1/observables/C_H` - Universal exponent (Eq. 1.16)
-- `GET /api/v1/observables/alpha` - Fine-structure constant (Eq. 3.4-3.5)
-- `GET /api/v1/observables/dark-energy` - Dark energy w₀ (§2.3)
-- `GET /api/v1/observables/liv` - Lorentz violation ξ (§2.5)
-- `GET /api/v1/standard-model/gauge-group` - SU(3)×SU(2)×U(1) (§3.1)
-- `GET /api/v1/standard-model/neutrinos` - Neutrino predictions (§3.2.4)
-- `GET /api/v1/falsification/summary` - All testable predictions
+**Quick Usage**:
+```python
+from src.ml import RGFlowSurrogate, SurrogateConfig, optimize_parameters
 
-**Frontend Pages**:
-| Page | Component | Description |
-|------|-----------|-------------|
-| Dashboard | `Dashboard.jsx` | Overview with key observables |
-| Fixed Point | `FixedPoint.jsx` | Cosmic Fixed Point details |
-| RG Flow | `RGFlow.jsx` | Interactive RG flow explorer |
-| Observables | `Observables.jsx` | Physical constants |
-| Standard Model | `StandardModel.jsx` | Gauge groups, neutrinos |
-| Falsification | `Falsification.jsx` | Testable predictions |
+# Train surrogate
+config = SurrogateConfig(hidden_layers=[32, 64, 32], n_ensemble=5)
+surrogate = RGFlowSurrogate(config)
+surrogate.train(n_trajectories=100, verbose=True)
 
-**Quick Start**:
-```bash
-# Backend
-cd webapp/backend && uvicorn app:app --reload
+# Fast prediction
+mean, std = surrogate.predict_with_uncertainty(initial_couplings, t=0.0)
 
-# Frontend
-cd webapp/frontend && npm install && npm run dev
+# Bayesian optimization
+result = optimize_parameters(objective_function, n_iterations=50)
 ```
 
-**Remaining Priority Tasks** (See [`docs/ROADMAP.md`](./ROADMAP.md) for details):
+### 2.3 NEXT PHASE: Experimental Data Pipeline (Phase 4.4)
 
-1. **Cloud Deployment** (Phase 4.2) ✅ **COMPLETE**
-   - ✅ Docker containerization (`deploy/docker/`)
-   - ✅ Kubernetes orchestration (`deploy/kubernetes/`)
-   - ✅ Production-ready with health checks and autoscaling
+**Goal**: Automated PDG/CODATA updates and experimental comparison
 
-2. **ML Surrogate Models** (Phase 4.3, 16+ weeks, LOW priority)
-   - Neural network approximations for RG flow
-   - Uncertainty quantification
-   - Automated parameter tuning
+**Planned Implementation**:
+- `src/experimental/` - Experimental data ingestion
+  - PDG data parser
+  - CODATA values database
+  - Version-controlled data catalogs
+- `src/experimental/comparison.py` - Statistical comparison
+  - σ-analysis framework
+  - Systematic uncertainty handling
+  - Publication-ready tables
 
-3. **Interactive Notebooks Enhancement** (Q1 2026, MEDIUM priority)
-   - Jupyter notebook tutorials
-   - Interactive demonstrations
-   - Educational content
-   - Binder integration
+**Dependencies**: 
+- `requests` for API access
+- `pandas` for data handling
+- `scipy.stats` for statistical tests
 
-4. **Experimental Data Pipeline** (Phase 4.4, MEDIUM priority)
-   - Automated PDG/CODATA updates
-   - Real-time experimental comparison
-   - Alert system for new measurements
-
-### 2.3 Development Plan: Placeholder Implementations Status
+**Reference**: docs/ROADMAP.md §4.4
 
 **Goal**: Replace stub/placeholder implementations with full theoretical implementations
 
@@ -1423,7 +1407,7 @@ pytest tests/ -v
 |-------|-------------|--------|----------|--------|
 | 4.1 | Web Interface (FastAPI + React) | Q4 2025 | MEDIUM | ✅ Complete |
 | 4.2 | Cloud Deployment (Docker/K8s) | Q4 2025 | MEDIUM | ✅ Complete |
-| 4.3 | ML Surrogate Models | Q2 2026 | LOW | 📋 Planned |
+| 4.3 | ML Surrogate Models | Q4 2025 | LOW | ✅ Complete |
 | 4.4 | Experimental Data Pipeline | Q2 2026 | MEDIUM | 📋 Planned |
 | 4.5 | PDG/CODATA Integration | Q3 2026 | MEDIUM | 📋 Planned |
 | 4.6 | Plugin System | Q3 2026 | LOW | 📋 Planned |
@@ -1439,9 +1423,10 @@ pytest tests/ -v
 | **Tier 1** | Foundation | ✅ COMPLETE | 346+ |
 | **Tier 2** | Applications | ✅ COMPLETE | 137+ |
 | **Tier 3** | Optimization | ✅ COMPLETE | 301+ |
-| **Tier 4** | Ecosystem | 📋 NEXT | — |
+| **Tier 4.1-4.3** | Ecosystem (Web/ML) | ✅ COMPLETE | 44+ |
+| **Tier 4.4+** | Advanced Features | 📋 NEXT | — |
 
-**Total Tests**: 941+ passing
+**Total Tests**: 970+ passing
 **Equation Coverage**: 100% (17/17 critical equations)
 
 See [`docs/ROADMAP.md`](./ROADMAP.md) for detailed specifications.

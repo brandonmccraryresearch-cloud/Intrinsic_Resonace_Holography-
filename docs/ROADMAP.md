@@ -60,7 +60,23 @@ This roadmap outlines planned features and enhancements for the Intrinsic Resona
 - GPU acceleration with JAX/CuPy (automatic CPU fallback)
 - Distributed computing with Dask/Ray for cluster-scale operations
 
-**Total**: 941+ tests passing | 100% critical equation coverage
+✅ **Tier 4.1: Web Interface (13+ tests)** - COMPLETE
+- FastAPI backend with 13 REST API endpoints
+- React frontend with 6 interactive pages
+- Real-time visualizations, Swagger/ReDoc documentation
+
+✅ **Tier 4.2: Cloud Deployment** - COMPLETE
+- Docker containerization (multi-stage builds)
+- Kubernetes deployment (namespace, HPA, ingress)
+- Production-ready configurations
+
+✅ **Tier 4.3: ML Surrogate Models (31+ tests)** - COMPLETE
+- RGFlowSurrogate neural network for fast RG flow evaluation
+- EnsembleUncertainty and MCDropoutUncertainty for error bounds
+- BayesianOptimizer and ActiveLearningOptimizer for parameter exploration
+- Full integration with existing RG flow modules
+
+**Total**: 970+ tests passing | 100% critical equation coverage
 
 ---
 

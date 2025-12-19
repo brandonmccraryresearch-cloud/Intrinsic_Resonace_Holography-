@@ -317,7 +317,7 @@ class SimpleNeuralNetwork:
         elif name == 'sigmoid':
             return (
                 lambda x: 1 / (1 + np.exp(-np.clip(x, -500, 500))),
-                lambda x: x * (1 - x)  # Applied to output, not input
+                lambda x: x * (1 - x)  # Gradient when x is sigmoid output: σ'(z) = σ(z)(1-σ(z))
             )
         else:
             raise ValueError(f"Unknown activation: {name}")

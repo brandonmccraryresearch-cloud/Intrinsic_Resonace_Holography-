@@ -743,8 +743,9 @@ Every contribution to the IRH codebase must satisfy:
 - **Tests**:  
   - **v18 (143 tests)**: `cd python && export PYTHONPATH=$(pwd)/src && pytest tests/v18/ -v` (passes ~0.8s)
   - v16: `cd python && export PYTHONPATH=$(pwd)/src && pytest tests/v16/ -v`
-  - **v21 unit tests**: `cd /repo && export PYTHONPATH=$PWD && pytest tests/unit/ -v` (941+ tests)
+  - **v21 unit tests**: `cd /repo && export PYTHONPATH=$PWD && pytest tests/unit/ -v` (970+ tests)
   - **Web API tests**: `cd /repo && export PYTHONPATH=$PWD && pytest webapp/backend/tests/ -v` (13 tests)
+  - **ML tests**: `cd /repo && export PYTHONPATH=$PWD && pytest tests/unit/test_ml/ -v` (31 tests)
 - **Lint/type/build**:  
   - `cd python && export PYTHONPATH=$(pwd)/src && ruff check src/`  
   - `black --check src/ tests/ --line-length 100` (within `python/`)  
@@ -786,8 +787,9 @@ Every contribution to the IRH codebase must satisfy:
 - **CI signals**: `.github/workflows/ci.yml` (pytest on `tests/`, ruff on `src/`, mypy on `src/irh_v10`) and `ci-cd.yml` (black/mypy, v16 legacy tests, python package tests/coverage, docs check, benchmarks, Wolfram notice, release stub). Prefer Python 3.12 and correct PYTHONPATH to mirror CI.
 - **Agent reminders**: keep changes minimal, place new code in `python/src/irh/...` with matching tests in `python/tests/...`, avoid new deps unless required, and trust these instructions before searching.
 - **Repository organization**: Status documents in `docs/status/`, handoff docs in `docs/handoff/`, legacy files in `archive/`, webapp in `webapp/`, deployment configs in `deploy/`.
-- **Current Phase**: Tier 4 Phase 4.3 - ML Surrogate Models - Phases 4.1 (Web Interface) & 4.2 (Cloud Deployment) complete ✅
+- **Current Phase**: Tier 4 Phase 4.4 - Experimental Data Pipeline - Phases 4.1-4.3 complete ✅
 - **Deployment Ready**: Docker/Kubernetes configs in `deploy/` - see `deploy/README.md` for production deployment
+- **ML Surrogate Models**: `src/ml/` module complete - 31 tests (Phase 4.3 ✅)
 - **Notebook findings**: See `docs/NOTEBOOK_FINDINGS.md` for computational discrepancies (beta functions, fermion masses)
 
 ## v18 Module Summary (15 modules)
@@ -1116,6 +1118,56 @@ config.set("appearance.dark_mode", True)
 ```
 
 See `docs/DEB_PACKAGE_ROADMAP.md` for detailed specifications.
+
+### Tier 4 Phase 4.3: ML Surrogate Models (COMPLETE ✅)
+
+Neural network surrogate models for fast RG flow evaluation with uncertainty quantification.
+
+**ML Module** (`src/ml/`):
+- `rg_flow_surrogate.py` - Neural network surrogate for RG flow (Eq. 1.12-1.14)
+  - `RGFlowSurrogate` - Configurable NN with ensemble support
+  - `SimpleNeuralNetwork` - NumPy-based implementation (no PyTorch required)
+  - `generate_training_data()` - RG trajectory data generation
+  - `predict_rg_trajectory()` - Unified prediction interface
+- `uncertainty_quantification.py` - Error bounds estimation
+  - `EnsembleUncertainty` - From model ensemble disagreement
+  - `MCDropoutUncertainty` - From Monte Carlo dropout
+  - `compute_uncertainty()` - Unified uncertainty interface
+- `parameter_optimizer.py` - Bayesian/active learning optimization
+  - `BayesianOptimizer` - Gaussian Process-based optimization
+  - `ActiveLearningOptimizer` - Informative point selection
+  - `optimize_parameters()` - General optimization function
+  - `suggest_next_point()` - Next evaluation suggestion
+
+**Quick Usage**:
+```python
+# Train RG flow surrogate
+from src.ml import RGFlowSurrogate, SurrogateConfig, FIXED_POINT
+import numpy as np
+
+config = SurrogateConfig(hidden_layers=[32, 64, 32], n_ensemble=5, max_epochs=100)
+surrogate = RGFlowSurrogate(config)
+surrogate.train(n_trajectories=100, t_range=(-0.5, 0.5), verbose=True)
+
+# Fast prediction with uncertainty
+initial = FIXED_POINT * 0.9  # Near fixed point
+mean, std = surrogate.predict_with_uncertainty(initial, t=0.0)
+print(f"Predicted: {mean} ± {std}")
+
+# Predict trajectory
+trajectory = surrogate.predict_trajectory(initial, t_range=(-1, 1), n_steps=50)
+print(f"Final couplings: {trajectory['couplings'][-1]}")
+
+# Bayesian parameter optimization
+from src.ml import optimize_parameters
+def objective(x):
+    return np.linalg.norm(x - FIXED_POINT)
+
+result = optimize_parameters(objective, n_iterations=50, verbose=True)
+print(f"Best found: {result['best_x']}, value: {result['best_y']}")
+```
+
+**Test Count**: 31 tests in `tests/unit/test_ml/test_ml_surrogate.py`
 
 ### Running v21 Validation
 

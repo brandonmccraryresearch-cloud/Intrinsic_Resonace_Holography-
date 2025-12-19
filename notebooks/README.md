@@ -17,6 +17,7 @@ Click any "Open in Colab" button to run notebooks directly in Google Colab - no 
 | **02_rg_flow_interactive** | Explore RG flow and β-functions | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/02_rg_flow_interactive.ipynb) |
 | **03_observable_extraction** | Extract physical constants | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/03_observable_extraction.ipynb) |
 | **04_falsification_analysis** | Falsifiable predictions | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/04_falsification_analysis.ipynb) |
+| **05_full_stack_execution** | Complete end-to-end demo with scale selection | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/05_full_stack_execution.ipynb) |
 
 ## Computational Findings
 
@@ -62,6 +63,16 @@ Click any "Open in Colab" button to run notebooks directly in Google Colab - no 
 - Neutrino mass hierarchy
 - Muon g-2 anomaly
 - Falsification timeline (2026-2030)
+
+### 05_full_stack_execution (NEW)
+- **Complete end-to-end demonstration**
+- **Configurable computation scale**: quick, standard, full, exascale
+- RG flow integration
+- Observable extraction
+- Standard Model emergence
+- Cosmological predictions
+- ML surrogate model training
+- Full report generation
 
 ## Running Locally
 

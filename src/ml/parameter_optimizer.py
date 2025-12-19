@@ -762,7 +762,10 @@ def suggest_next_point(
     # Fit GP if applicable
     if isinstance(optimizer, BayesianOptimizer):
         bounds_arr = np.array(bounds)
-        X_norm = (observed_points - bounds_arr[:, 0]) / (bounds_arr[:, 1] - bounds_arr[:, 0])
+        # Avoid division by zero if bounds have same min/max
+        bounds_range = bounds_arr[:, 1] - bounds_arr[:, 0]
+        bounds_range = np.where(bounds_range == 0, 1.0, bounds_range)  # Replace 0 with 1
+        X_norm = (observed_points - bounds_arr[:, 0]) / bounds_range
         y_norm = (observed_values - observed_values.mean()) / (observed_values.std() + 1e-8)
         optimizer.gp.fit(X_norm, y_norm)
     
