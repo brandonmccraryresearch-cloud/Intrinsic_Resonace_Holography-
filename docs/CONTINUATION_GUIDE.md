@@ -491,26 +491,64 @@ mean, std = surrogate.predict_with_uncertainty(initial_couplings, t=0.0)
 result = optimize_parameters(objective_function, n_iterations=50)
 ```
 
-### 2.3 NEXT PHASE: Experimental Data Pipeline (Phase 4.4)
+### 2.3 Phase 4.4: Experimental Data Pipeline - COMPLETE ✅
 
 **Goal**: Automated PDG/CODATA updates and experimental comparison
 
+**Completed** (December 2025):
+
+**Experimental Module** (`src/experimental/`):
+- ✅ `codata_database.py` - CODATA 2018/2022 fundamental constants
+  - 25+ constants (α, G, ℏ, masses, coupling constants)
+  - `ExperimentalValue` class with uncertainty tracking
+  - IRH prediction comparison helpers
+  - `get_codata_value()`, `list_constants()` API
+- ✅ `pdg_parser.py` - PDG 2024 particle data
+  - 12+ particles (leptons, quarks, gauge bosons, Higgs)
+  - `Particle` dataclass with properties
+  - `get_pdg_value()`, `mass_ratio()` API
+- ✅ `comparison.py` - Statistical comparison framework
+  - `ComparisonResult` with σ-deviation analysis
+  - `chi_squared_test()` for multi-parameter tests
+  - `generate_comparison_table()` (Markdown, LaTeX, HTML)
+  - `full_irh_comparison_report()` 
+- ✅ `data_catalog.py` - Version-controlled data catalog
+  - `DataCatalog` unified data access interface
+  - Search and filtering by category/tags
+  - Version tracking with checksums
+
+**Test Count**: 32 tests passing in `tests/unit/test_experimental/`
+
+**Quick Usage**:
+```python
+from src.experimental import get_pdg_value, get_codata_value, compare_with_experiment
+
+# Get CODATA constant
+alpha = get_codata_value('alpha_inverse')
+print(f"α⁻¹ = {alpha.value} ± {alpha.uncertainty}")  # 137.035999084 ± 2.1e-8
+
+# Get particle mass
+top = get_pdg_value('top', 'mass')
+print(f"m_t = {top.value} {top.unit}")  # 172760 MeV/c²
+
+# Compare IRH prediction with experiment
+from src.experimental.comparison import compare_single
+result = compare_single(137.035999084, 'alpha_inverse', 1e-9)
+print(f"σ deviation: {result.sigma_deviation:.2f}")  # ~0.00σ
+```
+
+### 2.4 NEXT PHASE: PDG/CODATA Integration (Phase 4.5)
+
+**Goal**: Automated online updates from PDG and CODATA APIs
+
 **Planned Implementation**:
-- `src/experimental/` - Experimental data ingestion
-  - PDG data parser
-  - CODATA values database
-  - Version-controlled data catalogs
-- `src/experimental/comparison.py` - Statistical comparison
-  - σ-analysis framework
-  - Systematic uncertainty handling
-  - Publication-ready tables
+- Online API integration (PDG LiveData, CODATA REST API)
+- Version comparison and diff reporting
+- Automated CI/CD updates with alerts
 
-**Dependencies**: 
-- `requests` for API access
-- `pandas` for data handling
-- `scipy.stats` for statistical tests
+**Reference**: docs/ROADMAP.md §4.5
 
-**Reference**: docs/ROADMAP.md §4.4
+---
 
 **Goal**: Replace stub/placeholder implementations with full theoretical implementations
 
