@@ -699,29 +699,34 @@ The IRH development roadmap is organized into **4 tiers**, each containing **5-1
 - ✅ GPU-accelerated RG flow integration
 - ✅ Distributed computing with Dask/Ray (cluster-scale ready)
 
-### Tier 4: Ecosystem & Community (PLANNED - 2026-2027)
+### Tier 4: Ecosystem & Community (IN PROGRESS - 2025-2027)
 
 **Focus**: Broader ecosystem, community tools, and experimental integration
 
-| Phase | Description | Target | Priority |
-|-------|-------------|--------|----------|
-| 4.1 | Web Interface (FastAPI + React) | Q2 2026 | MEDIUM |
-| 4.2 | Cloud Deployment (Docker/K8s) | Q2 2026 | MEDIUM |
-| 4.3 | ML Surrogate Models | Q3 2026 | LOW |
-| 4.4 | Experimental Data Pipeline | Q3 2026 | MEDIUM |
-| 4.5 | Automated PDG/CODATA Updates | Q4 2026 | MEDIUM |
-| 4.6 | Plugin System | Q4 2026 | LOW |
-| 4.7 | Collaboration Tools | Q1 2027 | LOW |
-| 4.8 | Video Tutorial Library | Q1 2027 | LOW |
-| 4.9 | Community Forum Integration | Q2 2027 | LOW |
-| 4.10 | Research Paper Template Generator | Q1 2027 | MEDIUM |
+| Phase | Description | Target | Priority | Status |
+|-------|-------------|--------|----------|--------|
+| 4.1 | Web Interface (FastAPI + React) | Q4 2025 | MEDIUM | 🔄 Backend Complete |
+| 4.2 | Cloud Deployment (Docker/K8s) | Q1 2026 | MEDIUM | 📋 Planned |
+| 4.3 | ML Surrogate Models | Q2 2026 | LOW | 📋 Planned |
+| 4.4 | Experimental Data Pipeline | Q2 2026 | MEDIUM | 📋 Planned |
+| 4.5 | Automated PDG/CODATA Updates | Q3 2026 | MEDIUM | 📋 Planned |
+| 4.6 | Plugin System | Q3 2026 | LOW | 📋 Planned |
+| 4.7 | Collaboration Tools | Q4 2026 | LOW | 📋 Planned |
+| 4.8 | Video Tutorial Library | Q4 2026 | LOW | 📋 Planned |
+| 4.9 | Community Forum Integration | Q1 2027 | LOW | 📋 Planned |
+| 4.10 | Research Paper Template Generator | Q4 2026 | MEDIUM | 📋 Planned |
+
+**Phase 4.1 Progress**:
+- ✅ FastAPI backend (`webapp/backend/app.py`) - 13 endpoints, 13 tests passing
+- ⏳ React/Vue frontend - Coming next
+- ⏳ Real-time WebSocket updates - Planned
 
 **Tier 4 Goals**:
 - Accessible web interface for non-programmers
 - Integration with experimental physics databases
 - Active research community
 
-**Next Phase**: 4.1 Web Interface - Implement FastAPI backend with React/Vue frontend.
+**Current Phase**: 4.1 Web Interface - Backend complete, frontend next.
 
 ### Tier Milestones Summary
 
@@ -730,7 +735,7 @@ The IRH development roadmap is organized into **4 tiers**, each containing **5-1
 | **Tier 1** | Foundation | 7 | 2025 | ✅ COMPLETE |
 | **Tier 2** | Applications | 7 | 2025 | ✅ COMPLETE |
 | **Tier 3** | Optimization | 8 | 2025 | ✅ COMPLETE |
-| **Tier 4** | Ecosystem | 10 | 2026-2027 | 📋 PLANNED |
+| **Tier 4** | Ecosystem | 10 | 2025-2027 | 🔄 IN PROGRESS (1/10) |
 
 ---
 

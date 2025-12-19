@@ -1,0 +1,26 @@
+# IRH Web API Backend Dependencies
+# ROADMAP REFERENCE: docs/ROADMAP.md §4.1 - Web Interface
+
+# Core API framework
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.5.0
+
+# CORS and security
+python-multipart>=0.0.6
+
+# Scientific computing (for IRH core)
+numpy>=1.24.0
+scipy>=1.10.0
+
+# Background tasks
+celery>=5.3.0
+redis>=5.0.0
+
+# WebSockets for real-time updates
+websockets>=12.0
+
+# Testing
+pytest>=7.0.0
+httpx>=0.25.0
+pytest-asyncio>=0.21.0

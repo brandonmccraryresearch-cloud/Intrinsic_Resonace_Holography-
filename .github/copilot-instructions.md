@@ -738,19 +738,20 @@ Every contribution to the IRH codebase must satisfy:
 
 ## Addendum: Fast operational checklist (v18-first)
 
-- **What this repo is**: IRH research code; active Python package in `python/src/irh` (v16–v18 complete), legacy `src/` + `.wl` in root, webapp in `webapp/`, docs in `docs/`.
+- **What this repo is**: IRH research code; active Python package in `python/src/irh` (v16–v18 complete), main v21 src in `src/`, webapp in `webapp/`, docs in `docs/`.
 - **Bootstrap (validated)**: `python -m pip install -e .[dev]` (Python 3.11/3.12). Set PYTHONPATH: in `python/` use `export PYTHONPATH=$(pwd)/src`; in repo root use `export PYTHONPATH=$PWD` for legacy/tests.
 - **Tests**:  
   - **v18 (143 tests)**: `cd python && export PYTHONPATH=$(pwd)/src && pytest tests/v18/ -v` (passes ~0.8s)
   - v16: `cd python && export PYTHONPATH=$(pwd)/src && pytest tests/v16/ -v`
-  - Legacy: `cd /home/runner/work/Intrinsic-Resonance-Holography-/Intrinsic-Resonance-Holography- && export PYTHONPATH=$PWD && pytest tests/test_v16_core.py`
+  - **v21 unit tests**: `cd /repo && export PYTHONPATH=$PWD && pytest tests/unit/ -v` (941+ tests)
+  - **Web API tests**: `cd /repo && export PYTHONPATH=$PWD && pytest webapp/backend/tests/ -v` (13 tests)
 - **Lint/type/build**:  
   - `cd python && export PYTHONPATH=$(pwd)/src && ruff check src/`  
   - `black --check src/ tests/ --line-length 100` (within `python/`)  
   - `mypy src/irh/ --ignore-missing-imports`  
   - Root legacy (if touched): `ruff check src/ --ignore E501`, `black --check src/ tests/`.  
   - Build: `python -m build && twine check dist/*`.
-- **Run/demo**: `python project_irh_v16.py` (root; set PYTHONPATH); web backend `cd webapp/backend && pip install -r requirements.txt && python app.py`; frontend `cd webapp/frontend && npm install && npm run dev` (Vite :5173).
+- **Run/demo**: `python project_irh_v16.py` (root; set PYTHONPATH); web backend `cd webapp/backend && pip install -r requirements.txt && uvicorn app:app --reload` (API at :8000, docs at :8000/docs).
 - **v18 quick verification**:
   ```python
   from irh.core.v18 import StandardModelTopology, NeutrinoSector, EmergentQFT
@@ -761,10 +762,21 @@ Every contribution to the IRH codebase must satisfy:
   qft = EmergentQFT()
   assert all(qft.verify_standard_model().values())  # Complete SM from cGFT
   ```
+- **v21 API quick verification**:
+  ```bash
+  # Start API server
+  cd webapp/backend && uvicorn app:app --reload &
+  
+  # Test endpoints
+  curl http://localhost:8000/health
+  curl http://localhost:8000/api/v1/fixed-point
+  curl http://localhost:8000/api/v1/observables/alpha
+  ```
 - **Conventions**: PEP 8, line length 100, NumPy docstrings with equation refs; phase wrapping via `np.mod(angle, 2*np.pi)` and `_wrapped_phase_difference` with `PHASE_TOLERANCE=1e-10`; input normalization via `_to_bytes`; wrap `np.exp(...)` in `complex(...)`.
 - **CI signals**: `.github/workflows/ci.yml` (pytest on `tests/`, ruff on `src/`, mypy on `src/irh_v10`) and `ci-cd.yml` (black/mypy, v16 legacy tests, python package tests/coverage, docs check, benchmarks, Wolfram notice, release stub). Prefer Python 3.12 and correct PYTHONPATH to mirror CI.
 - **Agent reminders**: keep changes minimal, place new code in `python/src/irh/...` with matching tests in `python/tests/...`, avoid new deps unless required, and trust these instructions before searching.
-- **Repository organization**: Status documents in `docs/status/`, handoff docs in `docs/handoff/`, legacy files in `archive/`.
+- **Repository organization**: Status documents in `docs/status/`, handoff docs in `docs/handoff/`, legacy files in `archive/`, webapp in `webapp/`.
+- **Current Phase**: Tier 4 Phase 4.1 - Web Interface (Backend complete ✅, Frontend next)
 
 ## v18 Module Summary (15 modules)
 
@@ -1282,6 +1294,47 @@ results = distributed_map(lambda x: x ** 2, list(range(100)))
 **Test Count**: 47 tests in `tests/unit/test_performance/test_distributed.py`
 
 **Tier 3 Complete**: All 8 phases (301+ tests total)
+
+### Tier 4 Phase 4.1: Web Interface (BACKEND COMPLETE ✅)
+
+The FastAPI backend for the web interface has been implemented.
+
+**Web API** (`webapp/backend/app.py`):
+- FastAPI REST API with 13 endpoints
+- Pydantic models for request/response validation
+- CORS middleware for frontend access
+- Swagger UI at `/docs` and ReDoc at `/redoc`
+
+**API Endpoints**:
+- `GET /` - API info and links
+- `GET /health` - Health check
+- `GET /api/v1/fixed-point` - Cosmic Fixed Point (Eq. 1.14)
+- `POST /api/v1/rg-flow` - RG flow integration
+- `GET /api/v1/observables/C_H` - Universal exponent (Eq. 1.16)
+- `GET /api/v1/observables/alpha` - Fine-structure constant (Eq. 3.4-3.5)
+- `GET /api/v1/observables/dark-energy` - Dark energy w₀ (§2.3)
+- `GET /api/v1/observables/liv` - LIV parameter ξ (§2.5)
+- `GET /api/v1/standard-model/gauge-group` - Gauge group derivation
+- `GET /api/v1/standard-model/neutrinos` - Neutrino predictions
+- `GET /api/v1/falsification/summary` - All testable predictions
+
+**Usage**:
+```bash
+# Start the backend
+cd webapp/backend
+pip install -r requirements.txt
+uvicorn app:app --reload
+
+# API available at http://localhost:8000
+# Docs at http://localhost:8000/docs
+```
+
+**Test Count**: 13 tests in `webapp/backend/tests/test_api.py`
+
+**Next Steps for Phase 4.1**:
+- React/Vue frontend implementation
+- WebSocket support for real-time updates
+- Celery task queue for long computations
 
 ---
 
