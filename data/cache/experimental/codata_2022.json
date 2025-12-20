@@ -1,0 +1,43 @@
+{
+  "key": "codata_2022",
+  "data": {
+    "\u03b1\u207b\u00b9": {
+      "name": "fine-structure constant (inverse)",
+      "symbol": "\u03b1\u207b\u00b9",
+      "value": 137.035999084,
+      "uncertainty": 2.1e-08,
+      "units": "dimensionless",
+      "source": "CODATA 2022",
+      "year": 2022
+    },
+    "G": {
+      "name": "Newtonian constant of gravitation",
+      "symbol": "G",
+      "value": 6.6743e-11,
+      "uncertainty": 1.5e-15,
+      "units": "m\u00b3 kg\u207b\u00b9 s\u207b\u00b2",
+      "source": "CODATA 2022",
+      "year": 2022
+    },
+    "h": {
+      "name": "Planck constant",
+      "symbol": "h",
+      "value": 6.62607015e-34,
+      "uncertainty": 0.0,
+      "units": "J Hz\u207b\u00b9",
+      "source": "CODATA 2022",
+      "year": 2022
+    },
+    "c": {
+      "name": "speed of light in vacuum",
+      "symbol": "c",
+      "value": 299792458.0,
+      "uncertainty": 0.0,
+      "units": "m s\u207b\u00b9",
+      "source": "CODATA 2022",
+      "year": 2022
+    }
+  },
+  "timestamp": 1766204630.062534,
+  "ttl": 604800
+}

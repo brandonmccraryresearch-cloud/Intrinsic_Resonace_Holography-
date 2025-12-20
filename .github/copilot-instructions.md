@@ -787,7 +787,7 @@ Every contribution to the IRH codebase must satisfy:
 - **CI signals**: `.github/workflows/ci.yml` (pytest on `tests/`, ruff on `src/`, mypy on `src/irh_v10`) and `ci-cd.yml` (black/mypy, v16 legacy tests, python package tests/coverage, docs check, benchmarks, Wolfram notice, release stub). Prefer Python 3.12 and correct PYTHONPATH to mirror CI.
 - **Agent reminders**: keep changes minimal, place new code in `python/src/irh/...` with matching tests in `python/tests/...`, avoid new deps unless required, and trust these instructions before searching.
 - **Repository organization**: Status documents in `docs/status/`, handoff docs in `docs/handoff/`, legacy files in `archive/`, webapp in `webapp/`, deployment configs in `deploy/`.
-- **Current Phase**: Tier 4 Phase 4.4 - Experimental Data Pipeline - Phases 4.1-4.3 complete ✅
+- **Current Phase**: Tier 4 Phase 4.5 COMPLETE ✅ - All Phases 4.1-4.5 complete, ready for Tier 5
 - **Deployment Ready**: Docker/Kubernetes configs in `deploy/` - see `deploy/README.md` for production deployment
 - **ML Surrogate Models**: `src/ml/` module complete - 31 tests (Phase 4.3 ✅)
 - **Notebook findings**: See `docs/NOTEBOOK_FINDINGS.md` for computational discrepancies (beta functions, fermion masses)
@@ -1169,13 +1169,76 @@ print(f"Best found: {result['best_x']}, value: {result['best_y']}")
 
 **Test Count**: 31 tests in `tests/unit/test_ml/test_ml_surrogate.py`
 
+### Tier 4 Phase 4.5: Experimental Data Pipeline (COMPLETE ✅)
+
+Automated experimental data updates with online fetching from CODATA and PDG.
+
+**Experimental Module** (`src/experimental/`):
+- `cache_manager.py` - Persistent caching with TTL support
+  - `CacheManager` - Thread-safe cache with disk persistence
+  - `CacheEntry` - Individual cache entry with expiration
+  - `create_cache_manager()` - Convenience constructor
+- `online_updater.py` - HTTP-based data fetching
+  - `CODATAFetcher` - NIST CODATA fundamental constants
+  - `PDGFetcher` - Particle Data Group particle properties
+  - `update_codata_online()` - Fetch latest CODATA values
+  - `update_pdg_online()` - Fetch latest PDG data
+  - `check_for_updates()` - Status check without download
+  - `generate_change_report()` - Markdown/text/JSON reports
+  - `generate_alerts()` - σ-threshold significance detection
+
+**Quick Usage**:
+```python
+# Check for data updates
+from src.experimental import check_for_data_updates, update_codata_online
+
+status = check_for_data_updates()
+print(f"Update recommended: {status['update_recommended']}")
+
+# Fetch latest CODATA
+result = update_codata_online(force_refresh=True)
+print(f"Updated {result.updated_count} constants")
+
+# Generate alerts for IRH predictions
+from src.experimental import generate_alerts
+irh_predictions = {'α⁻¹': 137.035999084}  # From IRH theory
+alerts = generate_alerts(irh_predictions, result.constants, sigma_threshold=3.0)
+
+for alert in alerts:
+    print(f"{alert['symbol']}: {alert['deviation_sigma']:.2f}σ deviation")
+    if alert['falsified']:
+        print("  FALSIFIED (>5σ)")
+```
+
+**Validation Script**:
+```bash
+# Run complete theory validation
+python scripts/validate_theory.py
+
+# Checks:
+# 1. Zero-parameter derivation from first principles ✓
+# 2. No circular dependencies ✓  
+# 3. Experimental agreement (α⁻¹ perfect, fermion masses need refinement)
+```
+
+**Test Count**: 44 tests in `tests/unit/test_experimental/`
+  - `test_cache_manager.py`: 20 tests
+  - `test_online_updater.py`: 24 tests
+
+**Key Features**:
+- Firewall-compatible (now that firewall is disabled)
+- Offline operation via persistent cache (7-day TTL for CODATA, 30-day for PDG)
+- Rate limiting to respect server policies
+- Non-circular: Theory derived independently, data used for validation only
+- Statistical σ-analysis for falsification tests
+
 ### Running v21 Validation
 
 ```bash
 cd /home/runner/work/Intrinsic_Resonace_Holography-/Intrinsic_Resonace_Holography-
 export PYTHONPATH=$PWD
 
-# Run all tests (941+ tests)
+# Run all tests (1044+ tests)
 python -m pytest tests/unit/ -v
 
 # Run Phase I tests (74+ tests)
@@ -1195,6 +1258,9 @@ python -m pytest tests/unit/test_phase_v.py -v
 
 # Run Phase VI tests (36 tests)
 cd desktop && python -m pytest tests/test_phase_vi.py -v
+
+# Run Experimental tests (44 tests) - Phase 4.5
+python -m pytest tests/unit/test_experimental/ -v
 
 # Run Performance tests (301+ tests)
 python -m pytest tests/unit/test_performance/ -v

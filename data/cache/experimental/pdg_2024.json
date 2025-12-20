@@ -1,0 +1,34 @@
+{
+  "key": "pdg_2024",
+  "data": {
+    "m_e": {
+      "name": "electron mass",
+      "symbol": "m_e",
+      "value": 0.51099895,
+      "uncertainty": 1.5e-10,
+      "units": "MeV/c\u00b2",
+      "source": "PDG 2024",
+      "year": 2024
+    },
+    "m_\u03bc": {
+      "name": "muon mass",
+      "symbol": "m_\u03bc",
+      "value": 105.6583755,
+      "uncertainty": 2.3e-06,
+      "units": "MeV/c\u00b2",
+      "source": "PDG 2024",
+      "year": 2024
+    },
+    "m_\u03c4": {
+      "name": "tau mass",
+      "symbol": "m_\u03c4",
+      "value": 1776.93,
+      "uncertainty": 0.09,
+      "units": "MeV/c\u00b2",
+      "source": "PDG 2024",
+      "year": 2024
+    }
+  },
+  "timestamp": 1766204630.0631304,
+  "ttl": 2592000
+}
