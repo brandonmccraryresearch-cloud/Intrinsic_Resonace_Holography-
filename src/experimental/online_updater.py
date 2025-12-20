@@ -66,10 +66,147 @@ PDG_BASE_URL = "https://pdg.lbl.gov/rpp-data"
 # Rate limiting (requests per second)
 RATE_LIMIT_DELAY = 1.0  # seconds between requests
 
+# Cache freshness validity (hours)
+CACHE_VALIDITY_HOURS = 24.0  # 24 hours (1 day)
+
+
+# =============================================================================
+# Enums
+# =============================================================================
+
+
+class UpdateSource(Enum):
+    """Data source for experimental updates."""
+    CODATA = "codata"
+    PDG = "pdg"
+    ALL = "all"
+
+
+class ChangeType(Enum):
+    """Type of change detected in experimental data."""
+    VALUE_CHANGE = "value_change"
+    UNCERTAINTY_CHANGE = "uncertainty_change"
+    NEW_CONSTANT = "new_constant"
+    REMOVED_CONSTANT = "removed_constant"
+    NO_CHANGE = "no_change"
+
 
 # =============================================================================
 # Data Classes
 # =============================================================================
+
+
+@dataclass
+class DataChange:
+    """
+    Represents a change in experimental data.
+    
+    Attributes
+    ----------
+    constant_name : str
+        Name of the constant
+    change_type : ChangeType
+        Type of change
+    old_value : float, optional
+        Previous value
+    new_value : float, optional
+        New value
+    old_uncertainty : float, optional
+        Previous uncertainty
+    new_uncertainty : float, optional
+        New uncertainty
+    percent_change : float, optional
+        Percentage change
+    source : str
+        Data source
+    """
+    constant_name: str
+    change_type: ChangeType
+    old_value: Optional[float] = None
+    new_value: Optional[float] = None
+    old_uncertainty: Optional[float] = None
+    new_uncertainty: Optional[float] = None
+    percent_change: Optional[float] = None
+    source: str = "Unknown"
+    
+    def is_significant(self, threshold_sigma: float = 3.0) -> bool:
+        """
+        Check if change is statistically significant.
+        
+        Parameters
+        ----------
+        threshold_sigma : float
+            Significance threshold in standard deviations
+        
+        Returns
+        -------
+        bool
+            True if change exceeds threshold
+        """
+        if self.change_type == ChangeType.NO_CHANGE:
+            return False
+        
+        if self.change_type == ChangeType.NEW_CONSTANT:
+            return True
+        
+        if self.old_value is None or self.new_value is None:
+            return False
+        
+        # Calculate sigma deviation
+        if self.old_uncertainty is not None and self.old_uncertainty > 0:
+            sigma = abs(self.new_value - self.old_value) / self.old_uncertainty
+            return sigma > threshold_sigma
+        
+        return False
+    
+    def to_dict(self) -> Dict[str, Any]:
+        """Convert to dictionary."""
+        return {
+            'constant_name': self.constant_name,
+            'change_type': self.change_type.value,
+            'old_value': self.old_value,
+            'new_value': self.new_value,
+            'old_uncertainty': self.old_uncertainty,
+            'new_uncertainty': self.new_uncertainty,
+            'percent_change': self.percent_change,
+            'source': self.source,
+            'is_significant': self.is_significant(),
+        }
+
+
+@dataclass
+class Alert:
+    """
+    Represents an alert for significant changes or issues.
+    
+    Attributes
+    ----------
+    level : str
+        Alert level ('info', 'warning', 'error')
+    message : str
+        Alert message
+    constant_name : str, optional
+        Related constant name
+    source : str, optional
+        Data source
+    deviation_sigma : float, optional
+        Statistical significance in σ
+    """
+    level: str
+    message: str
+    constant_name: Optional[str] = None
+    source: Optional[str] = None
+    deviation_sigma: Optional[float] = None
+    
+    def to_dict(self) -> Dict[str, Any]:
+        """Convert to dictionary."""
+        return {
+            'level': self.level,
+            'message': self.message,
+            'constant_name': self.constant_name,
+            'source': self.source,
+            'deviation_sigma': self.deviation_sigma,
+        }
 
 
 @dataclass
@@ -475,7 +612,7 @@ def update_codata(
     changes = []
     
     for internal_name, nist_name in CODATA_CONSTANT_MAPPING.items():
-        time.sleep(RATE_LIMIT_SECONDS)  # Rate limiting
+        time.sleep(RATE_LIMIT_DELAY)  # Rate limiting
         
         try:
             # Get current value from our database
@@ -727,12 +864,12 @@ def generate_change_report(
     output_format: str = 'markdown',
 ) -> str:
     """
-    Generate a human-readable change report.
+    Generate a human-readable update report from update results.
     
     Parameters
     ----------
     results : dict
-        Update results from update_all()
+        Update results keyed by source name
     output_format : str
         Output format ('markdown', 'text', 'json')
         
@@ -741,101 +878,135 @@ def generate_change_report(
     str
         Formatted report
     """
-    # Build changes dictionary
-    old_dict = {c.symbol: c for c in old_constants}
-    new_dict = {c.symbol: c for c in new_constants}
+    if output_format == 'json':
+        # JSON format: source -> result dict
+        json_output = {}
+        for source_name, result in results.items():
+            json_output[source_name] = {
+                'success': result.success,
+                'updated_count': result.updated_count,
+                'timestamp': result.timestamp,
+                'changes': [c.to_dict() for c in result.changes],
+                'errors': result.errors,
+            }
+        return json.dumps(json_output, indent=2)
     
-    changes = []
-    for symbol in set(old_dict.keys()) | set(new_dict.keys()):
-        if symbol in old_dict and symbol in new_dict:
-            old_val = old_dict[symbol]
-            new_val = new_dict[symbol]
-            
-            if old_val.value != new_val.value:
-                changes.append({
-                    'symbol': symbol,
-                    'old_value': old_val.value,
-                    'new_value': new_val.value,
-                    'change': new_val.value - old_val.value,
-                    'rel_change': (new_val.value - old_val.value) / old_val.value
-                })
-    
-    if format == 'json':
-        return json.dumps(changes, indent=2)
-    
-    elif format == 'markdown':
-        report = "# Experimental Data Changes\n\n"
+    elif output_format == 'markdown':
+        report = "# Experimental Data Update Report\n\n"
         report += f"**Generated**: {datetime.now().isoformat()}\n\n"
         
-        if not changes:
-            report += "No changes detected.\n"
-        else:
-            report += "| Symbol | Old Value | New Value | Change | Rel. Change |\n"
-            report += "|--------|-----------|-----------|--------|-------------|\n"
-            for c in changes:
-                report += f"| {c['symbol']} | {c['old_value']:.6e} | {c['new_value']:.6e} | {c['change']:.6e} | {c['rel_change']:.2%} |\n"
+        # Report by source
+        for source_name, result in results.items():
+            report += f"## {source_name.upper()}\n\n"
+            report += f"- Success: {result.success}\n"
+            report += f"- Updated: {result.updated_count} constants\n"
+            report += f"- Timestamp: {result.timestamp}\n\n"
+            
+            if result.errors:
+                report += "**Errors:**\n"
+                for error in result.errors:
+                    report += f"- {error}\n"
+                report += "\n"
+            
+            if result.changes:
+                report += "**Changes:**\n\n"
+                report += "| Constant | Type | Old Value | New Value | % Change | Significant |\n"
+                report += "|----------|------|-----------|-----------|----------|-------------|\n"
+                for c in result.changes:
+                    old_val = f"{c.old_value:.6e}" if c.old_value is not None else "N/A"
+                    new_val = f"{c.new_value:.6e}" if c.new_value is not None else "N/A"
+                    pct = f"{c.percent_change:.4f}%" if c.percent_change is not None else "N/A"
+                    sig = "✓" if c.is_significant() else ""
+                    report += f"| {c.constant_name} | {c.change_type.value} | {old_val} | {new_val} | {pct} | {sig} |\n"
+                report += "\n"
+            else:
+                report += "No changes detected.\n\n"
         
         return report
     
     else:  # text
-        report = "EXPERIMENTAL DATA CHANGES\n"
+        report = "EXPERIMENTAL DATA UPDATE REPORT\n"
         report += "=" * 50 + "\n\n"
         report += f"Generated: {datetime.now().isoformat()}\n\n"
         
-        if not changes:
-            report += "No changes detected.\n"
-        else:
-            for c in changes:
-                report += f"{c['symbol']}:\n"
-                report += f"  Old: {c['old_value']:.6e}\n"
-                report += f"  New: {c['new_value']:.6e}\n"
-                report += f"  Change: {c['change']:.6e} ({c['rel_change']:.2%})\n\n"
+        # Report by source
+        for source_name, result in results.items():
+            report += f"{source_name.upper()}\n"
+            report += "-" * 50 + "\n"
+            report += f"Success: {result.success}\n"
+            report += f"Updated: {result.updated_count} constants\n"
+            report += f"Timestamp: {result.timestamp}\n"
+            
+            if result.errors:
+                report += "\nErrors:\n"
+                for error in result.errors:
+                    report += f"  - {error}\n"
+            
+            if result.changes:
+                report += "\nChanges:\n"
+                for c in result.changes:
+                    report += f"  {c.constant_name} ({c.change_type.value}):\n"
+                    if c.old_value is not None:
+                        report += f"    Old: {c.old_value:.6e}\n"
+                    if c.new_value is not None:
+                        report += f"    New: {c.new_value:.6e}\n"
+                    if c.percent_change is not None:
+                        report += f"    Change: {c.percent_change:.4f}%\n"
+                    if c.is_significant():
+                        report += f"    ** SIGNIFICANT **\n"
+            else:
+                report += "\nNo changes detected.\n"
+            
+            report += "\n"
         
+        return report        
         return report
 
 
 def generate_alerts(
-    irh_predictions: Dict[str, float],
-    experimental_values: List[PhysicalConstant],
+    update_results: Dict[str, UpdateResult],
     sigma_threshold: float = 3.0
-) -> List[Dict]:
+) -> List[Alert]:
     """
-    Generate alerts for significant deviations (>σ threshold).
+    Generate alerts for significant deviations or issues in update results.
     
     Parameters
     ----------
-    irh_predictions : Dict[str, float]
-        IRH theoretical predictions keyed by symbol
-    experimental_values : List[PhysicalConstant]
-        Experimental values to compare
+    update_results : Dict[str, UpdateResult]
+        Dictionary of update results keyed by source name
     sigma_threshold : float
-        Threshold in standard deviations (default: 3.0)
+        Threshold in standard deviations for significance (default: 3.0)
     
     Returns
     -------
-    List[Dict]
-        List of alerts for significant deviations
+    List[Alert]
+        List of alerts for significant changes or issues
     """
     alerts = []
     
-    for const in experimental_values:
-        if const.symbol in irh_predictions:
-            irh_value = irh_predictions[const.symbol]
-            exp_value = const.value
-            exp_uncert = const.uncertainty
-            
-            if exp_uncert > 0:
-                deviation_sigma = abs(irh_value - exp_value) / exp_uncert
+    for source_name, result in update_results.items():
+        # Check for failed updates
+        if not result.success:
+            for error in result.errors:
+                alerts.append(Alert(
+                    level='warning',
+                    message=f"Update failed for {source_name}: {error}",
+                    source=result.source.value if hasattr(result.source, 'value') else str(result.source),
+                ))
+        
+        # Check for significant changes
+        for change in result.changes:
+            if change.is_significant(threshold_sigma=sigma_threshold):
+                message = f"Significant change in {change.constant_name}"
+                if change.percent_change is not None:
+                    message += f": {change.percent_change:.4f}% change"
                 
-                if deviation_sigma >= sigma_threshold:
-                    alerts.append({
-                        'symbol': const.symbol,
-                        'name': const.name,
-                        'irh_value': irh_value,
-                        'exp_value': exp_value,
-                        'exp_uncertainty': exp_uncert,
-                        'deviation_sigma': deviation_sigma,
-                        'falsified': deviation_sigma >= 5.0  # 5σ = falsification
-                    })
+                alerts.append(Alert(
+                    level='info',
+                    message=message,
+                    constant_name=change.constant_name,
+                    source=change.source,
+                    deviation_sigma=None,  # Could calculate if we had old uncertainty
+                ))
     
     return alerts
