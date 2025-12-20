@@ -208,7 +208,7 @@ class CODATAFetcher:
             
             return constants
             
-        except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError) as e:
+        except (urllib.error.URLError, urllib.error.HTTPError) as e:
             # Network error - return None
             return None
     
