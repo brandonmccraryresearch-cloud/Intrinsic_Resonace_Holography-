@@ -77,6 +77,9 @@ class Particle:
         if self.properties is None:
             self.properties = {}
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def get_property(self, prop_name: str) -> Optional[ExperimentalValue]:
         """Get a particle property."""
         if prop_name == 'mass':
@@ -508,6 +511,10 @@ PDG_PROPERTIES: Dict[str, ExperimentalValue] = {
 # =============================================================================
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def get_particle(name: str) -> Particle:
     """
     Get particle data from PDG database.
@@ -541,6 +548,10 @@ def get_particle(name: str) -> Particle:
         f"Particle '{name}' not found in PDG database. "
         f"Available particles: {list(set(p.name for p in PDG_DATABASE.values()))}"
     )
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def get_pdg_value(particle_name: str, property_name: str) -> ExperimentalValue:
@@ -584,6 +595,10 @@ def get_pdg_value(particle_name: str, property_name: str) -> ExperimentalValue:
     return value
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def list_particles() -> List[str]:
     """Return list of available particle names."""
     return sorted(set(p.name for p in PDG_DATABASE.values()))
@@ -600,6 +615,10 @@ def get_particles_by_type(particle_type: ParticleType) -> List[Particle]:
     return result
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def get_lepton_masses() -> Dict[str, ExperimentalValue]:
     """Get all lepton masses."""
     return {p.name: p.mass for p in get_particles_by_type(ParticleType.LEPTON)}
@@ -608,6 +627,10 @@ def get_lepton_masses() -> Dict[str, ExperimentalValue]:
 def get_quark_masses() -> Dict[str, ExperimentalValue]:
     """Get all quark masses."""
     return {p.name: p.mass for p in get_particles_by_type(ParticleType.QUARK)}
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def mass_ratio(particle1: str, particle2: str) -> ExperimentalValue:

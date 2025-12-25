@@ -155,6 +155,8 @@ def _qncd_compression_proxy(
     Uses entropy-based approximation for Kolmogorov complexity:
         C(x) ≈ -Σ p_i log p_i (Shannon entropy proxy)
     """
+    # Theoretical Reference: IRH v21.4
+
     def complexity_proxy(v: NDArray[np.float64]) -> NDArray[np.float64]:
         """Compute statistical complexity proxy for each row."""
         # Normalize to probability distribution
@@ -184,6 +186,8 @@ def _qncd_entropy(
     v2: NDArray[np.float64]
 ) -> NDArray[np.float64]:
     """Compute QNCD using differential entropy."""
+    # Theoretical Reference: IRH v21.4
+
     def diff_entropy(v: NDArray[np.float64]) -> NDArray[np.float64]:
         # Covariance-based entropy for continuous vectors
         # H(X) = 0.5 * log((2πe)^d * det(Σ))
@@ -208,6 +212,8 @@ def _qncd_complexity(
     v2: NDArray[np.float64]
 ) -> NDArray[np.float64]:
     """Compute QNCD using Lempel-Ziv complexity proxy."""
+    # Theoretical Reference: IRH v21.4
+
     def lz_proxy(v: NDArray[np.float64]) -> NDArray[np.float64]:
         """LZ complexity proxy based on unique patterns."""
         # Discretize to estimate LZ complexity

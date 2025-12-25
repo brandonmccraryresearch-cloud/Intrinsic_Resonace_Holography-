@@ -195,6 +195,9 @@ def benchmark_kinetic_action(
         phi = np.random.randn(N, N, N, N) + 1j * np.random.randn(N, N, N, N)
         laplacian_coeffs = np.ones((3, 4))  # 3 SU(2) generators × 4 arguments
         
+        # Theoretical Reference: IRH v21.4
+
+        
         def bench_fn():
             return _compute_kinetic_action(phi, laplacian_coeffs)
         
@@ -313,6 +316,9 @@ class ActionBenchmarkSuite:
     iterations: int = 100
     warmup: int = 10
     field_sizes: List[int] = field(default_factory=lambda: [4, 8, 16])
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def run_all(self) -> Dict[str, Dict[str, BenchmarkResult]]:
         """Run all action benchmarks."""

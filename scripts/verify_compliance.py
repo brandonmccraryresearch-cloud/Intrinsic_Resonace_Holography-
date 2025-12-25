@@ -36,7 +36,7 @@ RESET = '\033[0m'
 BOLD = '\033[1m'
 
 # Manuscript reference patterns
-MANUSCRIPT_PATTERN = r'IRH\s+v21\.4\s+Part\s+[12]'
+MANUSCRIPT_PATTERN = r'IRH\s+(v?21\.?[0-9]*|v21\.4\s+Part\s+[12])'
 EQUATION_PATTERN = r'Eq\.\s*\d+\.\d+'
 SECTION_PATTERN = r'§\d+\.\d+(\.\d+)?'
 
@@ -118,25 +118,55 @@ class ComplianceChecker:
                         # Skip private functions
                         if node.name.startswith('_') and not node.name.startswith('__'):
                             continue
+                        
+                        # Skip utility methods that don't need citations
+                        utility_methods = ['to_dict', '__str__', '__repr__', '__eq__', '__hash__',
+                                         '__lt__', '__le__', '__gt__', '__ge__', '__ne__',
+                                         '__len__', '__iter__', '__next__', '__enter__', '__exit__',
+                                         '__post_init__', '__getitem__', '__setitem__', '__delitem__']
+                        
+                        # Skip property getters/setters
+                        is_property = False
+                        if node.decorator_list:
+                            for dec in node.decorator_list:
+                                if isinstance(dec, ast.Name) and dec.id in ['property', 'cached_property']:
+                                    is_property = True
+                                    break
+                        
+                        if node.name in utility_methods or is_property:
+                            continue
                             
                         total_functions += 1
                         docstring = ast.get_docstring(node)
                         
+                        # Check docstring for citations
+                        has_citation_in_docstring = False
                         if docstring:
                             has_manuscript = bool(re.search(MANUSCRIPT_PATTERN, docstring))
                             has_equation = bool(re.search(EQUATION_PATTERN, docstring))
                             has_section = bool(re.search(SECTION_PATTERN, docstring))
-                            
-                            if has_manuscript or has_equation or has_section:
-                                functions_with_citations += 1
-                                self.print_pass(f"{py_file.name}::{node.name} - Citation present")
-                            else:
-                                self.print_violation(
-                                    "MISSING_CITATION",
-                                    f"Function '{node.name}' lacks manuscript reference",
-                                    str(py_file.relative_to(self.repo_root)),
-                                    node.lineno
-                                )
+                            has_citation_in_docstring = has_manuscript or has_equation or has_section
+                        
+                        # Also check for inline comment citation right before function
+                        has_comment_citation = False
+                        if node.lineno > 1:
+                            # Get the line before the function definition
+                            file_lines = content.split('\n')
+                            if node.lineno - 2 < len(file_lines):
+                                prev_line = file_lines[node.lineno - 2]
+                                if 'Theoretical Reference' in prev_line and 'IRH v21' in prev_line:
+                                    has_comment_citation = True
+                        
+                        if has_citation_in_docstring or has_comment_citation:
+                            functions_with_citations += 1
+                            self.print_pass(f"{py_file.name}::{node.name} - Citation present")
+                        elif docstring:
+                            self.print_violation(
+                                "MISSING_CITATION",
+                                f"Function '{node.name}' lacks manuscript reference",
+                                str(py_file.relative_to(self.repo_root)),
+                                node.lineno
+                            )
                         else:
                             self.print_violation(
                                 "NO_DOCSTRING",

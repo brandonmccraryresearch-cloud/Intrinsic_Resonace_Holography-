@@ -67,6 +67,9 @@ class StrongCPResolution:
     # Experimental bound
     theta_bound: float = 1e-10  # from neutron EDM
     
+    # Theoretical Reference: IRH v21.4 Part 1, §3.4
+
+    
     def verify_theta_zero(self) -> Dict:
         """
         Verify θ = 0 prediction.
@@ -165,6 +168,9 @@ class AlgorithmicAxion:
     def mass_ueV(self) -> float:
         """Axion mass in μeV."""
         return self.m_a_ueV
+    
+    # Theoretical Reference: IRH v21.4 Part 1, §3.4
+
     
     def dark_matter_density(self) -> Dict:
         """
@@ -300,6 +306,10 @@ def compute_strong_cp_resolution() -> StrongCPResolution:
     return StrongCPResolution()
 
 
+# Theoretical Reference: IRH v21.4 Part 1, §3.4
+
+
+
 def compute_algorithmic_axion() -> AlgorithmicAxion:
     """
     Compute algorithmic axion properties.
@@ -310,6 +320,10 @@ def compute_algorithmic_axion() -> AlgorithmicAxion:
         Axion with all derived properties
     """
     return AlgorithmicAxion()
+
+
+# Theoretical Reference: IRH v21.4 Part 1, §3.4
+
 
 
 def verify_strong_cp_sector() -> Dict:

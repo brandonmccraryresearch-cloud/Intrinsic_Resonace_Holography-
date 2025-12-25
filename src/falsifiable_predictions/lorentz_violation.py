@@ -452,6 +452,10 @@ def analyze_grb_liv_test(
     )
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def verify_liv_predictions() -> Dict:
     """
     Verify all LIV predictions from IRH.

@@ -181,6 +181,8 @@ def generate_training_data(
         initial = FIXED_POINT * scale
         
         # Integrate RG equations with bounded outputs
+        # Theoretical Reference: IRH v21.4
+
         def rg_system(t, y):
             # Clip to prevent numerical explosions
             y_clipped = np.clip(y, 1e-6, 1e6)
@@ -256,6 +258,9 @@ class SimpleNeuralNetwork:
         Phase 4.3 ML Surrogate Models
     """
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def __init__(
         self,
         layer_sizes: List[int],
@@ -322,6 +327,9 @@ class SimpleNeuralNetwork:
         else:
             raise ValueError(f"Unknown activation: {name}")
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def forward(self, X: np.ndarray) -> np.ndarray:
         """Forward pass through the network."""
         # Normalize inputs
@@ -348,6 +356,9 @@ class SimpleNeuralNetwork:
             h = h * (self.output_std + 1e-8) + self.output_mean
         
         return h
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def predict(self, X: np.ndarray) -> np.ndarray:
         """Predict outputs for given inputs."""
@@ -657,6 +668,9 @@ class RGFlowSurrogate:
         X = np.append(couplings, t).reshape(1, -1)
         return self.model.predict(X).flatten()
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def predict_with_uncertainty(
         self,
         couplings: np.ndarray,
@@ -762,6 +776,9 @@ class RGFlowSurrogate:
         
         return result
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def validate(
         self,
         n_test_trajectories: int = 50,
@@ -815,6 +832,10 @@ class RGFlowSurrogate:
 # =============================================================================
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def create_rg_flow_surrogate(config: Optional[SurrogateConfig] = None) -> RGFlowSurrogate:
     """
     Create an RG flow surrogate model.
@@ -860,6 +881,10 @@ def train_rg_flow_surrogate(
     surrogate = RGFlowSurrogate(config)
     surrogate.train(n_trajectories=n_trajectories, verbose=verbose)
     return surrogate
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def predict_rg_trajectory(

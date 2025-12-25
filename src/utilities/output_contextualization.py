@@ -69,6 +69,9 @@ class TheoreticalContext:
     section_references: List[str] = field(default_factory=list)
     theoretical_precision_target: float = 1e-10
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def add_equation(self, equation: str, section: str = ""):
         """Add equation reference."""
         if equation not in self.equations_implemented:
@@ -109,6 +112,9 @@ class ComputationalProvenance:
     random_seed: Optional[int] = None
     hardware_specs: Dict[str, str] = field(default_factory=dict)
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def compute_reproducibility_hash(self) -> str:
         """
         Generate deterministic hash of all parameters affecting output.
@@ -123,6 +129,9 @@ class ComputationalProvenance:
         }, sort_keys=True)
         
         return hashlib.sha256(canonical_repr.encode()).hexdigest()[:16]
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def gather_environment(self):
         """Automatically collect computational environment metadata."""
@@ -190,6 +199,9 @@ class ObservableResult:
     
     theoretical_foundation: TheoreticalContext = field(default_factory=TheoreticalContext)
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def compute_sigma_deviation(self) -> Optional[float]:
         """Calculate statistical significance of theory-experiment comparison."""
         if self.experimental_value is not None:
@@ -198,6 +210,9 @@ class ObservableResult:
             if total_unc > 0:
                 self.sigma_deviation = abs(self.value - self.experimental_value) / total_unc
         return self.sigma_deviation
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def get_agreement_status(self) -> str:
         """Return human-readable agreement status."""
@@ -246,6 +261,9 @@ class UncertaintyTracker:
         Track and report uncertainty propagation through computational pipeline.
     """
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def __init__(self):
         self.error_registry: Dict[str, Dict[str, Any]] = {}
     
@@ -287,6 +305,9 @@ class UncertaintyTracker:
         total_sq = sum(u**2 for u in self.error_registry[observable]['uncertainties'].values())
         self.error_registry[observable]['total_uncertainty'] = np.sqrt(total_sq)
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def get_uncertainty(self, observable: str) -> Tuple[float, float]:
         """Get value and total uncertainty for an observable."""
         if observable not in self.error_registry:
@@ -294,6 +315,9 @@ class UncertaintyTracker:
         
         entry = self.error_registry[observable]
         return entry['value'], entry['total_uncertainty']
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def propagate_uncertainty(
         self,
@@ -355,6 +379,9 @@ class UncertaintyTracker:
         }
         
         return output_value, output_uncertainty
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def generate_uncertainty_report(self) -> str:
         """Generate comprehensive uncertainty budget document."""
@@ -429,6 +456,9 @@ class IRHOutputWriter:
         self.diagnostics: Dict[str, Any] = {}
         self.uncertainty_tracker = UncertaintyTracker()
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def set_lattice_parameters(self, **params):
         """Set lattice discretization parameters."""
         self.provenance.lattice_parameters.update(params)
@@ -436,6 +466,9 @@ class IRHOutputWriter:
     def set_rg_parameters(self, **params):
         """Set RG flow parameters."""
         self.provenance.rg_parameters.update(params)
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def set_numerical_methods(self, **methods):
         """Set numerical method choices."""
@@ -445,9 +478,15 @@ class IRHOutputWriter:
         """Set random seed for reproducibility."""
         self.provenance.random_seed = seed
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def add_equation_reference(self, equation: str, section: str = ""):
         """Add theoretical equation reference."""
         self.theoretical_context.add_equation(equation, section)
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def add_result(
         self,
@@ -477,6 +516,9 @@ class IRHOutputWriter:
         self.results.append(result)
         return result
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def add_diagnostic(self, key: str, value: Any):
         """Add diagnostic information."""
         self.diagnostics[key] = value
@@ -492,6 +534,9 @@ class IRHOutputWriter:
             'diagnostics': self.diagnostics
         }
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def to_json(self, indent: int = 2) -> str:
         """Convert to JSON string."""
         return json.dumps(self.to_dict(), indent=indent, default=str)
@@ -505,6 +550,9 @@ class IRHOutputWriter:
         Path(output_path).parent.mkdir(parents=True, exist_ok=True)
         with open(output_path, 'w') as f:
             f.write(self.to_json())
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def generate_report(self) -> str:
         """
@@ -563,12 +611,20 @@ class IRHOutputWriter:
 # =============================================================================
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def create_output_writer(
     computation_type: str,
     output_path: Optional[str] = None
 ) -> IRHOutputWriter:
     """Factory function to create output writer."""
     return IRHOutputWriter(computation_type, output_path)
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def format_observable(

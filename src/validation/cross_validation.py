@@ -119,6 +119,9 @@ class ConvergenceAnalysis:
     FIXED_POINT_MU = 16 * np.pi**2          # ≈ 157.91
     C_H = 0.045935703598  # Universal constant (12+ decimals)
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def __init__(self, verbose: bool = True):
         """Initialize convergence analysis."""
         self.verbose = verbose
@@ -128,6 +131,9 @@ class ConvergenceAnalysis:
         """Log message if verbose."""
         if self.verbose:
             print(f"[CONVERGENCE] {message}")
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def lattice_spacing_convergence(
         self,
@@ -706,6 +712,9 @@ class ErrorPropagation:
         if self.verbose:
             print(f"[ERROR-PROP] {message}")
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def register_uncertainty(
         self,
         source: str,
@@ -730,6 +739,9 @@ class ErrorPropagation:
         abs_uncertainty = uncertainty * abs(value) if relative else uncertainty
         self.error_budget[source] = abs_uncertainty
         self._log(f"Registered: {source} = {value:.6e} ± {abs_uncertainty:.6e}")
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def propagate_linear(
         self,
@@ -788,6 +800,9 @@ class ErrorPropagation:
         self._log(f"Propagated uncertainty: {central_value:.6e} ± {output_uncertainty:.6e}")
         
         return central_value, output_uncertainty, contributions
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def monte_carlo_propagation(
         self,
@@ -856,6 +871,9 @@ class ErrorPropagation:
         
         return mean, std, stats
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def compute_total_uncertainty(self) -> Tuple[float, Dict[str, float]]:
         """
         Compute total uncertainty from error budget.
@@ -879,6 +897,10 @@ class ErrorPropagation:
         }
         
         return total, fractions
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def run_full_validation_suite(verbose: bool = True) -> Dict[str, Any]:

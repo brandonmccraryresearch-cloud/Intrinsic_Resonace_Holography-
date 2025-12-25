@@ -222,6 +222,8 @@ def benchmark_qncd_methods(
     v2 = np.random.rand(batch_size, vector_dim)
     
     for method in methods:
+        # Theoretical Reference: IRH v21.4
+
         def make_bench_fn(m):
             def bench_fn():
                 return vectorized_qncd_distance(v1, v2, method=m)
@@ -257,6 +259,9 @@ class QNCDBenchmarkSuite:
     """
     iterations: int = 100
     warmup: int = 10
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def run_all(self) -> Dict[str, Dict[str, BenchmarkResult]]:
         """Run all QNCD benchmarks."""

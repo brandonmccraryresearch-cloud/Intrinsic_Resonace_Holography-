@@ -98,6 +98,9 @@ class UncertaintyEstimator:
         self.confidence_level = confidence_level
         self._calibration_factor = 1.0
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def estimate(
         self,
         X: np.ndarray,
@@ -119,6 +122,9 @@ class UncertaintyEstimator:
             Uncertainty estimation result
         """
         raise NotImplementedError("Subclasses must implement estimate()")
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def calibrate(
         self,
@@ -428,6 +434,10 @@ def compute_uncertainty(
     return estimator.estimate(X, models)
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def calibrate_uncertainty(
     X_cal: np.ndarray,
     y_cal: np.ndarray,
@@ -471,6 +481,10 @@ def calibrate_uncertainty(
 # =============================================================================
 # Coverage Metrics
 # =============================================================================
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def compute_coverage(

@@ -106,6 +106,9 @@ class CosmicFixedPoint:
             mu_star=MU_STAR
         )
     
+    # Theoretical Reference: IRH v21.4 Part 1, §1.3, Eq. 1.14
+
+    
     def verify(self, tolerance: float = 1e-10) -> Dict[str, Any]:
         """
         Verify this is indeed a fixed point by checking β-functions vanish.
@@ -290,6 +293,9 @@ def _find_fixed_point_numerical(
     if initial_guess is None:
         # Start near analytical solution
         initial_guess = (LAMBDA_STAR * 0.9, GAMMA_STAR * 0.9, MU_STAR * 0.9)
+    
+    # Theoretical Reference: IRH v21.4 Part 1, §1.3, Eq. 1.14
+
     
     def beta_system(couplings):
         """System of equations: β = 0."""

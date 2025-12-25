@@ -92,6 +92,9 @@ class ComparisonResult:
     exp_source: str = ""
     notes: str = ""
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def is_consistent(self, n_sigma: float = 2.0) -> bool:
         """Check if consistent within n_sigma."""
         return self.sigma_deviation <= n_sigma
@@ -112,6 +115,9 @@ class ComparisonResult:
             'consistent_2sigma': self.is_consistent(2.0),
             'consistent_5sigma': self.is_consistent(5.0),
         }
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def to_latex_row(self) -> str:
         """Generate LaTeX table row."""
@@ -212,6 +218,10 @@ def compare_single(
     )
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def compare_irh_predictions() -> List[ComparisonResult]:
     """
     Compare all IRH predictions with experimental values.
@@ -267,6 +277,9 @@ class MultiComparisonResult:
         """Check if model is consistent at given significance level."""
         return self.p_value > significance
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def summary(self) -> str:
         """Generate text summary."""
         n_excellent = sum(1 for c in self.comparisons if c.status == ComparisonStatus.EXCELLENT)
@@ -280,6 +293,10 @@ class MultiComparisonResult:
             f"p-value = {self.p_value:.4f}\n"
             f"Status: {n_excellent} excellent, {n_good} good, {n_tension} in tension"
         )
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def chi_squared_test(comparisons: List[ComparisonResult]) -> MultiComparisonResult:
@@ -325,6 +342,10 @@ def chi_squared_test(comparisons: List[ComparisonResult]) -> MultiComparisonResu
         p_value=p_value,
         reduced_chi_squared=reduced,
     )
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def generate_comparison_table(
@@ -444,6 +465,10 @@ def _html_table(comparisons: List[ComparisonResult]) -> str:
 </tbody>
 </table>
 """
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def full_irh_comparison_report() -> Dict[str, Any]:

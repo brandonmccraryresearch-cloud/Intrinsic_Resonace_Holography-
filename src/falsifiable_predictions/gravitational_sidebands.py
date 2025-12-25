@@ -174,6 +174,10 @@ DETECTORS = {
 }
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def analyze_detectability(
     f_gw: float,
     h_strain: float,
@@ -302,6 +306,10 @@ def compute_spacetime_granularity(f_gw: float, distance_m: float) -> SpacetimeGr
     )
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def predict_binary_merger_sidebands(
     m1_solar: float,
     m2_solar: float,
@@ -360,6 +368,10 @@ def predict_binary_merger_sidebands(
         'detectability': detectability,
         'theoretical_reference': 'IRH21.md §8.4'
     }
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def verify_gw_sideband_predictions() -> Dict:

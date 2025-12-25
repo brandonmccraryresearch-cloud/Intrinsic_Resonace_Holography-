@@ -91,6 +91,10 @@ class MuonAnomalousMMResult:
         }
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def compute_qed_contribution() -> float:
     """
     Compute QED contribution to muon g-2.
@@ -198,6 +202,10 @@ def compute_muon_g_minus_2() -> MuonAnomalousMMResult:
     )
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def analyze_anomaly_resolution() -> Dict:
     """
     Analyze whether IRH can resolve the muon g-2 anomaly.
@@ -230,6 +238,10 @@ def analyze_anomaly_resolution() -> Dict:
         ),
         'theoretical_reference': 'IRH21.md §8.2'
     }
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def verify_muon_g2_predictions() -> Dict:

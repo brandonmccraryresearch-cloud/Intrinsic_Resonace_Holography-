@@ -141,6 +141,9 @@ def benchmark_beta_functions(
         # Generate random couplings
         couplings = np.random.rand(batch_size, 3) * 100
         
+        # Theoretical Reference: IRH v21.4
+
+        
         def bench_fn():
             return vectorized_beta_functions(couplings)
         
@@ -232,6 +235,9 @@ def benchmark_rg_trajectory(
         x0 = np.array([[10.0, 20.0, 30.0]])
         dt = 0.01
         
+        # Theoretical Reference: IRH v21.4
+
+        
         def integrate_trajectory():
             """Simple Euler integration for benchmark."""
             x = x0.copy()
@@ -271,6 +277,9 @@ class RGFlowBenchmarkSuite:
     """
     iterations: int = 100
     warmup: int = 10
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def run_all(self) -> Dict[str, Dict[str, BenchmarkResult]]:
         """Run all RG flow benchmarks."""

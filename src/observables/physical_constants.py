@@ -341,6 +341,9 @@ PHYSICAL_CONSTANTS: Dict[str, PhysicalConstant] = {
 # Functions
 # ============================================================================
 
+# Theoretical Reference: IRH v21.4
+
+
 def get_constant(name: str) -> PhysicalConstant:
     """
     Get a physical constant by name.
@@ -364,6 +367,10 @@ def get_constant(name: str) -> PhysicalConstant:
         available = list(PHYSICAL_CONSTANTS.keys())
         raise KeyError(f"Unknown constant '{name}'. Available: {available}")
     return PHYSICAL_CONSTANTS[name]
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def list_constants(

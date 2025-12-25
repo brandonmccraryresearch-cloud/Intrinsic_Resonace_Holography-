@@ -22,6 +22,10 @@ import multiprocessing
 __version__ = "21.0.0"
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def parallel_map(
     func: Callable,
     items: List[Any],
@@ -60,6 +64,10 @@ def parallel_map(
         results = list(executor.map(func, items))
     
     return results
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def distributed_sum(
@@ -107,6 +115,10 @@ def distributed_sum(
     return sum(partial_sums)
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def batch_compute(
     func: Callable[[np.ndarray], np.ndarray],
     data: np.ndarray,
@@ -143,6 +155,10 @@ def batch_compute(
     results = parallel_map(func, batches, n_workers)
     
     return np.concatenate(results)
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def get_optimal_workers(data_size: int) -> int:

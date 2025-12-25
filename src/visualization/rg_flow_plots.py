@@ -102,6 +102,9 @@ class PlotConfig:
     grid: bool = True
     dark_mode: bool = False
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def get_style(self) -> Dict[str, Any]:
         """Return matplotlib style parameters."""
         if self.dark_mode:
@@ -123,6 +126,9 @@ class RGFlowPlotter:
     def __post_init__(self):
         if not MATPLOTLIB_AVAILABLE:
             raise ImportError("matplotlib is required for RGFlowPlotter")
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def phase_diagram_2d(
         self,
@@ -235,6 +241,9 @@ class RGFlowPlotter:
         
         return fig, ax
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def phase_diagram_3d(
         self,
         lambda_range: Tuple[float, float] = (0, 100),
@@ -277,6 +286,9 @@ class RGFlowPlotter:
         
         # Integrate and plot trajectories
         from scipy.integrate import solve_ivp
+        
+        # Theoretical Reference: IRH v21.4
+
         
         def rg_flow(t, y):
             lambda_t, gamma_t, mu_t = y
@@ -337,6 +349,9 @@ class RGFlowPlotter:
         
         return fig, ax
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def beta_function_plot(
         self,
         coupling_range: Tuple[float, float] = (0, 100),
@@ -392,6 +407,9 @@ class RGFlowPlotter:
             ax.grid(True, alpha=0.3)
         
         return fig, ax
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def fixed_point_stability_plot(
         self,

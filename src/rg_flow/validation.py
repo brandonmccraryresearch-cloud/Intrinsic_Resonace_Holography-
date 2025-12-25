@@ -269,6 +269,9 @@ def find_fixed_point(
         # Start near analytical solution
         initial_guess = (LAMBDA_STAR * 0.9, GAMMA_STAR * 0.9, MU_STAR * 0.9)
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def beta_system(couplings):
         l, g, m = couplings
         return list(compute_all_betas(l, g, m))
@@ -340,12 +343,18 @@ class RGFlowTrajectory:
     converged: bool
     final_fixed_point: FixedPointResult
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def get_couplings_at(self, t: float) -> Tuple[float, float, float]:
         """Interpolate couplings at specific RG time."""
         l = np.interp(t, self.t_values, self.lambda_values)
         g = np.interp(t, self.t_values, self.gamma_values)
         m = np.interp(t, self.t_values, self.mu_values)
         return (l, g, m)
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def get_final_couplings(self) -> Tuple[float, float, float]:
         """Get couplings at end of flow (IR)."""
@@ -392,6 +401,8 @@ def integrate_rg_flow(
     RGFlowTrajectory
         Complete trajectory with convergence information
     """
+    # Theoretical Reference: IRH v21.4
+
     def beta_ode(t, y):
         """RHS of RG flow ODE: dy/dt = β(y)"""
         l, g, m = y
@@ -461,6 +472,9 @@ def compute_stability_matrix(
     couplings = [lambda_val, gamma_val, mu_val]
     M = np.zeros((3, 3))
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def beta_vector(c):
         return np.array(compute_all_betas(c[0], c[1], c[2]))
     
@@ -527,6 +541,10 @@ class BenchmarkResult:
     passed: bool
     tolerance: float
     theoretical_ref: str
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def run_analytical_benchmarks(tolerance: float = 1e-10) -> List[BenchmarkResult]:

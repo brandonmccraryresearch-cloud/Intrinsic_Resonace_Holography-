@@ -98,6 +98,9 @@ class ParameterOptimizer:
     or accuracy of surrogate predictions.
     """
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def __init__(self, config: Optional[OptimizerConfig] = None):
         """
         Initialize optimizer.
@@ -111,6 +114,9 @@ class ParameterOptimizer:
         self.history = []
         self.best_x = None
         self.best_y = float('inf')
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def optimize(
         self,
@@ -134,6 +140,9 @@ class ParameterOptimizer:
         """
         raise NotImplementedError("Subclasses must implement optimize()")
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def suggest_next(self) -> np.ndarray:
         """
         Suggest next point to evaluate.
@@ -144,6 +153,9 @@ class ParameterOptimizer:
             Suggested parameter values
         """
         raise NotImplementedError("Subclasses must implement suggest_next()")
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def update(self, x: np.ndarray, y: float):
         """
@@ -207,6 +219,9 @@ class SimpleGaussianProcess:
         dists = cdist(X1, X2, metric='sqeuclidean')
         return self.variance * np.exp(-dists / (2 * self.length_scale**2))
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def fit(self, X: np.ndarray, y: np.ndarray):
         """
         Fit GP to training data.
@@ -226,6 +241,9 @@ class SimpleGaussianProcess:
         K += self.noise * np.eye(len(K))
         
         self.K_inv = np.linalg.inv(K)
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def predict(
         self,
@@ -398,6 +416,9 @@ class BayesianOptimizer(ParameterOptimizer):
         
         for _ in range(10):
             x0 = np.random.rand(n_dims)
+            
+            # Theoretical Reference: IRH v21.4
+
             
             def neg_acquisition(x):
                 x_orig = bounds[:, 0] + x * (bounds[:, 1] - bounds[:, 0])
@@ -648,6 +669,10 @@ class ActiveLearningOptimizer(ParameterOptimizer):
 # =============================================================================
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def optimize_parameters(
     objective: Callable[[np.ndarray], float],
     bounds: Optional[List[Tuple[float, float]]] = None,
@@ -711,6 +736,10 @@ def optimize_parameters(
         raise ValueError(f"Unknown method: {method}")
     
     return optimizer.optimize(objective, verbose)
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def suggest_next_point(

@@ -514,6 +514,9 @@ def _fixed_point_potential_minima() -> int:
 # Summary Generation
 # ============================================================================
 
+# Theoretical Reference: IRH v21.4 Part 2, Appendix D.2
+
+
 def generate_instanton_number_summary() -> str:
     """
     Generate a comprehensive summary of instanton number computations.

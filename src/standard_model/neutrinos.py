@@ -100,6 +100,9 @@ class NeutrinoMasses:
         """Δm²₃₁ = Δm²₃₂ + Δm²₂₁."""
         return self.m3**2 - self.m1**2
     
+    # Theoretical Reference: IRH v21.4 Part 1, §3.2.4, Appendix E.3
+
+    
     def verify_mass_splittings(self) -> Dict:
         """
         Verify mass squared differences against experiment.
@@ -187,6 +190,9 @@ class MajoranaNature:
     alpha_21: float = 0.0  # Unknown
     alpha_31: float = 0.0  # Unknown
     
+    # Theoretical Reference: IRH v21.4 Part 1, §3.2.4, Appendix E.3
+
+    
     def effective_majorana_mass(self, pmns_matrix: np.ndarray, masses: NeutrinoMasses) -> float:
         """
         Compute effective Majorana mass for neutrinoless double beta decay.
@@ -211,6 +217,9 @@ class MajoranaNature:
         
         m_bb = abs(np.sum(U[0, :]**2 * m * phases))
         return float(m_bb)
+    
+    # Theoretical Reference: IRH v21.4 Part 1, §3.2.4, Appendix E.3
+
     
     def double_beta_decay_prediction(self, masses: NeutrinoMasses) -> Dict:
         """
@@ -276,6 +285,10 @@ def compute_neutrino_masses() -> NeutrinoMasses:
     return NeutrinoMasses()
 
 
+# Theoretical Reference: IRH v21.4 Part 1, §3.2.4, Appendix E.3
+
+
+
 def compute_majorana_nature() -> MajoranaNature:
     """
     Determine Majorana nature from IRH topology.
@@ -286,6 +299,10 @@ def compute_majorana_nature() -> MajoranaNature:
         Majorana nature and phases
     """
     return MajoranaNature()
+
+
+# Theoretical Reference: IRH v21.4 Part 1, §3.2.4, Appendix E.3
+
 
 
 def verify_neutrino_sector() -> Dict:

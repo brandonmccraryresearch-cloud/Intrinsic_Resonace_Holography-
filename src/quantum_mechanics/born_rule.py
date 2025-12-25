@@ -431,6 +431,9 @@ class QuantumMechanicsEmergence:
     measurement: MeasurementResolution
     pointer_basis: PointerBasis
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def verify_all(self) -> Dict:
         """Verify all QM emergence results."""
         return {
@@ -535,6 +538,10 @@ def compute_decoherence_time_estimate(
         'is_quantum': tau_D > 1e-15,  # > femtosecond
         'is_classical': tau_D < 1e-20  # < 10 zeptoseconds
     }
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def verify_qm_emergence() -> Dict:

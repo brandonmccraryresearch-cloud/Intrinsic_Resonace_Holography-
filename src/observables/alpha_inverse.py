@@ -105,6 +105,9 @@ class AlphaInverseResult:
     components: Dict[str, float]
     theoretical_reference: str = "IRH21.md §3.2.2, Eq. 3.4-3.5"
     
+    # Theoretical Reference: IRH v21.4 Part 1, §3.2.2, Eq. 3.4-3.5
+
+    
     def is_consistent(self, n_sigma: float = 5.0) -> bool:
         """Check if result is consistent with experiment within n_sigma."""
         return abs(self.sigma_deviation) < n_sigma
@@ -420,6 +423,10 @@ def alpha_inverse_from_fixed_point(
     fp = CosmicFixedPoint(lambda_star, gamma_star, mu_star)
     result = compute_fine_structure_constant(fp, method='full')
     return result.alpha_inverse
+
+
+# Theoretical Reference: IRH v21.4 Part 1, §3.2.2, Eq. 3.4-3.5
+
 
 
 def verify_alpha_inverse_precision(n_digits: int = 9) -> Dict[str, Any]:

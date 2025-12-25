@@ -212,6 +212,9 @@ class TransparencyEngine:
     >>> engine.passed("α⁻¹ computation complete")
     """
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def __init__(
         self,
         verbosity: VerbosityLevel = STANDARD,
@@ -351,6 +354,9 @@ class TransparencyEngine:
         """
         self._emit(MessageType.STEP, content, **metadata)
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def formula(
         self,
         formula: str,
@@ -378,6 +384,9 @@ class TransparencyEngine:
             reference=reference,
             **metadata
         )
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def value(
         self,
@@ -628,6 +637,9 @@ class TransparencyEngine:
         self.provenance_chains.append(chain)
         return chain
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def get_provenance(self, result_name: Optional[str] = None) -> List[ProvenanceChain]:
         """
         Retrieve provenance chains.
@@ -650,6 +662,9 @@ class TransparencyEngine:
     # -------------------------------------------------------------------------
     # Export & Display
     # -------------------------------------------------------------------------
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def export(self, format: str = 'dict') -> Union[Dict, str]:
         """
@@ -693,6 +708,9 @@ class TransparencyEngine:
         else:
             raise ValueError(f"Unknown format: {format}")
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def display_provenance(self, chain: ProvenanceChain):
         """Display provenance chain in human-readable format."""
         print("\n" + "="*70)
@@ -714,6 +732,9 @@ class TransparencyEngine:
             print(f"  {status} {check}")
         print("="*70 + "\n")
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def display_components(self, components: Dict[str, Any]):
         """Display component breakdown."""
         print("\n" + "="*70)
@@ -725,6 +746,9 @@ class TransparencyEngine:
             else:
                 print(f"  {name}: {value}")
         print("="*70 + "\n")
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def validate_result(
         self,
@@ -758,6 +782,9 @@ class TransparencyEngine:
                 sigma_dev = deviation / result.uncertainty if result.uncertainty > 0 else float('inf')
                 print(f"  Agreement: {sigma_dev:.2f}σ")
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def summary(self):
         """Display summary statistics."""
         n_messages = len(self.messages)
@@ -777,6 +804,10 @@ class TransparencyEngine:
 # =============================================================================
 # Convenience Functions
 # =============================================================================
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def create_engine(

@@ -215,6 +215,9 @@ class PreCommitValidator:
         "W0": -0.91234567,
     }
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def __init__(self, repo_root: Optional[Path] = None):
         """
         Initialize validator.
@@ -226,6 +229,9 @@ class PreCommitValidator:
         """
         self.repo_root = repo_root or Path.cwd()
         self.results: List[ValidationResult] = []
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def validate_file(self, filepath: Path) -> List[ValidationResult]:
         """
@@ -393,6 +399,9 @@ class PreCommitValidator:
         
         return results
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def validate_staged_files(self) -> List[ValidationResult]:
         """
         Validate all staged files in git.
@@ -421,6 +430,9 @@ class PreCommitValidator:
         
         self.results = all_results
         return all_results
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def generate_report(self) -> str:
         """Generate human-readable validation report."""
@@ -556,6 +568,9 @@ class RegressionDetector:
             custom = json.load(f)
         self.baselines.update(custom)
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def check_observable(
         self,
         name: str,
@@ -617,6 +632,9 @@ class RegressionDetector:
         self.reports.append(report)
         return report
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def check_all(self, computed_values: Dict[str, float]) -> List[RegressionReport]:
         """
         Check all computed values against baselines.
@@ -635,6 +653,9 @@ class RegressionDetector:
         for name, value in computed_values.items():
             reports.append(self.check_observable(name, value))
         return reports
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def has_regressions(self) -> bool:
         """Check if any regressions were detected."""
@@ -720,6 +741,9 @@ class TestTierRunner:
         """
         self.repo_root = repo_root or Path.cwd()
         self.results: List[TestResult] = []
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def run_tier(
         self,
@@ -878,6 +902,9 @@ class BaselineManager:
             # Initialize with certified values
             self.baselines = dict(RegressionDetector.BASELINES)
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def load(self) -> None:
         """Load baselines from file."""
         try:
@@ -891,6 +918,9 @@ class BaselineManager:
         except (json.JSONDecodeError, FileNotFoundError, PermissionError, OSError):
             # Invalid JSON or file access error - use defaults
             self.baselines = dict(RegressionDetector.BASELINES)
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def save(self) -> None:
         """Save baselines to file."""
@@ -929,6 +959,9 @@ class BaselineManager:
             "updated": datetime.now(timezone.utc).isoformat(),
         }
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def get(self, name: str) -> Optional[Dict[str, Any]]:
         """Get baseline by name."""
         return self.baselines.get(name)
@@ -964,6 +997,9 @@ class CoverageReporter:
         """
         self.repo_root = repo_root or Path.cwd()
         self.coverage_data: Dict[str, Any] = {}
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def run_coverage(self, test_dirs: List[str] = None) -> Dict[str, Any]:
         """
@@ -1006,6 +1042,9 @@ class CoverageReporter:
         
         return self.coverage_data
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def get_file_coverage(self, filepath: str) -> Optional[Dict[str, Any]]:
         """Get coverage data for a specific file."""
         if not self.coverage_data:
@@ -1013,6 +1052,9 @@ class CoverageReporter:
         
         files = self.coverage_data.get("files", {})
         return files.get(filepath)
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def generate_theoretical_coverage_report(self) -> str:
         """Generate coverage report mapped to theoretical components."""
@@ -1058,6 +1100,9 @@ class CoverageReporter:
 # Convenience Functions
 # =============================================================================
 
+# Theoretical Reference: IRH v21.4
+
+
 def run_pre_commit_checks(repo_root: Optional[Path] = None) -> Tuple[bool, str]:
     """
     Run all pre-commit validation checks.
@@ -1079,6 +1124,10 @@ def run_pre_commit_checks(repo_root: Optional[Path] = None) -> Tuple[bool, str]:
     success = len(errors) == 0
     
     return success, validator.generate_report()
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def detect_regressions(
@@ -1104,6 +1153,10 @@ def detect_regressions(
     detector.check_all(computed_values)
     
     return not detector.has_regressions(), detector.generate_report()
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def run_test_tier(
@@ -1132,6 +1185,10 @@ def run_test_tier(
     success, _ = runner.run_tier(tier, verbose)
     
     return success, runner.generate_report()
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def update_baselines(

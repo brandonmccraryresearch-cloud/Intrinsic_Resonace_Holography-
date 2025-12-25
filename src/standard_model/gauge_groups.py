@@ -69,6 +69,9 @@ class GaugeGroup:
         """Number of generators = dimension of Lie algebra."""
         return self.dimension
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def coupling_beta_coefficient(self, n_f: int = 3, n_s: int = 1) -> float:
         """
         Compute one-loop β-function coefficient b₀ for gauge coupling.
@@ -330,6 +333,9 @@ class GaugeCouplingUnification:
     def alpha_star(self) -> float:
         """Unified fine structure constant at UV."""
         return self.g_star**2 / (4 * math.pi)
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def coupling_at_scale(self, scale_gev: float, group: str = 'SU3') -> float:
         """

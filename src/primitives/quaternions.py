@@ -75,11 +75,15 @@ class Quaternion:
             setattr(self, attr, float(val))
     
     @classmethod
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1.1
+
     def from_scalar(cls, scalar: float) -> Quaternion:
         """Create quaternion from real number: q = scalar + 0i + 0j + 0k."""
         return cls(w=scalar, x=0.0, y=0.0, z=0.0)
     
     @classmethod
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1.1
+
     def from_vector(cls, v: NDArray[np.float64]) -> Quaternion:
         """Create pure quaternion from 3-vector: q = 0 + v₁i + v₂j + v₃k."""
         if len(v) != 3:
@@ -87,6 +91,8 @@ class Quaternion:
         return cls(w=0.0, x=float(v[0]), y=float(v[1]), z=float(v[2]))
     
     @classmethod
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1.1
+
     def from_array(cls, arr: NDArray[np.float64]) -> Quaternion:
         """Create quaternion from array [w, x, y, z]."""
         if len(arr) != 4:
@@ -94,6 +100,8 @@ class Quaternion:
         return cls(w=float(arr[0]), x=float(arr[1]), y=float(arr[2]), z=float(arr[3]))
     
     @classmethod
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1.1
+
     def identity(cls) -> Quaternion:
         """Return multiplicative identity: 1 + 0i + 0j + 0k."""
         return cls(w=1.0, x=0.0, y=0.0, z=0.0)
@@ -104,6 +112,8 @@ class Quaternion:
         return cls(w=0.0, x=0.0, y=0.0, z=0.0)
     
     @classmethod
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1.1
+
     def random(cls, rng: np.random.Generator = None) -> Quaternion:
         """Generate random unit quaternion (uniform on S³)."""
         if rng is None:
@@ -116,9 +126,15 @@ class Quaternion:
         components = components / norm
         return cls(w=components[0], x=components[1], y=components[2], z=components[3])
     
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1.1
+
+    
     def to_array(self) -> NDArray[np.float64]:
         """Convert to numpy array [w, x, y, z]."""
         return np.array([self.w, self.x, self.y, self.z], dtype=np.float64)
+    
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1.1
+
     
     def to_vector(self) -> NDArray[np.float64]:
         """Extract vector part [x, y, z]."""
@@ -144,6 +160,9 @@ class Quaternion:
         """
         return Quaternion(w=self.w, x=-self.x, y=-self.y, z=-self.z)
     
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1.1
+
+    
     def norm_squared(self) -> float:
         """
         Compute squared norm |q|² = qq̄ = q₀² + q₁² + q₂² + q₃².
@@ -151,6 +170,9 @@ class Quaternion:
         This is real and non-negative, making ℍ a normed division algebra.
         """
         return self.w**2 + self.x**2 + self.y**2 + self.z**2
+    
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1.1
+
     
     def norm(self) -> float:
         """Compute norm |q| = √(qq̄)."""
@@ -162,6 +184,9 @@ class Quaternion:
         if n < 1e-12:
             raise ValueError("Cannot normalize zero quaternion")
         return self / n
+    
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1.1
+
     
     def inverse(self) -> Quaternion:
         """
@@ -175,6 +200,9 @@ class Quaternion:
         conj = self.conjugate()
         return Quaternion(w=conj.w/n2, x=conj.x/n2, y=conj.y/n2, z=conj.z/n2)
     
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1.1
+
+    
     def __add__(self, other: Union[Quaternion, float]) -> Quaternion:
         """Quaternion addition."""
         if isinstance(other, (int, float)):
@@ -187,6 +215,9 @@ class Quaternion:
                 z=self.z + other.z
             )
         return NotImplemented
+    
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1.1
+
     
     def __radd__(self, other: float) -> Quaternion:
         """Right addition with scalar."""
@@ -204,6 +235,9 @@ class Quaternion:
                 z=self.z - other.z
             )
         return NotImplemented
+    
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1.1
+
     
     def __neg__(self) -> Quaternion:
         """Quaternion negation."""
@@ -243,6 +277,9 @@ class Quaternion:
             )
         return NotImplemented
     
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1.1
+
+    
     def __rmul__(self, other: float) -> Quaternion:
         """Right multiplication with scalar."""
         return self.__mul__(other)
@@ -261,6 +298,9 @@ class Quaternion:
         if isinstance(other, Quaternion):
             return self * other.inverse()
         return NotImplemented
+    
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1.1
+
     
     def __abs__(self) -> float:
         """Return norm |q|."""
@@ -320,6 +360,10 @@ def quaternion_product(q1: Quaternion, q2: Quaternion) -> Quaternion:
     return q1 * q2
 
 
+# Theoretical Reference: IRH v21.4 Part 1, §1.1.1
+
+
+
 def quaternion_norm(q: Quaternion) -> float:
     """Compute quaternion norm |q| = √(qq̄)."""
     return q.norm()
@@ -334,6 +378,10 @@ def quaternion_dot(q1: Quaternion, q2: Quaternion) -> float:
     conj_q1 = q1.conjugate()
     product = conj_q1 * q2
     return product.scalar_part
+
+
+# Theoretical Reference: IRH v21.4 Part 1, §1.1.1
+
 
 
 def quaternion_exp(q: Quaternion) -> Quaternion:
@@ -364,6 +412,10 @@ def quaternion_exp(q: Quaternion) -> Quaternion:
         y=exp_w * sin_v * v_hat[1],
         z=exp_w * sin_v * v_hat[2]
     )
+
+
+# Theoretical Reference: IRH v21.4 Part 1, §1.1.1
+
 
 
 def quaternion_log(q: Quaternion) -> Quaternion:
@@ -400,6 +452,10 @@ def quaternion_log(q: Quaternion) -> Quaternion:
     )
 
 
+# Theoretical Reference: IRH v21.4 Part 1, §1.1.1
+
+
+
 def quaternion_slerp(q1: Quaternion, q2: Quaternion, t: float) -> Quaternion:
     """
     Spherical linear interpolation between unit quaternions.
@@ -432,6 +488,10 @@ def quaternion_slerp(q1: Quaternion, q2: Quaternion, t: float) -> Quaternion:
     q_perp = (q2 - q1 * dot).normalize()
     
     return q1 * math.cos(theta) + q_perp * math.sin(theta)
+
+
+# Theoretical Reference: IRH v21.4 Part 1, §1.1.1
+
 
 
 def verify_quaternion_algebra() -> dict:

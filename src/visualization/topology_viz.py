@@ -122,6 +122,9 @@ class TopologyVisualizer:
         if not MATPLOTLIB_AVAILABLE:
             raise ImportError("matplotlib is required for TopologyVisualizer")
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def plot_betti_numbers(
         self,
         show_decomposition: bool = True,
@@ -202,6 +205,9 @@ class TopologyVisualizer:
         ax.grid(True, axis='y', alpha=0.3)
         
         return fig, ax
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def plot_instanton_number(
         self,
@@ -284,6 +290,9 @@ class TopologyVisualizer:
         )
         
         return fig, ax
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def plot_vwp_configuration(
         self,
@@ -449,6 +458,9 @@ class TopologyVisualizer:
         
         return fig, ax
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def plot_mass_hierarchy(
         self,
         fermion_type: str = 'leptons',
@@ -533,6 +545,10 @@ def plot_vwp_configuration(fermion: str = 'electron', **kwargs) -> Tuple[Figure,
     """
     viz = TopologyVisualizer()
     return viz.plot_vwp_configuration(fermion=fermion, **kwargs)
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def plot_instanton_charge(**kwargs) -> Tuple[Figure, Axes]:

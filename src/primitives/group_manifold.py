@@ -77,6 +77,8 @@ class SU2Element:
             self.quaternion = self.quaternion.normalize()
     
     @classmethod
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
+
     def identity(cls) -> SU2Element:
         """Return identity element e = 1 + 0i + 0j + 0k."""
         return cls(quaternion=Quaternion.identity())
@@ -87,12 +89,16 @@ class SU2Element:
         return cls(quaternion=q)
     
     @classmethod
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
+
     def from_components(cls, w: float, x: float, y: float, z: float) -> SU2Element:
         """Create SU(2) element from components (will be normalized)."""
         q = Quaternion(w=w, x=x, y=y, z=z)
         return cls(quaternion=q)
     
     @classmethod
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
+
     def from_axis_angle(cls, axis: NDArray[np.float64], angle: float) -> SU2Element:
         """
         Create SU(2) element from axis-angle representation.
@@ -119,6 +125,8 @@ class SU2Element:
         return cls(quaternion=q)
     
     @classmethod
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
+
     def from_euler_angles(cls, alpha: float, beta: float, gamma: float) -> SU2Element:
         """
         Create SU(2) element from Euler angles (ZYZ convention).
@@ -135,9 +143,14 @@ class SU2Element:
         return u1 * u2 * u3
     
     @classmethod
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
+
     def random(cls, rng: np.random.Generator = None) -> SU2Element:
         """Generate uniformly random SU(2) element (Haar measure)."""
         return cls(quaternion=Quaternion.random(rng))
+    
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
+
     
     def to_quaternion(self) -> Quaternion:
         """Extract underlying quaternion."""
@@ -161,11 +174,17 @@ class SU2Element:
             [beta, np.conj(alpha)]
         ], dtype=np.complex128)
     
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
+
+    
     def inverse(self) -> SU2Element:
         """
         Compute group inverse u⁻¹ = ū (conjugate for unit quaternions).
         """
         return SU2Element(quaternion=self.quaternion.conjugate())
+    
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
+
     
     def __mul__(self, other: SU2Element) -> SU2Element:
         """Group multiplication: u₁ · u₂ via quaternion product."""
@@ -207,6 +226,10 @@ def haar_measure_SU2_sample(n_samples: int, rng: np.random.Generator = None) -> 
     if rng is None:
         rng = np.random.default_rng()
     return [SU2Element.random(rng) for _ in range(n_samples)]
+
+
+# Theoretical Reference: IRH v21.4 Part 1, §1.1
+
 
 
 def haar_integrate_SU2(
@@ -285,6 +308,8 @@ class U1Phase:
         return cls(phase=0.0)
     
     @classmethod
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
+
     def from_complex(cls, z: complex) -> U1Phase:
         """Create U(1) element from unit complex number."""
         return cls(phase=np.angle(z))
@@ -295,6 +320,9 @@ class U1Phase:
         if rng is None:
             rng = np.random.default_rng()
         return cls(phase=rng.uniform(0, 2 * math.pi))
+    
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
+
     
     def to_complex(self) -> complex:
         """Convert to unit complex number e^{iφ}."""
@@ -322,11 +350,19 @@ class U1Phase:
         return f"U1Phase(φ={self.phase:.6f})"
 
 
+# Theoretical Reference: IRH v21.4 Part 1, §1.1
+
+
+
 def haar_measure_U1_sample(n_samples: int, rng: np.random.Generator = None) -> list[U1Phase]:
     """Generate samples from Haar measure on U(1)."""
     if rng is None:
         rng = np.random.default_rng()
     return [U1Phase.random(rng) for _ in range(n_samples)]
+
+
+# Theoretical Reference: IRH v21.4 Part 1, §1.1
+
 
 
 def haar_integrate_U1(
@@ -433,6 +469,10 @@ def haar_measure_GInf_sample(n_samples: int, rng: np.random.Generator = None) ->
     return [GInfElement.random(rng) for _ in range(n_samples)]
 
 
+# Theoretical Reference: IRH v21.4 Part 1, §1.1
+
+
+
 def haar_integrate_GInf(
     f: Callable[[GInfElement], float],
     n_samples: int = 10000,
@@ -475,6 +515,10 @@ def compute_GInf_distance(g1: GInfElement, g2: GInfElement) -> float:
     d_u1 = min(phi_diff, 2 * math.pi - phi_diff)
     
     return math.sqrt(d_su2**2 + d_u1**2)
+
+
+# Theoretical Reference: IRH v21.4 Part 1, §1.1
+
 
 
 def verify_group_axioms() -> dict:

@@ -110,6 +110,9 @@ class ResonanceQuotient:
     is_orientable: bool = True
     euler_characteristic: int = 0  # For a 3-manifold: χ = 0
     
+    # Theoretical Reference: IRH v21.4 Part 2, Appendix D.1
+
+    
     def homology_rank(self, k: int) -> int:
         """Get the k-th Betti number."""
         if 0 <= k <= 3:
@@ -403,6 +406,9 @@ def _resonance_quotient_construction() -> ResonanceQuotient:
 # ============================================================================
 # Summary Generation
 # ============================================================================
+
+# Theoretical Reference: IRH v21.4 Part 2, Appendix D.1
+
 
 def generate_betti_number_summary() -> str:
     """

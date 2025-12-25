@@ -72,6 +72,10 @@ def quaternion_to_su2(q: np.ndarray) -> np.ndarray:
     ])
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def su2_to_hopf(q: np.ndarray) -> Tuple[float, float, float]:
     """
     Map quaternion on S³ to point on S² via Hopf fibration.
@@ -87,6 +91,10 @@ def su2_to_hopf(q: np.ndarray) -> Tuple[float, float, float]:
     return x, y, z
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def sample_su2_haar(n_samples: int, seed: int = 42) -> np.ndarray:
     """
     Sample n_samples quaternions uniformly on S³ (Haar measure on SU(2)).
@@ -100,6 +108,10 @@ def sample_su2_haar(n_samples: int, seed: int = 42) -> np.ndarray:
     points = rng.standard_normal((n_samples, 4))
     norms = np.linalg.norm(points, axis=1, keepdims=True)
     return points / norms
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def geodesic_su2(q1: np.ndarray, q2: np.ndarray, t: np.ndarray) -> np.ndarray:
@@ -148,6 +160,9 @@ class ManifoldVisualizer:
     def __post_init__(self):
         if not MATPLOTLIB_AVAILABLE:
             raise ImportError("matplotlib is required for ManifoldVisualizer")
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def plot_su2_via_hopf(
         self,
@@ -246,6 +261,9 @@ class ManifoldVisualizer:
         
         return np.array(fiber)
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def plot_u1_circle(
         self,
         special_phases: Optional[List[float]] = None,
@@ -320,6 +338,9 @@ class ManifoldVisualizer:
         
         return fig, ax
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def plot_g_inf_product(
         self,
         n_samples: int = 500,
@@ -387,6 +408,9 @@ class ManifoldVisualizer:
         ax.set_title(r'$G_\infty = SU(2) \times U(1)_\phi$ (IRH21.md §1.1)', fontsize=14)
         
         return fig, ax
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def plot_geodesics(
         self,

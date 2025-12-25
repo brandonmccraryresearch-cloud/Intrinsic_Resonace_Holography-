@@ -82,6 +82,9 @@ class RunningCouplings:
     gamma_k: float
     mu_k: float
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def couplings(self) -> Tuple[float, float, float]:
         """Return couplings as tuple."""
         return (self.lambda_k, self.gamma_k, self.mu_k)
@@ -89,6 +92,9 @@ class RunningCouplings:
     def t(self) -> float:
         """Return RG time t = ln(k/k_0)."""
         return math.log(self.k / K_0)
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def distance_to_fixed_point(self) -> float:
         """Compute distance to Cosmic Fixed Point."""
@@ -136,6 +142,9 @@ class CouplingTrajectory:
     def __len__(self) -> int:
         return len(self.t_values)
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def initial_couplings(self) -> RunningCouplings:
         """Get initial (UV) couplings."""
         return RunningCouplings(
@@ -145,6 +154,9 @@ class CouplingTrajectory:
             mu_k=self.mu_trajectory[0]
         )
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def final_couplings(self) -> RunningCouplings:
         """Get final (IR) couplings."""
         return RunningCouplings(
@@ -153,6 +165,9 @@ class CouplingTrajectory:
             gamma_k=self.gamma_trajectory[-1],
             mu_k=self.mu_trajectory[-1]
         )
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def at_scale(self, k: float) -> RunningCouplings:
         """
@@ -277,6 +292,9 @@ def integrate_running_couplings(
     """
     beta = BetaFunctions()
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def flow_equations(t, y):
         lambda_t, gamma_t, mu_t = y
         return [
@@ -389,6 +407,10 @@ def running_C_H(k: float) -> float:
     return C_H
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def coupling_at_energy_scale(
     energy_GeV: float,
     coupling_name: str = 'lambda',
@@ -426,6 +448,9 @@ def coupling_at_energy_scale(
 # ============================================================================
 # Analysis Functions
 # ============================================================================
+
+# Theoretical Reference: IRH v21.4
+
 
 def analyze_running(
     k_range: Tuple[float, float] = (K_IR, K_UV),

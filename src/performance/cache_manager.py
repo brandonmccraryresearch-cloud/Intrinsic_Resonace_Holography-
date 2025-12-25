@@ -122,11 +122,17 @@ class LRUCache(Generic[T]):
     [1, 2, 3]
     """
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def __init__(self, max_size: int = 1000):
         self.max_size = max_size
         self._cache: OrderedDict[Hashable, T] = OrderedDict()
         self._lock = threading.Lock()
         self._stats = CacheStats(max_size=max_size)
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def get(self, key: Hashable) -> Optional[T]:
         """
@@ -150,6 +156,9 @@ class LRUCache(Generic[T]):
             self._stats.misses += 1
             return None
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def put(self, key: Hashable, value: T) -> None:
         """
         Put value into cache, evicting LRU item if necessary.
@@ -170,6 +179,9 @@ class LRUCache(Generic[T]):
                     self._stats.evictions += 1
             self._cache[key] = value
             self._stats.total_size = len(self._cache)
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def contains(self, key: Hashable) -> bool:
         """Check if key exists in cache."""
@@ -438,6 +450,9 @@ class CacheManager:
             str_key = str(key)
             self._disk.put(str_key, value)
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def get_or_compute(
         self,
         key: Hashable,
@@ -475,6 +490,9 @@ class CacheManager:
         if self._disk is not None:
             self._disk.clear()
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def get_stats(self) -> Dict[str, Any]:
         """
         Get combined cache statistics.
@@ -492,6 +510,10 @@ class CacheManager:
         if self._disk is not None:
             stats['disk'] = self._disk.stats.to_dict()
         return stats
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def create_cache(
@@ -527,6 +549,10 @@ def create_cache(
         )
         _cache_registry[name] = cache
         return cache
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def get_cache(name: str) -> Optional[CacheManager]:
@@ -573,6 +599,8 @@ def cached(
     ... def compute_qncd(s1: str, s2: str) -> float:
     ...     return expensive_qncd_computation(s1, s2)
     """
+    # Theoretical Reference: IRH v21.4
+
     def decorator(func: Callable) -> Callable:
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
@@ -616,6 +644,10 @@ def _make_hashable(obj: Any) -> Hashable:
     elif isinstance(obj, (set, frozenset)):
         return frozenset(_make_hashable(item) for item in obj)
     return obj
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def clear_all_caches() -> None:

@@ -231,6 +231,9 @@ class GaugeBosonMasses:
         # ρ parameter
         self.rho = self.m_W**2 / (self.m_Z**2 * (1 - self.sin2_theta_W))
     
+    # Theoretical Reference: IRH v21.4 Part 1, §3.3
+
+    
     def verify_masses(self) -> Dict:
         """Compare with experimental values."""
         m_W_exp = 80.377  # GeV
@@ -289,6 +292,10 @@ def compute_higgs_sector() -> HiggsSector:
     return HiggsSector()
 
 
+# Theoretical Reference: IRH v21.4 Part 1, §3.3
+
+
+
 def compute_gauge_boson_masses() -> GaugeBosonMasses:
     """
     Compute W and Z boson masses.
@@ -299,6 +306,10 @@ def compute_gauge_boson_masses() -> GaugeBosonMasses:
         Gauge boson masses from EWSB
     """
     return GaugeBosonMasses()
+
+
+# Theoretical Reference: IRH v21.4 Part 1, §3.3
+
 
 
 def verify_electroweak_sector() -> Dict:

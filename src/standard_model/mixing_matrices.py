@@ -136,6 +136,9 @@ class CKMMatrix:
         J = np.imag(V[0,1] * V[1,2] * np.conj(V[0,2]) * np.conj(V[1,1]))
         return float(J)
     
+    # Theoretical Reference: IRH v21.4 Part 1, §3.2.3
+
+    
     def unitarity_check(self) -> Dict:
         """
         Verify CKM unitarity: V†V = I.
