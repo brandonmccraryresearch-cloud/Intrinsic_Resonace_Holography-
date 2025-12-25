@@ -357,6 +357,8 @@ def get_falsification_tests() -> List[FalsificationTest]:
     -------
     List[FalsificationTest]
         All tests
+    
+    Theoretical Reference: IRH v21.4
     """
     return list(FALSIFICATION_TESTS.values())
 
@@ -398,6 +400,8 @@ def generate_comparison_summary() -> str:
     -------
     str
         Formatted summary
+    
+    Theoretical Reference: IRH v21.4
     """
     lines = []
     lines.append("=" * 100)

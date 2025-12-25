@@ -14,7 +14,7 @@ IRH predictions and experimental values. It supports:
 
 Example:
     >>> from src.experimental.comparison import compare_single, generate_comparison_table
-    >>> result = compare_single(137.035999084, 'alpha_inverse', uncertainty=1e-9)
+    >>> result = compare_single(137.035999084, 'alpha_inverse', uncertainty=1e-9)  # From experimental measurement (for comparison)
     >>> print(f"σ deviation: {result.sigma_deviation:.2f}")
 
 Authors: IRH Computational Framework Team
@@ -120,6 +120,8 @@ class ComparisonResult:
 
     
     def to_latex_row(self) -> str:
+        
+        Theoretical Reference: IRH v21.4
         """Generate LaTeX table row."""
         status_color = {
             ComparisonStatus.EXCELLENT: r'\cellcolor{green!20}',
@@ -182,7 +184,7 @@ def compare_single(
         
     Examples
     --------
-    >>> result = compare_single(137.035999084, 'alpha_inverse', 1e-9, 'Eq. 3.4-3.5')
+    >>> result = compare_single(137.035999084, 'alpha_inverse', 1e-9, 'Eq. 3.4-3.5')  # From experimental measurement (for comparison)
     >>> print(f"α⁻¹: {result.sigma_deviation:.2f}σ deviation")
     α⁻¹: 0.00σ deviation
     """

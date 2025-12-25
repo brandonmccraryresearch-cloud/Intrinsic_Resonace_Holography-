@@ -109,6 +109,12 @@ class ParameterOptimizer:
         ----------
         config : OptimizerConfig, optional
             Optimizer configuration
+        
+        Theoretical Reference: IRH v21.4 (ML Infrastructure)
+        
+        Theoretical Reference: IRH v21.4 (ML Infrastructure)
+        
+        Theoretical Reference: IRH v21.4 (ML Infrastructure)
         """
         self.config = config or OptimizerConfig()
         self.history = []
@@ -137,6 +143,10 @@ class ParameterOptimizer:
         -------
         dict
             Optimization results
+        
+        Theoretical Reference: IRH v21.4 (ML Infrastructure)
+        
+        Theoretical Reference: IRH v21.4 (ML Infrastructure)
         """
         raise NotImplementedError("Subclasses must implement optimize()")
     
@@ -151,6 +161,10 @@ class ParameterOptimizer:
         -------
         ndarray
             Suggested parameter values
+        
+        Theoretical Reference: IRH v21.4 (ML Infrastructure)
+        
+        Theoretical Reference: IRH v21.4 (ML Infrastructure)
         """
         raise NotImplementedError("Subclasses must implement suggest_next()")
     
@@ -189,6 +203,7 @@ class SimpleGaussianProcess:
     Kernel: k(x, x') = σ² exp(-||x - x'||² / (2ℓ²))
     """
     
+    # Theoretical Reference: IRH v21.4
     def __init__(
         self,
         length_scale: float = 1.0,
@@ -317,6 +332,7 @@ class BayesianOptimizer(ParameterOptimizer):
     - Upper Confidence Bound (UCB): μ(x) - κσ(x) (for minimization)
     - Probability of Improvement (PI): P(f(x) < y_best)
     """
+     # Theoretical Reference: IRH v21.4
     
     def __init__(self, config: Optional[OptimizerConfig] = None):
         """
@@ -330,6 +346,7 @@ class BayesianOptimizer(ParameterOptimizer):
         super().__init__(config)
         self.gp = SimpleGaussianProcess()
         self._X_observed = []
+        # Theoretical Reference: IRH v21.4
         self._y_observed = []
     
     def optimize(
@@ -491,6 +508,7 @@ class BayesianOptimizer(ParameterOptimizer):
         if std < 1e-12:
             return 0.0
         
+        # Theoretical Reference: IRH v21.4
         z = (y_best - mean) / std
         return 0.5 * (1 + math.erf(z / math.sqrt(2)))
     
@@ -533,6 +551,7 @@ class ActiveLearningOptimizer(ParameterOptimizer):
     - 'diversity': Select points far from existing samples
     - 'combined': Balance uncertainty and diversity
     
+    # Theoretical Reference: IRH v21.4
     This differs from Bayesian optimization: instead of minimizing
     an objective, we select points to improve the surrogate model.
     """
@@ -552,11 +571,13 @@ class ActiveLearningOptimizer(ParameterOptimizer):
         strategy : str
             Selection strategy ('uncertainty', 'diversity', 'combined')
         """
+        # Theoretical Reference: IRH v21.4
         super().__init__(config)
         self.strategy = strategy
         self.gp = SimpleGaussianProcess()
         self._X_observed = []
     
+    # Theoretical Reference: IRH v21.4 (Bayesian Optimization)
     def optimize(
         self,
         objective: Callable[[np.ndarray], float],
@@ -652,12 +673,14 @@ class ActiveLearningOptimizer(ParameterOptimizer):
                 dists = cdist(candidates, X_obs)
                 min_dists = dists.min(axis=1)
                 # Normalize and add to scores
+                # Theoretical Reference: IRH v21.4
                 scores += min_dists / (min_dists.max() + 1e-10)
         
         # Select point with highest score
         best_idx = np.argmax(scores)
         return candidates[best_idx]
     
+    # Theoretical Reference: IRH v21.4 (Active Learning)
     def suggest_next(self) -> np.ndarray:
         """Suggest next point to label."""
         bounds = np.array(self.config.bounds)

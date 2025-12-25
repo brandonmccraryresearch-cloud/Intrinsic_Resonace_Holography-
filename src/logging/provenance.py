@@ -128,6 +128,8 @@ class ComputationRecord:
     # Theoretical Reference: IRH v21.4
 
     def from_json(cls, json_str: str) -> 'ComputationRecord':
+        
+        Theoretical Reference: IRH v21.4
         """Create from JSON string."""
         return cls.from_dict(json.loads(json_str))
 
@@ -464,6 +466,8 @@ class ProvenanceTracker:
 
     
     def clear(self) -> None:
+        
+        Theoretical Reference: IRH v21.4
         """Clear all records."""
         self._records.clear()
         self._current = None

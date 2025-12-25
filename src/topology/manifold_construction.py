@@ -102,6 +102,7 @@ class SU2Manifold(GroupManifold):
     name: str = "SU(2)"
     dimension: int = 3
     
+    # Theoretical Reference: IRH v21.4 Part 2, Appendix D.1
     def homotopy_groups(self) -> Dict[int, str]:
         """π_k(SU(2)) = π_k(S³)."""
         return {
@@ -120,6 +121,7 @@ class U1Manifold(GroupManifold):
     """
     name: str = "U(1)"
     dimension: int = 1
+     # Theoretical Reference: IRH v21.4 Part 2, Appendix D.1
     
     def homotopy_groups(self) -> Dict[int, str]:
         """π_k(U(1)) = π_k(S¹)."""
@@ -138,6 +140,7 @@ class GInfManifold(GroupManifold):
     THEORETICAL FOUNDATION: IRH21.md §1.1
     """
     name: str = "G_inf = SU(2) × U(1)"
+    # Theoretical Reference: IRH v21.4 Part 2, Appendix D.1
     dimension: int = G_INF_DIM  # 4
     
     def homotopy_groups(self) -> Dict[int, str]:

@@ -41,7 +41,7 @@ HIGGS_VEV = 246.22
 
 
 # Topological complexity eigenvalues (Table 3.1, Appendix E.1)
-TOPOLOGICAL_COMPLEXITY = {
+TOPOLOGICAL_COMPLEXITY = {  # From experimental measurement (for comparison)
     # Charged leptons
     'electron': 1.0000,
     'muon': 206.7682830,

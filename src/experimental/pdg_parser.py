@@ -124,7 +124,7 @@ MUON = Particle(
     symbol=r'\mu^-',
     particle_type=ParticleType.LEPTON,
     mass=ExperimentalValue(
-        value=105.6583755,
+        value=105.6583755,  # From experimental measurement (for comparison)
         uncertainty=0.0000023,
         unit='MeV/c²',
         source='PDG 2024',
@@ -620,6 +620,8 @@ def get_particles_by_type(particle_type: ParticleType) -> List[Particle]:
 
 
 def get_lepton_masses() -> Dict[str, ExperimentalValue]:
+    
+    Theoretical Reference: IRH v21.4
     """Get all lepton masses."""
     return {p.name: p.mass for p in get_particles_by_type(ParticleType.LEPTON)}
 
@@ -634,6 +636,8 @@ def get_quark_masses() -> Dict[str, ExperimentalValue]:
 
 
 def mass_ratio(particle1: str, particle2: str) -> ExperimentalValue:
+    
+    Theoretical Reference: IRH v21.4
     """
     Compute mass ratio m₁/m₂ with uncertainty propagation.
     

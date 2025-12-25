@@ -85,6 +85,10 @@ class SU2Element:
     
     @classmethod
     def from_quaternion(cls, q: Quaternion) -> SU2Element:
+        
+        Theoretical Reference: IRH v21.4 Part 1, §1.1
+        
+        Theoretical Reference: IRH v21.4 Part 1, §1.1
         """Create SU(2) element from quaternion (will be normalized)."""
         return cls(quaternion=q)
     
@@ -92,6 +96,8 @@ class SU2Element:
     # Theoretical Reference: IRH v21.4 Part 1, §1.1
 
     def from_components(cls, w: float, x: float, y: float, z: float) -> SU2Element:
+        
+        Theoretical Reference: IRH v21.4 Part 1, §1.1
         """Create SU(2) element from components (will be normalized)."""
         q = Quaternion(w=w, x=x, y=y, z=z)
         return cls(quaternion=q)
@@ -100,6 +106,8 @@ class SU2Element:
     # Theoretical Reference: IRH v21.4 Part 1, §1.1
 
     def from_axis_angle(cls, axis: NDArray[np.float64], angle: float) -> SU2Element:
+        
+        Theoretical Reference: IRH v21.4 Part 1, §1.1
         """
         Create SU(2) element from axis-angle representation.
         
@@ -153,6 +161,10 @@ class SU2Element:
 
     
     def to_quaternion(self) -> Quaternion:
+        
+        Theoretical Reference: IRH v21.4 Part 1, §1.1
+        
+        Theoretical Reference: IRH v21.4 Part 1, §1.1
         """Extract underlying quaternion."""
         return self.quaternion
     
@@ -164,6 +176,8 @@ class SU2Element:
             U = [[ α, -β̄],
                  [ β,  ᾱ]]
         where α = w + iz, β = y + ix
+        
+        Theoretical Reference: IRH v21.4 Part 1, §1.1
         """
         q = self.quaternion
         alpha = complex(q.w, q.z)
@@ -180,6 +194,10 @@ class SU2Element:
     def inverse(self) -> SU2Element:
         """
         Compute group inverse u⁻¹ = ū (conjugate for unit quaternions).
+        
+        Theoretical Reference: IRH v21.4 Part 1, §1.1
+        
+        Theoretical Reference: IRH v21.4 Part 1, §1.1
         """
         return SU2Element(quaternion=self.quaternion.conjugate())
     
@@ -187,12 +205,16 @@ class SU2Element:
 
     
     def __mul__(self, other: SU2Element) -> SU2Element:
+        
+        Theoretical Reference: IRH v21.4 Part 1, §1.1
         """Group multiplication: u₁ · u₂ via quaternion product."""
         if not isinstance(other, SU2Element):
             return NotImplemented
         return SU2Element(quaternion=self.quaternion * other.quaternion)
     
     def __eq__(self, other: object) -> bool:
+        
+        Theoretical Reference: IRH v21.4 Part 1, §1.1
         """SU(2) equality (note: u and -u represent same rotation in SO(3))."""
         if not isinstance(other, SU2Element):
             return False

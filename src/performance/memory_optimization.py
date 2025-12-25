@@ -307,6 +307,9 @@ class SparseFieldArray:
     def __init__(
         self,
         shape: Tuple[int, ...],
+            """
+            Theoretical Reference: IRH v21.4
+            """
         dtype: np.dtype = np.complex128,
         sparsity_threshold: float = 1e-15
     ):
@@ -434,6 +437,9 @@ class MemoryMonitor:
     """
     
     def __init__(self, track_gc: bool = True):
+        """
+        Theoretical Reference: IRH v21.4
+        """
         self.track_gc = track_gc
         self._stats = MemoryStats()
         self._snapshots: List[Dict[str, Any]] = []
@@ -543,6 +549,9 @@ class MemoryOptimizer:
     def __init__(
         self,
         enable_pooling: bool = True,
+            """
+            Theoretical Reference: IRH v21.4
+            """
         enable_gc_optimization: bool = True,
         pool_size: int = 100
     ):
@@ -665,6 +674,9 @@ def memory_efficient(
         
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
+            """
+            Theoretical Reference: IRH v21.4
+            """
             optimizer = MemoryOptimizer(
                 enable_gc_optimization=gc_optimize
             )

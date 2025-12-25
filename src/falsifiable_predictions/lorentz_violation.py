@@ -496,6 +496,7 @@ def verify_liv_predictions() -> Dict:
     }
 
 
+# Theoretical Reference: IRH v21.4 Part 2, Appendix J
 def compute_cta_sensitivity() -> Dict:
     """
     Compute Cherenkov Telescope Array sensitivity to IRH LIV.

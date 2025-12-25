@@ -190,6 +190,8 @@ class IRHLogger:
         theoretical_ref: Optional[TheoreticalReference] = None,
         **kwargs
     ):
+        
+        Theoretical Reference: IRH v21.4
         """Log initialization event."""
         context = None
         if theoretical_ref:
@@ -368,9 +370,14 @@ class IRHLogger:
 
 
 class IRHFormatter(logging.Formatter):
+    
+    Theoretical Reference: IRH v21.4
     """Custom formatter for IRH logs."""
     
     def __init__(self, include_timestamp: bool = True):
+        """
+        Theoretical Reference: IRH v21.4
+        """
         self.include_timestamp = include_timestamp
         super().__init__()
     

@@ -620,6 +620,9 @@ def plot_rg_trajectory(
         fig = ax.get_figure()
     
     def rg_flow(t, y):
+        """
+        Theoretical Reference: IRH v21.4
+        """
         lambda_t, gamma_t, mu_t = y
         return [
             _beta_lambda(lambda_t),

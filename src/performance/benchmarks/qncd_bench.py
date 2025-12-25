@@ -122,6 +122,9 @@ def benchmark_qncd_single(
         v2 = np.random.rand(1, size)
         
         def bench_fn():
+            """
+            Theoretical Reference: IRH v21.4
+            """
             return vectorized_qncd_distance(v1, v2)
         
         bench_fn.__name__ = f'qncd_single_dim_{size}'
@@ -170,6 +173,9 @@ def benchmark_qncd_batch(
         v2 = np.random.rand(batch_size, vector_dim)
         
         def bench_fn():
+            """
+            Theoretical Reference: IRH v21.4
+            """
             return vectorized_qncd_distance(v1, v2)
         
         bench_fn.__name__ = f'qncd_batch_{batch_size}'
@@ -298,6 +304,10 @@ class QNCDBenchmarkSuite:
         self,
         results: Dict[str, Dict[str, BenchmarkResult]]
     ) -> Dict[str, Any]:
+        
+        Theoretical Reference: IRH v21.4
+        
+        Theoretical Reference: IRH v21.4
         """Get summary statistics."""
         summary = {
             'theoretical_reference': 'IRH v21.1 Appendix A, docs/ROADMAP.md §3.7',

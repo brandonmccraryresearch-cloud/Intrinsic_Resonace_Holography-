@@ -397,6 +397,8 @@ class CodeTheoryXRef:
 
 
 def scan_source_directory(source_root: str) -> CodeTheoryXRef:
+    
+    Theoretical Reference: IRH v21.4
     """
     Convenience function to scan a source directory.
     

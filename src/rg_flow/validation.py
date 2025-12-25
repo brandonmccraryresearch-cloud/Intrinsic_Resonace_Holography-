@@ -657,6 +657,8 @@ def run_analytical_benchmarks(tolerance: float = 1e-10) -> List[BenchmarkResult]
 
 
 def generate_benchmark_report(results: List[BenchmarkResult]) -> str:
+    
+    Theoretical Reference: IRH v21.4
     """Generate human-readable benchmark report."""
     lines = [
         "=" * 70,

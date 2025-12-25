@@ -241,6 +241,9 @@ def benchmark_interaction_action(
         phi = np.random.randn(N, N, N, N) + 1j * np.random.randn(N, N, N, N)
         
         def bench_fn():
+            """
+            Theoretical Reference: IRH v21.4
+            """
             return _compute_interaction_action(phi)
         
         bench_fn.__name__ = f'interaction_N{N}'
@@ -284,6 +287,9 @@ def benchmark_total_action(
         laplacian_coeffs = np.ones((3, 4))
         
         def bench_fn():
+            """
+            Theoretical Reference: IRH v21.4
+            """
             return _compute_total_action(phi, laplacian_coeffs)
         
         bench_fn.__name__ = f'total_N{N}'
@@ -358,6 +364,10 @@ class ActionBenchmarkSuite:
         self,
         results: Dict[str, Dict[str, BenchmarkResult]]
     ) -> Dict[str, Any]:
+        
+        Theoretical Reference: IRH v21.4
+        
+        Theoretical Reference: IRH v21.4
         """Get summary statistics."""
         summary = {
             'theoretical_reference': 'IRH v21.1 §1.1, docs/ROADMAP.md §3.7',

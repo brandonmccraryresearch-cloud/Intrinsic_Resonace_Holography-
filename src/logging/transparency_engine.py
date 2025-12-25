@@ -208,7 +208,7 @@ class TransparencyEngine:
     >>> engine.info("Computing α⁻¹", reference="IRH v21.4 Part 1 §3.2.2, Eq. 3.4")
     >>> engine.step("Step 1: Computing leading order term")
     >>> engine.formula("α⁻¹ = (4π²γ̃*/λ̃*)", variables={'γ̃*': 105.276, 'λ̃*': 52.638})
-    >>> engine.value("α⁻¹_leading", 137.036, uncertainty=1e-6)
+    >>> engine.value("α⁻¹_leading", 137.036, uncertainty=1e-6)  # From experimental measurement (for comparison)
     >>> engine.passed("α⁻¹ computation complete")
     """
     
@@ -351,6 +351,8 @@ class TransparencyEngine:
         ----------
         content : str
             Description of computational step
+        
+        Theoretical Reference: IRH v21.4
         """
         self._emit(MessageType.STEP, content, **metadata)
     

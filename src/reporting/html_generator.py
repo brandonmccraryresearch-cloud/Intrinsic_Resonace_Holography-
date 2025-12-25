@@ -365,6 +365,8 @@ class HTMLGenerator:
         equations: List[Dict[str, Any]],
         collapsible: bool = True
     ) -> None:
+        
+        Theoretical Reference: IRH v21.4 (ML Infrastructure)
         """Add section with theoretical equations."""
         content_parts = []
         

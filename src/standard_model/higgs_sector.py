@@ -280,6 +280,7 @@ class GaugeBosonMasses:
         }
 
 
+# Theoretical Reference: IRH v21.4 Part 1, §3.3
 def compute_higgs_sector() -> HiggsSector:
     """
     Compute complete Higgs sector from IRH theory.

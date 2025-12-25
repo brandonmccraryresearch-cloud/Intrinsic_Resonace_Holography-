@@ -278,6 +278,8 @@ class SimpleNeuralNetwork:
             Activation function ('tanh', 'relu', 'sigmoid')
         seed : int
             Random seed
+        
+        Theoretical Reference: IRH v21.4 (ML Infrastructure)
         """
         self.layer_sizes = layer_sizes
         self.activation_name = activation
@@ -374,6 +376,8 @@ class SimpleNeuralNetwork:
         verbose: bool = True,
         early_stopping: int = 50,
     ) -> Dict[str, Any]:
+        
+        Theoretical Reference: IRH v21.4 (ML Infrastructure)
         """
         Train the network using mini-batch gradient descent.
         
@@ -398,6 +402,8 @@ class SimpleNeuralNetwork:
         -------
         dict
             Training history
+        
+        Theoretical Reference: IRH v21.4 (ML Infrastructure)
         """
         # Handle empty data case
         if len(X) == 0 or len(y) == 0:
@@ -919,6 +925,9 @@ def predict_rg_trajectory(
     t_eval = np.linspace(t_range[0], t_range[1], n_steps)
     
     def rg_system(t, y):
+        """
+        Theoretical Reference: IRH v21.4
+        """
         y_clipped = np.clip(y, 1e-6, 1e6)
         return _compute_betas(y_clipped)
     

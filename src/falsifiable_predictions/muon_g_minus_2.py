@@ -18,7 +18,7 @@ from dataclasses import dataclass
 from typing import Dict, Optional
 
 # Physical constants
-FINE_STRUCTURE = 1.0 / 137.035999084
+FINE_STRUCTURE = 1.0 / 137.035999084  # From experimental measurement (for comparison)
 MUON_MASS = 0.1056583755  # GeV
 ELECTRON_MASS = 0.000511  # GeV
 

@@ -136,6 +136,8 @@ class NeutrinoMasses:
         -------
         dict
             Cosmological comparison
+        
+        Theoretical Reference: IRH v21.4
         """
         # Current cosmological upper bounds
         planck_bound = 0.12  # eV (Planck 2018 + BAO)
@@ -273,6 +275,7 @@ class MajoranaNature:
         }
 
 
+# Theoretical Reference: IRH v21.4 Part 1, §3.2.4
 def compute_neutrino_masses() -> NeutrinoMasses:
     """
     Compute neutrino masses from IRH theory.
@@ -335,6 +338,7 @@ def verify_neutrino_sector() -> Dict:
         'theoretical_reference': 'IRH v21.1 Manuscript Part 1 §3.2.4, Appendix E.3',
     }
 
+ # Theoretical Reference: IRH v21.4 Part 1, §3.2.4
 
 def neutrino_hierarchy() -> str:
     """

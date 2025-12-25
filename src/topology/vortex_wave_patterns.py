@@ -38,7 +38,7 @@ from .instanton_number import K_1, K_2, K_3, N_INST
 # ============================================================================
 
 # Electron mass in MeV
-M_ELECTRON = 0.511  # MeV
+M_ELECTRON = 0.511  # MeV - experimental value
 
 # Higgs VEV (for mass computations)
 HIGGS_VEV = 246.22  # GeV

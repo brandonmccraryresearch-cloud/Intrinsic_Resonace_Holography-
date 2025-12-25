@@ -191,6 +191,9 @@ def benchmark_fixed_point_search(
                   np.random.randn(n, 3) * 10
         
         def bench_fn():
+            """
+            Theoretical Reference: IRH v21.4
+            """
             return parallel_fixed_point_search(initial, max_iter=100)
         
         bench_fn.__name__ = f'fixed_point_search_{n}'
@@ -316,6 +319,10 @@ class RGFlowBenchmarkSuite:
         self,
         results: Dict[str, Dict[str, BenchmarkResult]]
     ) -> Dict[str, Any]:
+        
+        Theoretical Reference: IRH v21.4
+        
+        Theoretical Reference: IRH v21.4
         """Get summary statistics."""
         summary = {
             'theoretical_reference': 'IRH v21.1 §1.2, docs/ROADMAP.md §3.7',

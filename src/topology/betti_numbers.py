@@ -94,6 +94,8 @@ class GaugeGroupDecomposition:
 
 @dataclass
 class ResonanceQuotient:
+    
+    Theoretical Reference: IRH v21.4
     """
     The resonance quotient M³ = G_inf / Γ_R.
     

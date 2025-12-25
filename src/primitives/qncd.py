@@ -155,6 +155,8 @@ def compute_QNCD(
     n_bits: int = 64,
     compressor: Callable[[bytes], bytes] = compress_zlib
 ) -> float:
+    
+    Theoretical Reference: IRH v21.4
     """
     Compute Quantum Normalized Compression Distance between group elements.
     

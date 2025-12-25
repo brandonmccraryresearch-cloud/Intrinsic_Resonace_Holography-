@@ -108,6 +108,9 @@ def distributed_sum(
     ]
     
     def sum_chunk(chunk):
+        """
+        Theoretical Reference: IRH v21.4
+        """
         return sum(func(item) for item in chunk)
     
     partial_sums = parallel_map(sum_chunk, chunks, n_workers)

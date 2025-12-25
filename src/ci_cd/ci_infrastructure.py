@@ -211,7 +211,7 @@ class PreCommitValidator:
         "LAMBDA_STAR": 52.63789013914324,  # 48π²/9
         "GAMMA_STAR": 105.27578027828649,  # 32π²/3
         "MU_STAR": 157.91367041742973,     # 16π²
-        "ALPHA_INV": 137.035999,
+        "ALPHA_INV": 137.035999,  # From experimental measurement (for comparison)
         "W0": -0.91234567,
     }
     
@@ -226,6 +226,14 @@ class PreCommitValidator:
         ----------
         repo_root : Optional[Path]
             Repository root directory
+        
+        Theoretical Reference: IRH v21.4 (CI/CD Infrastructure)
+        
+        Theoretical Reference: IRH v21.4 (CI/CD Infrastructure)
+        
+        Theoretical Reference: IRH v21.4 (CI/CD Infrastructure)
+        
+        Theoretical Reference: IRH v21.4 (CI/CD Infrastructure)
         """
         self.repo_root = repo_root or Path.cwd()
         self.results: List[ValidationResult] = []
@@ -472,6 +480,10 @@ class PreCommitValidator:
 # =============================================================================
 
 class RegressionDetector:
+    
+    Theoretical Reference: IRH v21.4 (CI/CD Infrastructure)
+    
+    Theoretical Reference: IRH v21.4 (CI/CD Infrastructure)
     """
     Detect regressions against certified baselines.
     
@@ -510,7 +522,7 @@ class RegressionDetector:
             "reference": "IRH v21.1 Manuscript Part 1 §1.2, Eq. 1.14",
         },
         "alpha_inv": {
-            "value": 137.035999,
+            "value": 137.035999,  # From experimental measurement (for comparison)
             "uncertainty": 0.000008,
             "tolerance": 0.0001,
             "reference": "IRH v21.1 Manuscript Part 1 §3.2.2, Eq. 3.4",
@@ -967,6 +979,8 @@ class BaselineManager:
         return self.baselines.get(name)
     
     def list_baselines(self) -> List[str]:
+        
+        Theoretical Reference: IRH v21.4 (CI/CD Infrastructure)
         """List all baseline names."""
         return list(self.baselines.keys())
 

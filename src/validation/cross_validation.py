@@ -53,6 +53,8 @@ class ConvergenceResult:
         return self.relative_error < threshold and self.convergence_rate > 0
     
     def to_dict(self) -> Dict[str, Any]:
+        
+        Theoretical Reference: IRH v21.4
         """Export to dictionary for serialization."""
         return {
             "observable": self.observable_name,
@@ -91,6 +93,8 @@ class CrossValidationResult:
         return self.relative_difference < self.threshold
     
     def to_dict(self) -> Dict[str, Any]:
+        
+        Theoretical Reference: IRH v21.4
         """Export to dictionary for serialization."""
         return {
             "computation": self.computation_name,
@@ -128,6 +132,10 @@ class ConvergenceAnalysis:
         self.results: List[ConvergenceResult] = []
     
     def _log(self, message: str) -> None:
+        
+        Theoretical Reference: IRH v21.4
+        
+        Theoretical Reference: IRH v21.4
         """Log message if verbose."""
         if self.verbose:
             print(f"[CONVERGENCE] {message}")

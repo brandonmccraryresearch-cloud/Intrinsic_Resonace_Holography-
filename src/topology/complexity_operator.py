@@ -522,6 +522,8 @@ def find_all_critical_points(
     engine.step("Step 1: Global search via differential evolution")
     
     def objective(K_f_array):
+        
+        Theoretical Reference: IRH v21.4
         """Objective: minimize |gradient|²"""
         K_f = K_f_array[0]
         if K_f <= 0:

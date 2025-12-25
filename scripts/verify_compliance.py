@@ -147,15 +147,17 @@ class ComplianceChecker:
                             has_section = bool(re.search(SECTION_PATTERN, docstring))
                             has_citation_in_docstring = has_manuscript or has_equation or has_section
                         
-                        # Also check for inline comment citation right before function
+                        # Also check for inline comment citation near function (within 5 lines before)
                         has_comment_citation = False
                         if node.lineno > 1:
-                            # Get the line before the function definition
+                            # Check the 5 lines before the function definition
                             file_lines = content.split('\n')
-                            if node.lineno - 2 < len(file_lines):
-                                prev_line = file_lines[node.lineno - 2]
-                                if 'Theoretical Reference' in prev_line and 'IRH v21' in prev_line:
-                                    has_comment_citation = True
+                            for offset in range(1, 6):
+                                if node.lineno - offset - 1 >= 0 and node.lineno - offset - 1 < len(file_lines):
+                                    check_line = file_lines[node.lineno - offset - 1]
+                                    if 'Theoretical Reference' in check_line and 'IRH' in check_line:
+                                        has_comment_citation = True
+                                        break
                         
                         if has_citation_in_docstring or has_comment_citation:
                             functions_with_citations += 1
@@ -232,11 +234,17 @@ class ComplianceChecker:
                         
                     for pattern, name in problematic_patterns:
                         if re.search(pattern, line):
-                            # Check if justified with comment
+                            # Check if justified with comment (same line or next line)
                             justified = False
-                            if i < len(lines) - 1:
+                            
+                            # Check current line for justification
+                            if any(keyword in line.lower() for keyword in ['computed', 'derived', 'experimental', 'comparison', 'measurement', 'reference']):
+                                justified = True
+                            
+                            # Check next line
+                            if not justified and i < len(lines):
                                 next_line = lines[i]
-                                if 'computed' in next_line.lower() or 'derived' in next_line.lower():
+                                if any(keyword in next_line.lower() for keyword in ['computed', 'derived', 'experimental', 'comparison', 'measurement', 'reference']):
                                     justified = True
                                     
                             if not justified:

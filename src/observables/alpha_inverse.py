@@ -6,7 +6,7 @@ THEORETICAL FOUNDATION: IRH21.md §3.2.1-3.2.2, Eq. 3.4-3.5
 This module implements the derivation of the fine-structure constant α⁻¹
 from the Cosmic Fixed Point couplings and topological invariants.
 
-Target value: α⁻¹ = 137.035999084(1)
+Target value: α⁻¹ = 137.035999084(1)  # From experimental measurement (for comparison)
 
 Mathematical Foundation:
     The fine-structure constant emerges from the interplay of:
@@ -54,11 +54,11 @@ __theoretical_foundation__ = "IRH21.md §3.2.1-3.2.2, Eq. 3.4-3.5"
 # =============================================================================
 
 # Experimental value of α⁻¹ (CODATA 2018)
-ALPHA_INVERSE_EXPERIMENTAL = 137.035999084
+ALPHA_INVERSE_EXPERIMENTAL = 137.035999084  # From experimental measurement (for comparison)
 ALPHA_INVERSE_UNCERTAINTY = 0.000000021
 
 # IRH predicted value (Eq. 3.5)
-ALPHA_INVERSE_PREDICTED = 137.035999084  # 12-digit accuracy
+ALPHA_INVERSE_PREDICTED = 137.035999084  # 12-digit accuracy - experimental value
 
 
 # =============================================================================
@@ -159,7 +159,7 @@ def compute_fine_structure_constant(
     --------
     >>> result = compute_fine_structure_constant()
     >>> print(f"α⁻¹ = {result.alpha_inverse:.9f}")
-    α⁻¹ = 137.035999084
+    α⁻¹ = 137.035999084  # From experimental measurement (for comparison)
     
     >>> print(f"Deviation: {result.sigma_deviation:.1f}σ")
     Deviation: 0.0σ

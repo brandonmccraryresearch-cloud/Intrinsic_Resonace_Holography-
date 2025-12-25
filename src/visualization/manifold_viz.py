@@ -516,6 +516,7 @@ def plot_g_inf_product(**kwargs) -> Tuple[Figure, Axes3D]:
     return viz.plot_g_inf_product(**kwargs)
 
 
+# Theoretical Reference: IRH v21.4 Part 1, §2.2
 def plot_geodesics(**kwargs) -> Tuple[Figure, Axes3D]:
     """
     Visualize geodesics on S³.

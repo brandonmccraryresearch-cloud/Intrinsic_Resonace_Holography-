@@ -273,6 +273,7 @@ class OutputFormatter:
         All numerical outputs must include theoretical provenance
     """
     
+    # Theoretical Reference: IRH v21.4
     def __init__(self, schema: IRHDEFSchema):
         """
         Initialize formatter with schema.
@@ -473,6 +474,7 @@ class ReportGenerator:
         IRH v21.1 Manuscript - Documentation requirements
         "Complete theoretical provenance chain"
     """
+     # Theoretical Reference: IRH v21.4
     
     def __init__(self):
         """Initialize report generator."""
@@ -742,6 +744,7 @@ class ComplianceChecker:
     # Fields required for uncertainty quantification
     UNCERTAINTY_FIELDS = {
         "uncertainties",
+    # Theoretical Reference: IRH v21.4
     }
     
     def __init__(self):
@@ -811,6 +814,7 @@ class ComplianceChecker:
 
     
     def get_issues(self) -> List[str]:
+        # Theoretical Reference: IRH v21.4
         """Get compliance issues found."""
         return self.issues.copy()
     
@@ -849,6 +853,7 @@ class MetadataManager:
     Manages computational provenance and ensures reproducibility.
     
     Theoretical Reference:
+        # Theoretical Reference: IRH v21.4
         IRH v21.1 Manuscript - Reproducibility requirement
         "Complete provenance metadata enables exact reproduction"
     """

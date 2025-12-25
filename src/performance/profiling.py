@@ -470,6 +470,8 @@ def create_profiler(
     enable_memory: bool = True,
     enable_call_graph: bool = False
 ) -> Profiler:
+    
+    Theoretical Reference: IRH v21.4
     """
     Create and register a profiler.
     
@@ -595,6 +597,9 @@ def time_function(func: Callable[..., T]) -> Callable[..., Tuple[T, TimingResult
     """
     @functools.wraps(func)
     def wrapper(*args, **kwargs) -> Tuple[T, TimingResult]:
+        """
+        Theoretical Reference: IRH v21.4
+        """
         start = time.perf_counter_ns()
         result = func(*args, **kwargs)
         elapsed = time.perf_counter_ns() - start
@@ -638,6 +643,9 @@ def memory_profile(func: Callable[..., T]) -> Callable[..., Tuple[T, MemoryResul
     """
     @functools.wraps(func)
     def wrapper(*args, **kwargs) -> Tuple[T, MemoryResult]:
+        """
+        Theoretical Reference: IRH v21.4
+        """
         tracemalloc.start()
         result = func(*args, **kwargs)
         current, peak = tracemalloc.get_traced_memory()

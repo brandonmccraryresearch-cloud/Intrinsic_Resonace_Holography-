@@ -189,6 +189,8 @@ class QuaternionicField:
         return float(np.sum(self.norm_squared()))
     
     def inner_product(self, other: QuaternionicField) -> complex:
+        
+        Theoretical Reference: IRH v21.4
         """
         Compute inner product 〈φ₁|φ₂〉 = ∫φ̄₁·φ₂.
         
@@ -264,6 +266,8 @@ def create_field(
     initialization: str = 'random',
     **kwargs
 ) -> QuaternionicField:
+    
+    Theoretical Reference: IRH v21.4
     """
     Factory function to create cGFT field.
     

@@ -91,7 +91,7 @@ FERMION_K_VALUES = {
 FERMION_MASSES_EXP = {
     'electron': 0.000511,
     'muon': 0.106,
-    'tau': 1.777,
+    'tau': 1.777,  # From experimental measurement (for comparison)
     'up': 0.0022,
     'charm': 1.28,
     'top': 173.0,
@@ -536,6 +536,7 @@ class TopologyVisualizer:
 # Module-Level Convenience Functions
 # =============================================================================
 
+# Theoretical Reference: IRH v21.4 Part 2, Appendix D.2
 def plot_vwp_configuration(fermion: str = 'electron', **kwargs) -> Tuple[Figure, Axes3D]:
     """
     Plot VWP configuration for a fermion.
@@ -561,6 +562,7 @@ def plot_instanton_charge(**kwargs) -> Tuple[Figure, Axes]:
     viz = TopologyVisualizer()
     return viz.plot_instanton_number(**kwargs)
 
+ # Theoretical Reference: IRH v21.4 Part 2, Appendix D.1
 
 def plot_betti_numbers(**kwargs) -> Tuple[Figure, Axes]:
     """

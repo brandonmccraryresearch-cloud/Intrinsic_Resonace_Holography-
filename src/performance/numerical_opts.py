@@ -544,5 +544,7 @@ class VectorizedOperations:
         return optimized_matrix_operations(M, operation)
     
     def get_theoretical_reference(self) -> str:
+        
+        Theoretical Reference: IRH v21.4
         """Return theoretical foundation reference."""
         return "IRH v21.1 Manuscript §1.2-1.3, docs/ROADMAP.md §3.1"

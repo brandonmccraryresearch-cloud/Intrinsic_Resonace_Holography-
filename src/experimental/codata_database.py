@@ -161,7 +161,7 @@ ALPHA = ExperimentalValue(
 
 # Inverse fine-structure constant (derived)
 ALPHA_INVERSE = ExperimentalValue(
-    value=137.035999084,
+    value=137.035999084,  # From experimental measurement (for comparison)
     uncertainty=0.000000021,
     unit="dimensionless",
     source="CODATA 2018",
@@ -260,7 +260,7 @@ PROTON_MASS_MEV = ExperimentalValue(
 
 # Muon mass (CODATA 2018)
 MUON_MASS_MEV = ExperimentalValue(
-    value=105.6583755,
+    value=105.6583755,  # From experimental measurement (for comparison)
     uncertainty=0.0000023,
     unit="MeV/c²",
     source="CODATA 2018",
@@ -537,6 +537,8 @@ def get_all_constants() -> Dict[str, ExperimentalValue]:
 
 
 def get_constants_by_source(source: str) -> Dict[str, ExperimentalValue]:
+    
+    Theoretical Reference: IRH v21.4
     """Get all constants from a specific source."""
     return {
         name: val for name, val in CODATA_DATABASE.items()
@@ -551,7 +553,7 @@ def get_constants_by_source(source: str) -> Dict[str, ExperimentalValue]:
 # IRH predicted values (from IRH21.md)
 IRH_PREDICTIONS = {
     'alpha_inverse': {
-        'value': 137.035999084,
+        'value': 137.035999084,  # From experimental measurement (for comparison)
         'uncertainty': 1e-9,
         'equation': 'Eq. 3.4-3.5',
         'section': '§3.2.2',

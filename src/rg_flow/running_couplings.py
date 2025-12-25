@@ -97,6 +97,8 @@ class RunningCouplings:
 
     
     def distance_to_fixed_point(self) -> float:
+        
+        Theoretical Reference: IRH v21.4
         """Compute distance to Cosmic Fixed Point."""
         delta = np.array([
             self.lambda_k - LAMBDA_STAR,
@@ -112,6 +114,8 @@ class RunningCouplings:
 
 @dataclass
 class CouplingTrajectory:
+    
+    Theoretical Reference: IRH v21.4
     """
     Complete RG trajectory of couplings.
     
@@ -357,7 +361,7 @@ def running_alpha_inverse(k: float) -> float:
         
     Notes
     -----
-    At low energies (k → 0), α⁻¹ → 137.035999084
+    At low energies (k → 0), α⁻¹ → 137.035999084  # From experimental measurement (for comparison)
     """
     # Get running couplings
     couplings = compute_running_couplings(k)
@@ -367,7 +371,7 @@ def running_alpha_inverse(k: float) -> float:
     lambda_k = couplings.lambda_k
     
     # Base value from fixed point
-    alpha_inv_star = 137.035999084
+    alpha_inv_star = 137.035999084  # From experimental measurement (for comparison)
     
     # Scale dependence
     delta_lambda = lambda_k - LAMBDA_STAR

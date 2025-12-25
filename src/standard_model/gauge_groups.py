@@ -398,6 +398,8 @@ class GaugeCouplingUnification:
         -------
         dict
             Unification test results
+        
+        Theoretical Reference: IRH v21.4
         """
         scales = [91.2, 1000, 1e6, 1e12, 1e16, self.M_star]
         
@@ -424,6 +426,7 @@ class GaugeCouplingUnification:
         }
 
 
+# Theoretical Reference: IRH v21.4 Part 1, §3.1
 def compute_gauge_coupling_running() -> GaugeCouplingUnification:
     """
     Compute gauge coupling running from IRH theory.

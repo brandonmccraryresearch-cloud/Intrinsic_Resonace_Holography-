@@ -113,6 +113,8 @@ class DataEntry:
 
 
 class DataCatalog:
+    
+    Theoretical Reference: IRH v21.4
     """
     Unified experimental data catalog.
     
@@ -142,7 +144,7 @@ class DataCatalog:
     
     >>> alpha = catalog.get('alpha_inverse')
     >>> print(f"α⁻¹ = {alpha.value:.9f}")
-    α⁻¹ = 137.035999084
+    α⁻¹ = 137.035999084  # From experimental measurement (for comparison)
     """
     
     # Theoretical Reference: IRH v21.4
@@ -308,6 +310,8 @@ class DataCatalog:
 
     
     def add(self, key: str, value: ExperimentalValue, category: str, tags: List[str] = None):
+        
+        Theoretical Reference: IRH v21.4
         """
         Add a new entry to the catalog.
         
