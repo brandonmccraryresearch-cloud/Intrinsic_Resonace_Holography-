@@ -10,6 +10,7 @@ This test suite verifies that the updated `fermion_masses.py` module:
 
 import pytest
 import math
+from unittest.mock import patch, MagicMock
 from src.standard_model.fermion_masses import (
     compute_fermion_mass,
     yukawa_coupling,
@@ -121,5 +122,36 @@ def test_no_hardcoded_usage():
     """
     Critical Test: Ensure that the computation actually calls the complexity operator
     and doesn't just read from a dictionary.
+    
+    This test verifies that compute_fermion_mass() genuinely invokes
+    get_topological_complexity() rather than bypassing it by reading from
+    a hardcoded dictionary. We use mock/spy techniques to verify the function
+    call chain.
     """
-    pass
+    # Use patch to spy on the get_topological_complexity function
+    with patch('src.standard_model.fermion_masses.get_topological_complexity', 
+               wraps=get_topological_complexity) as mock_complexity:
+        # Call compute_fermion_mass
+        result = compute_fermion_mass('electron', verbosity=0)
+        
+        # Verify that get_topological_complexity was actually called
+        mock_complexity.assert_called_once()
+        
+        # Verify it was called with the correct fermion name
+        call_args = mock_complexity.call_args
+        assert call_args[0][0] == 'electron', "get_topological_complexity should be called with fermion name"
+        
+        # Verify the result contains the computed K_f value
+        assert 'K_f' in result, "Result should contain computed K_f value"
+        assert result['K_f'] > 0, "K_f should be positive"
+        
+    # Additional test: Verify that if we mock the complexity operator to return
+    # a different value, it affects the final mass calculation
+    test_K_f = 999.0  # Arbitrary test value
+    with patch('src.standard_model.fermion_masses.get_topological_complexity', 
+               return_value=test_K_f) as mock_complexity:
+        result = compute_fermion_mass('electron', verbosity=0)
+        
+        # Verify the mocked value was used
+        assert result['K_f'] == test_K_f, "compute_fermion_mass should use the value from get_topological_complexity"
+        mock_complexity.assert_called_once_with('electron', verbosity=0)
