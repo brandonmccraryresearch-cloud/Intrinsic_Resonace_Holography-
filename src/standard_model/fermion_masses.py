@@ -27,6 +27,10 @@ from typing import Dict, Optional
 
 import numpy as np
 
+# Import required functions from other modules
+from src.topology.complexity_operator import get_topological_complexity
+from src.standard_model.yukawa_rg_running import compute_yukawa_rg_running
+
 __version__ = "21.0.0"
 __theoretical_foundation__ = "IRH v21.1 Manuscript Part 1 §3.2, Eq. 3.6"
 
@@ -69,6 +73,12 @@ TOPOLOGICAL_COMPLEXITY = {  # From experimental measurement (for comparison)
     'nu_mu': 8.6e-11,
     'nu_tau': 1.0e-9,
 }
+
+# Reference values for topological complexity (exported for imports)
+TOPOLOGICAL_COMPLEXITY_REFERENCE = TOPOLOGICAL_COMPLEXITY
+
+# List of valid fermion generations
+FERMION_GENERATIONS = list(TOPOLOGICAL_COMPLEXITY.keys())
 
 
 def compute_fermion_mass(
@@ -149,7 +159,7 @@ def compute_fermion_mass(
             k_final=ELECTROWEAK_SCALE,
             verbosity='silent'
         )
-        R_Y = rg_result['R_Y']
+        R_Y = rg_result.R_Y  # Access attribute, not dictionary key
         R_Y_source = f"RG running {PLANCK_SCALE:.2e} → {ELECTROWEAK_SCALE:.2f} GeV"
     else:
         R_Y = 1.0  # No RG running
