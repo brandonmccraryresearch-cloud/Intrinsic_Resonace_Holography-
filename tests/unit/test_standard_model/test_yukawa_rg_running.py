@@ -232,7 +232,7 @@ class TestFermionMassWithRG:
         # m_mu / m_e approx K_mu / K_e approx 206
         ratio = result_large['mass_GeV'] / result_small['mass_GeV']
         # Check it's in a reasonable range around 206
-        assert 150 < ratio < 250  # Muon is ~206x heavier than electron
+        assert 180 < ratio < 230  # Muon is ~206x heavier than electron
     
     def test_theoretical_reference(self):
         """Test that theoretical reference is correct."""
