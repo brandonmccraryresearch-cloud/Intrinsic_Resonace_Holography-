@@ -1,4 +1,4 @@
-# Intrinsic Resonance Holography v21.1: Computational Framework
+# Intrinsic Resonance Holography v21.4: Computational Framework
 
 <div align="right">
 
@@ -19,8 +19,8 @@
 
 | Document | Description |
 |----------|-------------|
-| [**IRH v21.1 Manuscript Part 1**](./Intrinsic_Resonance_Holography-v21.1-Part1.md) | 📖 Canonical theoretical manuscript - Foundation & Framework (Sections 1-4) |
-| [**IRH v21.1 Manuscript Part 2**](./Intrinsic_Resonance_Holography-v21.1-Part2.md) | 📖 Canonical theoretical manuscript - QM, Appendices & Predictions (Sections 5-8 + Appendices A-K) |
+| [**IRH v21.4 Manuscript Part 1**](./Intrinsic-Resonance-Holography-21.4-Part1.md) | 📖 Canonical theoretical manuscript - Foundation & Framework (Sections 1-4) |
+| [**IRH v21.4 Manuscript Part 2**](./Intrinsic-Resonance-Holography-21.4-Part2.md) | 📖 Canonical theoretical manuscript - QM, Appendices & Predictions (Sections 5-8 + Appendices A-K) |
 | [**Technical Reference Manual**](./docs/TECHNICAL_REFERENCE.md) | Exhaustive specifications for all modules, APIs, and implementations |
 | [**Continuation Guide**](./docs/CONTINUATION_GUIDE.md) | Next phases, priority tasks, and implementation roadmap |
 | [**Theoretical Correspondence Map**](./THEORETICAL_CORRESPONDENCE.md) | Bidirectional mapping between code and manuscript equations |
@@ -33,9 +33,9 @@
 
 ## 🎯 Overview
 
-**Intrinsic Resonance Holography (IRH) v21.1** is a unified theory deriving all fundamental physical laws, constants, and observable phenomena from axiomatically minimal quantum-informational principles. This repository provides the complete computational implementation, achieving:
+**Intrinsic Resonance Holography (IRH) v21.4** is a unified theory deriving all fundamental physical laws, constants, and observable phenomena from axiomatically minimal quantum-informational principles. This repository provides the complete computational implementation, achieving:
 
-- ✅ **100% theoretical coverage**: All 17 critical equations from the IRH v21.1 Manuscript ([Part 1](./Intrinsic_Resonance_Holography-v21.1-Part1.md), [Part 2](./Intrinsic_Resonance_Holography-v21.1-Part2.md)) implemented
+- ✅ **100% theoretical coverage**: All 17 critical equations from the IRH v21.4 Manuscript ([Part 1](./Intrinsic-Resonance-Holography-21.4-Part1.md), [Part 2](./Intrinsic-Resonance-Holography-21.4-Part2.md)) implemented
 - ✅ **970+ passing tests**: Comprehensive validation across 6 implementation phases + optimization tiers + ML
 - ✅ **Web interface**: FastAPI backend + React frontend with interactive visualizations
 - ✅ **Desktop application**: User-friendly GUI with transparency engine and auto-updates

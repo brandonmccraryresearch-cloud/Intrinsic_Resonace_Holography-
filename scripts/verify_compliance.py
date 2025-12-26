@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-IRH v21.1 Compliance Verification Script
+IRH v21.4 Compliance Verification Script
 
 This script verifies that code changes comply with the standards in:
 - .github/copilot-instructions.md (single source of truth)
@@ -40,7 +40,7 @@ SECTION_PATTERN = r'§\d+\.\d+(\.\d+)?'
 
 
 class ComplianceChecker:
-    """Verify code compliance with IRH v21.1 standards."""
+    """Verify code compliance with IRH v21.4 standards."""
     
     def __init__(self, repo_root: Path, verbose: bool = False):
         self.repo_root = repo_root
@@ -89,7 +89,7 @@ class ComplianceChecker:
             print(f"{GREEN}✓{RESET} {message}")
     
     def check_manuscript_citations(self) -> bool:
-        """Check that all functions cite IRH v21.1 manuscript."""
+        """Check that all functions cite IRH v21.4 manuscript."""
         self.print_header("1. Manuscript Citation Verification")
         
         src_dir = self.repo_root / "src"
@@ -409,17 +409,17 @@ class ComplianceChecker:
         print(f"\n{BOLD}Status:{RESET} ", end='')
         if len(self.violations) == 0:
             print(f"{GREEN}{BOLD}✓ COMPLIANT{RESET}")
-            print(f"\n{GREEN}Code meets IRH v21.1 standards. Ready to commit.{RESET}")
+            print(f"\n{GREEN}Code meets IRH v21.4 standards. Ready to commit.{RESET}")
             return True
         else:
             print(f"{RED}{BOLD}✗ NON-COMPLIANT{RESET}")
-            print(f"\n{RED}Code violates IRH v21.1 standards. Fix violations before committing.{RESET}")
+            print(f"\n{RED}Code violates IRH v21.4 standards. Fix violations before committing.{RESET}")
             return False
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Verify IRH v21.1 compliance',
+        description='Verify IRH v21.4 compliance',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
@@ -439,7 +439,7 @@ Examples:
     
     print(f"{BOLD}{MAGENTA}")
     print("╔═══════════════════════════════════════════════════════════════════════════╗")
-    print("║                    IRH v21.1 COMPLIANCE VERIFICATION                      ║")
+    print("║                    IRH v21.4 COMPLIANCE VERIFICATION                      ║")
     print("║                                                                           ║")
     print("║  Ensuring computational engine meets theoretical correspondence mandate   ║")
     print("╚═══════════════════════════════════════════════════════════════════════════╝")
