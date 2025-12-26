@@ -8,9 +8,10 @@ comparable values from the theoretical framework. It computes physical
 constants and compares them with experimental data.
 
 Key Observables:
-    - Eq. 3.4-3.5: Fine-structure constant α⁻¹ = 137.035999084(1)  # From experimental measurement (for comparison)
+    - Eq. 3.4-3.5: Fine-structure constant α⁻¹ (computed from theory)
     - Eq. 1.16: Universal exponent C_H = 0.045935703598...
     - Tables 3.1, 3.2: Complete physical constants
+    - CODATA 2022: α⁻¹ = 137.035999177(21) (experimental reference)
 
 Modules:
     alpha_inverse: Fine-structure constant (Eq. 3.4-3.5) ✓ COMPLETE
@@ -28,8 +29,13 @@ Last Updated: December 2025 (synchronized with IRH21.md v21.0)
 __version__ = "21.0.0"
 __theoretical_foundation__ = "IRH21.md §3.2"
 
-# Predicted fine-structure constant inverse (Eq. 3.5)
-ALPHA_INVERSE_PREDICTED = 137.035999084  # 12-digit accuracy target - experimental value
+# Experimental fine-structure constant inverse (CODATA 2022)
+# Import from codata_database for compliance
+try:
+    from src.experimental.codata_database import ALPHA_INVERSE as _ALPHA_INV_EXP
+    ALPHA_INVERSE_EXPERIMENTAL = _ALPHA_INV_EXP.value
+except ImportError:
+    ALPHA_INVERSE_EXPERIMENTAL = 137.035999177  # CODATA 2022 fallback
 
 # Universal exponent (Eq. 1.16)
 C_H = 0.045935703598

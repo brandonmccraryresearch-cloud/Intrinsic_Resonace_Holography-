@@ -62,7 +62,7 @@ class TestLatexGenerator:
         gen = LaTeXGenerator()
         gen.add_result(
             name="alpha_inverse",
-            value=137.035999084,
+            value=137.035999177,  # CODATA 2022
             uncertainty=1e-9,
             unit="",
             theoretical_ref="§3.2"
@@ -97,11 +97,11 @@ class TestObservableResult:
         """Should create observable result."""
         result = ObservableResult(
             name="alpha_inverse",
-            value=137.035999084,
+            value=137.035999177,  # CODATA 2022
             uncertainty=1e-9,
             unit=""
         )
-        assert result.value == 137.035999084
+        assert result.value == 137.035999177
     
     def test_to_latex_row(self):
         """Should generate LaTeX table row."""

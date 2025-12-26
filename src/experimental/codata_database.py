@@ -556,8 +556,8 @@ def get_constants_by_source(source: str) -> Dict[str, ExperimentalValue]:
 # IRH predicted values (from IRH21.md)
 IRH_PREDICTIONS = {
     'alpha_inverse': {
-        'value': 137.035999084,  # From experimental measurement (for comparison)
-        'uncertainty': 1e-9,
+        'value': 138.080154407,  # Computed value (with approximations)
+        'uncertainty': 1.044,  # Discrepancy from experiment
         'equation': 'Eq. 3.4-3.5',
         'section': '§3.2.2',
     },

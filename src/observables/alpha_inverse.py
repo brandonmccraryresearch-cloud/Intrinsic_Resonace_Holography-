@@ -187,10 +187,10 @@ def compute_fine_structure_constant(
     --------
     >>> result = compute_fine_structure_constant()
     >>> print(f"α⁻¹ = {result.alpha_inverse:.9f}")
-    α⁻¹ = 137.035999084  # From experimental measurement (for comparison)
+    α⁻¹ = 138.080154407  # Computed value (approximations)
     
     >>> print(f"Deviation: {result.sigma_deviation:.1f}σ")
-    Deviation: 0.0σ
+    Deviation: 49.7σ  # Large due to approximations in G_QNCD and V
     """
     if fixed_point is None:
         fixed_point = find_fixed_point()

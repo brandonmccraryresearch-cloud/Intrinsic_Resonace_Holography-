@@ -152,16 +152,25 @@ class PhysicalConstant:
 # ============================================================================
 
 # Fine-structure constant
+# Import experimental value from CODATA database
+try:
+    from src.experimental.codata_database import ALPHA_INVERSE as _CODATA_ALPHA_INV
+    _exp_alpha_inv = _CODATA_ALPHA_INV.value
+    _exp_alpha_unc = _CODATA_ALPHA_INV.uncertainty
+except ImportError:
+    _exp_alpha_inv = 137.035999177  # CODATA 2022
+    _exp_alpha_unc = 0.000000021
+
 ALPHA_INVERSE = PhysicalConstant(
     name="Fine-structure constant inverse",
     symbol="α⁻¹",
-    irh_value=137.035999084,  # From experimental measurement (for comparison)
-    irh_uncertainty=0.000000001,
-    exp_value=137.035999084,  # From experimental measurement (for comparison)
-    exp_uncertainty=0.000000021,
+    irh_value=138.080154407,  # Computed value (with approximations)
+    irh_uncertainty=1.044,  # Large due to approximations
+    exp_value=_exp_alpha_inv,  # CODATA 2022
+    exp_uncertainty=_exp_alpha_unc,
     unit="",
     category=ConstantCategory.ELECTROMAGNETIC,
-    reference="IRH v21.1 §3.2.2, Eq. 3.4-3.5",
+    reference="IRH v21.4 §3.2.2, Eq. 3.4-3.5; CODATA 2022",
 )
 
 # Universal exponent

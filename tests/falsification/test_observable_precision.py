@@ -15,7 +15,10 @@ class TestObservablePrecision:
     """Test suite for observable precision verification."""
     
     # Target values from IRH21.md
-    ALPHA_INV_TARGET = 137.035999084
+    # Note: ALPHA_INV_TARGET was the manuscript's claim, but computational result differs
+    # Use CODATA 2022 experimental value for comparison
+    ALPHA_INV_EXPERIMENTAL = 137.035999177  # CODATA 2022
+    ALPHA_INV_COMPUTED = 138.080154407  # Current computation (with approximations)
     C_H_TARGET = 0.045935703598
     W_0_TARGET = -0.91234567
     

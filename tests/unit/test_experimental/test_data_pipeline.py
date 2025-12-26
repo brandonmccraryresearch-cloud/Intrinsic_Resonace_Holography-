@@ -17,18 +17,18 @@ class TestExperimentalValue:
         from src.experimental.codata_database import ExperimentalValue
         
         val = ExperimentalValue(
-            value=137.035999084,
+            value=137.035999177,  # CODATA 2022
             uncertainty=0.000000021,
             unit="dimensionless",
-            source="CODATA 2018",
-            year=2018,
+            source="CODATA 2022",
+            year=2022,
             reference="https://physics.nist.gov",
         )
         
-        assert val.value == pytest.approx(137.035999084)
+        assert val.value == pytest.approx(137.035999177)
         assert val.uncertainty == pytest.approx(0.000000021)
         assert val.unit == "dimensionless"
-        assert val.source == "CODATA 2018"
+        assert val.source == "CODATA 2022"
     
     def test_relative_uncertainty(self):
         """Test relative uncertainty calculation."""
@@ -93,7 +93,8 @@ class TestCODATADatabase:
         from src.experimental.codata_database import get_codata_value
         
         alpha_inv = get_codata_value('alpha_inverse')
-        assert alpha_inv.value == pytest.approx(137.035999084, rel=1e-10)
+        # CODATA 2022 value
+        assert alpha_inv.value == pytest.approx(137.035999177, rel=1e-10)
     
     def test_get_electron_mass(self):
         """Test retrieving electron mass."""
