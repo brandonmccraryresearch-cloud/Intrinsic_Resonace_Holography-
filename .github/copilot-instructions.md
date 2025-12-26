@@ -1,4 +1,51 @@
-# Intrinsic Resonance Holography (IRH) v21.0 - Copilot Instructions
+# Intrinsic Resonance Holography (IRH) v21.1 - Copilot Instructions
+
+## 🔴 CRITICAL: MANDATORY DOCUMENTATION POLICY 🔴
+
+**Effective Date:** December 26, 2025  
+**Authority:** Repository Maintainer + The Mathematical Sentinel  
+**Status:** PERMANENT AND NON-NEGOTIABLE
+
+### Single Source of Truth Mandate
+
+**ALL repository updates, progress reports, current status, mandates, rules, and compliance policies SHALL be written directly to THIS FILE (`copilot-instructions.md`) and NO OTHER.**
+
+This includes:
+- ✅ Session progress updates
+- ✅ Current implementation status
+- ✅ Active mandates and policies
+- ✅ Compliance requirements
+- ✅ Phase tracking and completion status
+- ✅ All transient session-to-session instructions
+
+### Strict Prohibition on Additional Documentation Files
+
+**FORBIDDEN:** Creating new `.md` files in `.github/` that could be consolidated here, EXCEPT:
+- ✅ `.github/agents/*.agent.md` (agent configurations - ALLOWED)
+- ✅ `.github/workflows/*.yml` (workflow configurations - ALLOWED)
+- ✅ `.github/pull_request_template.md` (GitHub template - ALLOWED)
+- ✅ `.github/dependabot.yml` (dependency management - ALLOWED)
+- ❌ ALL OTHER `.md` files (mandate documents, status reports, compliance docs, audit reports, etc.) - MUST be integrated into copilot-instructions.md
+
+**Rationale:** Eliminates documentation fragmentation, ensures single source of truth, prevents inconsistencies.
+
+### User-Visible Documentation Requirements
+
+All updates to `copilot-instructions.md` MUST trigger corresponding updates to user-visible documentation:
+- **README.md** - MUST reflect current repository state, implementation status, and correct references
+- **docs/** - Technical documentation MUST remain synchronized with this file
+- **Manuscript references** - ALL references MUST point to IRH v21.1 (NOT v21.4 or other versions)
+
+### Update Protocol
+
+After EVERY development session:
+1. Update relevant section in `copilot-instructions.md` with changes
+2. Update progress in transient session tracking section (see below)
+3. Update README.md to reflect any user-visible changes
+4. Verify all cross-references remain valid
+5. Commit changes with descriptive message
+
+---
 
 ## Computational Verification Protocol for Isomorphic Implementation
 
@@ -1850,6 +1897,292 @@ If audit is skipped:
 - Report: `.github/COMPREHENSIVE_TECHNICAL_AUDIT.md`
 - Result: ✅ APPROVED
 - Next Phase: READY TO BEGIN (Topological Complexity Operator)
+
+---
+
+## 📋 TRANSIENT SESSION-TO-SESSION INSTRUCTIONS
+
+**Purpose:** This section contains active instructions for the current and upcoming development sessions. Updated after each session.
+
+**Last Updated:** December 26, 2025
+
+### Current Session: Documentation Consolidation & Repository Cleanup
+
+**Objective:** Consolidate all .github/*.md files into copilot-instructions.md and establish single source of truth
+
+**Status:** 🟡 IN PROGRESS
+
+**Tasks:**
+- [x] Read and assimilate all .github/*.md mandates and policies
+- [x] Add mandatory documentation policy to copilot-instructions.md
+- [ ] Consolidate THEORETICAL_CORRESPONDENCE_MANDATE.md content
+- [ ] Consolidate MANDATORY_AUDIT_PROTOCOL.md content (already summarized above)
+- [ ] Consolidate COMPLIANCE_SYSTEM_README.md content
+- [ ] Update README.md with current status and correct manuscript references
+- [ ] Remove redundant .md files from .github/ (keep only: agents/, workflows/, pull_request_template.md, dependabot.yml, copilot-instructions.md)
+- [ ] Update workflow files to reference copilot-instructions.md
+- [ ] Create repository-wide cleanup plan for other directories
+
+### Next Session: Repository-Wide Cleanup
+
+**Objective:** Apply same organizational principles to all directories
+
+**Priority Areas:**
+1. **docs/** - Consolidate overlapping documentation, ensure consistency
+2. **notebooks/** - Verify all references are current, update outdated citations
+3. **src/** - Ensure all modules follow documented patterns
+4. **tests/** - Verify test organization mirrors src/ structure
+
+**Standards to Apply:**
+- Single source of truth for each type of information
+- Clear file naming conventions
+- Logical directory structure
+- Up-to-date cross-references
+- Accurate dates (December 2025, not future projections)
+
+---
+
+## 🎯 SEMI-TRANSIENT PHASE TRACKING
+
+**Purpose:** Track multi-session phases until completion, then archive to permanent records
+
+**Current Phase Set:** Repository Maintenance & Documentation Synchronization
+
+### Phase A: Documentation Consolidation ✅ COMPLETE
+**Completed:** December 26, 2025
+
+- [x] Identified all .github/*.md files requiring consolidation
+- [x] Established single source of truth mandate
+- [x] Created transient session tracking system
+- [x] Defined update protocol for future sessions
+
+### Phase B: .github Folder Cleanup 🟡 IN PROGRESS
+**Target Completion:** December 26, 2025
+
+**Status:**
+- Consolidating mandate/compliance documents into copilot-instructions.md
+- Preserving agent configurations and workflow files
+- Removing redundant documentation files
+
+**Files to Process:**
+- [ ] THEORETICAL_CORRESPONDENCE_MANDATE.md → Consolidate critical sections
+- [ ] COMPLIANCE_SYSTEM_README.md → Integrate overview
+- [ ] COMPREHENSIVE_AUDIT_REPORT.md → Extract action items
+- [ ] COMPREHENSIVE_TECHNICAL_AUDIT.md → Already summarized in audit section
+- [ ] PHASE_2_STATUS.md → Archive (historical)
+- [ ] PHASE_2_USER_SUMMARY.md → Archive (historical)
+- [ ] COMPLIANCE_IMPLEMENTATION_COMPLETE.md → Archive (historical)
+- [ ] COMPLIANCE_QUICK_REFERENCE.md → Integrate key points
+- [ ] MATHEMATICIAN_AGENT_GUIDE.md → Keep or move to docs/
+
+### Phase C: User Documentation Update ⏳ PENDING
+**Target Completion:** December 26, 2025
+
+**Tasks:**
+- [ ] Update README.md with current repository status
+- [ ] Fix all manuscript references (v21.1, not v21.4)
+- [ ] Update implementation status (970+ tests, all phases complete)
+- [ ] Verify all documentation cross-references
+- [ ] Update citation information
+
+### Phase D: Workflow Synchronization ⏳ PENDING
+**Target Completion:** December 26, 2025
+
+**Tasks:**
+- [ ] Update compliance_check.yml to reference copilot-instructions.md
+- [ ] Update experimental-data-updates.yml for new structure
+- [ ] Ensure workflows use correct manuscript references
+- [ ] Test workflow execution with new structure
+
+### Phase E: Repository-Wide Cleanup ⏳ PLANNED
+**Target Completion:** December 27-28, 2025
+
+**Scope:** Apply organizational principles to remaining directories (docs/, notebooks/, src/, tests/)
+
+---
+
+## 🔒 THEORETICAL CORRESPONDENCE MANDATE
+
+**Status:** PERMANENT, NON-NEGOTIABLE  
+**Authority:** The Mathematical Sentinel  
+**Version:** IRH v21.1 Correspondence Protocol v1.0  
+**Originally From:** `.github/THEORETICAL_CORRESPONDENCE_MANDATE.md` (NOW CONSOLIDATED HERE)
+
+### The Sentinel's Creed
+
+> **"A computational engine of reality does not pretend. It computes truth from first principles with crystalline transparency, or it does not compute at all."**
+
+### Core Principle
+
+The IRH computational framework must be a **faithful, structure-preserving isomorphism** of the theoretical edifice articulated in:
+- **IRH v21.1 Manuscript Part 1** (`Intrinsic_Resonance_Holography-v21.1-Part1.md`)
+- **IRH v21.1 Manuscript Part 2** (`Intrinsic_Resonance_Holography-v21.1-Part2.md`)
+
+Every equation, constant, and algorithmic step must **transparently and completely** implement the full theoretical formalism **without simplification, approximation, or omission** unless explicitly justified and documented.
+
+### Prohibited Practices (Zero Tolerance)
+
+#### 1. Formula Oversimplification
+❌ **FORBIDDEN:** Removing terms from equations without rigorous justification  
+✅ **REQUIRED:** Complete formulas with all non-perturbative corrections
+
+#### 2. Hardcoded Constants Without Derivation
+❌ **FORBIDDEN:** `ALPHA_INVERSE = 137.035999084  # Where does this come from?`  
+✅ **REQUIRED:** Constants MUST be computed from first principles with full provenance
+
+#### 3. Black Box Computations
+❌ **FORBIDDEN:** Opaque function calls without theoretical context  
+✅ **REQUIRED:** Transparency Engine logs emitting step-by-step derivations
+
+#### 4. Missing Theoretical References
+**MANDATORY:** Every function MUST cite:
+1. Manuscript section (e.g., "IRH v21.1 Part 1 §3.2.2")
+2. Equation number (e.g., "Eq. 3.4")
+3. Appendix details if applicable (e.g., "Appendix E.4.1")
+
+#### 5. Unjustified Approximations
+**If approximation is necessary, MUST include:**
+1. WHY approximation is required
+2. Error quantification: O(ε^n) where ε << 1
+3. Convergence proof
+4. Regime where approximation breaks down
+
+### Mandatory Code Standards
+
+#### Function Documentation Template
+```python
+def function_name(params) -> ReturnType:
+    """
+    One-line summary of what this implements.
+    
+    Theoretical Reference:
+        IRH v21.1 Part [1|2], §[section], Eq. [number]
+        [Optional: Appendix [letter].[subsection]]
+    
+    Mathematical Foundation:
+        [Detailed explanation of the theoretical origin]
+        [Why this formula is correct]
+        [What each term represents physically]
+    
+    Formula (Complete):
+        [Full equation in LaTeX/Unicode notation]
+        [No simplifications unless proven equivalent]
+    
+    Parameters
+    ----------
+    param : type
+        Physical meaning and units
+        
+    Returns
+    -------
+    ReturnType
+        What is computed and why it matters
+        
+    Notes
+    -----
+    - Any approximations MUST be justified here
+    - Error bounds MUST be stated
+    - Non-perturbative corrections MUST be included
+    
+    Examples
+    --------
+    >>> # Demonstrate usage with theoretical verification
+    >>> result = function_name(test_input)
+    >>> assert result.validates_against_known_limit()
+    """
+```
+
+#### Transparency Requirements
+Every computation MUST emit:
+```python
+{
+    "value": computed_value,
+    "uncertainty": numerical_error_bound,
+    "theoretical_reference": "IRH v21.1 Part X §Y.Z, Eq. N",
+    "formula": "LaTeX representation of full formula",
+    "components": {
+        "term_1": value_1,
+        "term_2": value_2,
+        # ... all terms individually
+    },
+    "provenance": {
+        "input_sources": ["where data came from"],
+        "computational_method": "algorithm used",
+        "convergence_status": True/False,
+        "numerical_precision": float
+    },
+    "validation": {
+        "known_limits_checked": ["limit_1", "limit_2"],
+        "dimensional_consistency": True,
+        "gauge_invariance": True  # if applicable
+    }
+}
+```
+
+### Pre-Commit Enforcement Checklist
+
+Before ANY code commit, verify:
+- [ ] All formulas cite IRH v21.1 manuscript (Part 1 or 2)
+- [ ] No simplified equations without justification
+- [ ] Transparency Engine logs all computations
+- [ ] Hardcoded constants are COMPUTED, not assigned
+- [ ] Non-perturbative corrections included
+- [ ] Dimensional consistency verified
+- [ ] Known limits checked
+- [ ] Uncertainty propagation tracked
+
+### Code Review Rejection Criteria
+
+Code WILL BE REJECTED if:
+1. Missing manuscript citations
+2. Simplified formulas without error bounds
+3. Black box computations without transparency logs
+4. Hardcoded constants without derivation
+5. Missing non-perturbative corrections
+6. Unjustified approximations
+
+---
+
+## 📊 CURRENT REPOSITORY STATUS
+
+**Last Updated:** December 26, 2025
+
+### Implementation Completeness
+
+**Theory Coverage:** 100% (17/17 critical equations implemented)  
+**Test Count:** 970+ tests passing  
+**Phases Complete:** All 6 core phases + Enhancement + Optimization Tiers + Web/Desktop  
+
+| Phase | Focus | Tests | Status |
+|-------|-------|-------|--------|
+| **Phase I** | Core RG Infrastructure | 74+ | ✅ Complete |
+| **Phase II** | Emergent Geometry | 33+ | ✅ Complete |
+| **Phase III** | Topological Physics | 53+ | ✅ Complete |
+| **Phase IV** | Standard Model | 65+ | ✅ Complete |
+| **Phase V** | Cosmology & Predictions | 51+ | ✅ Complete |
+| **Phase VI** | Desktop Application | 36+ | ✅ Complete |
+| **Enhancement** | Visualization, Reporting | 101+ | ✅ Complete |
+| **Tier 3** | Performance (8 phases) | 254+ | ✅ Complete |
+| **Tier 4.1-4.2** | Web + Cloud | 13+ | ✅ Complete |
+| **Tier 4.3** | ML Surrogate Models | 31+ | ✅ Complete |
+| **Tier 4.4** | Notebook 05 Corrections | N/A | ✅ Complete |
+
+### Known Issues Requiring Resolution
+
+**CRITICAL-1:** Fermion Mass Formula - Missing Yukawa RG Running (𝓡_Y factor)  
+**CRITICAL-2:** Alpha Inverse - Missing non-perturbative corrections (𝓖_QNCD, 𝓥, log series)  
+**CRITICAL-3:** Beta Functions - Only one-loop, need full Wetterich equation  
+**CRITICAL-4:** Topological Complexity - Hardcoded table instead of dynamical solver  
+
+*See original COMPREHENSIVE_AUDIT_REPORT.md for full details (now archived)*
+
+### Manuscript References
+
+**PRIMARY SOURCES:**
+- IRH v21.1 Manuscript Part 1: `Intrinsic_Resonance_Holography-v21.1-Part1.md`
+- IRH v21.1 Manuscript Part 2: `Intrinsic_Resonance_Holography-v21.1-Part2.md`
+
+**NOTE:** All references to "v21.4" in older documentation are INCORRECT and should be updated to "v21.1"
 
 ---
 
