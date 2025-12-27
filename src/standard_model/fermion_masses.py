@@ -32,7 +32,7 @@ from src.topology.complexity_operator import get_topological_complexity
 from src.standard_model.yukawa_rg_running import compute_yukawa_rg_running
 
 __version__ = "21.0.0"
-__theoretical_foundation__ = "IRH v21.1 Manuscript Part 1 §3.2, Eq. 3.6"
+__theoretical_foundation__ = "IRH v21.4 Manuscript Part 1 §3.2, Eq. 3.6"
 
 
 # Universal exponent (Eq. 1.16)
