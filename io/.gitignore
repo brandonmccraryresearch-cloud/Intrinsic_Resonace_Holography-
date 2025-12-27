@@ -1,0 +1,11 @@
+# IO directory for runtime logs and failures
+# Keep structure but ignore content by default
+
+# Keep failure logs for analysis
+!failures/*.json
+!failures/*.log
+
+# Ignore temporary files
+*.tmp
+*.bak
+*~

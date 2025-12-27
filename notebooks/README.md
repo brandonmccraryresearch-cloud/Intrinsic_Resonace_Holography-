@@ -1,25 +1,232 @@
-# IRH Interactive Notebooks
+# IRH v21.4 Interactive Notebooks
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/00_quickstart.ipynb)
+Complete collection of Jupyter notebooks demonstrating all aspects of the Intrinsic Resonance Holography framework.
 
-Interactive Jupyter notebooks for exploring Intrinsic Resonance Holography (IRH) v21.1.
+**All notebooks updated**: December 27, 2025
+- ✅ v21.4 manuscript references (fixed v21.1 references)
+- ✅ ML surrogate model integration
+- ✅ Enhanced transparency logging
+- ✅ Failure detection and analysis
 
-## Quick Start
+---
 
-Click any "Open in Colab" button to run notebooks directly in Google Colab - no installation required!
+## 🚀 Featured: Exascale Full Repository Ultra
 
-## Available Notebooks
+**File**: `exascale_full_repo_ultra.ipynb`
 
-| Notebook | Description | Colab Link |
-|----------|-------------|------------|
-| **00_quickstart** | Quick introduction to IRH | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/00_quickstart.ipynb) |
-| **01_group_manifold_visualization** | Visualize G_inf = SU(2)×U(1)_φ | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/01_group_manifold_visualization.ipynb) |
-| **02_rg_flow_interactive** | Explore RG flow and β-functions | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/02_rg_flow_interactive.ipynb) |
-| **03_observable_extraction** | Extract physical constants | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/03_observable_extraction.ipynb) |
-| **04_falsification_analysis** | Falsifiable predictions | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/04_falsification_analysis.ipynb) |
-| **05_full_stack_execution** | Complete end-to-end demo with scale selection | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/05_full_stack_execution.ipynb) |
+**Open in Colab**: [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/exascale_full_repo_ultra.ipynb)
 
-## Computational Findings
+The ultimate demonstration notebook with complete computational power.
+
+### Features
+
+- **Ultra-verbose transparency logging** - FULL verbosity level, every computation traced
+- **ML surrogate models** - 10,000× speedup using neural networks (Phase 4.3)
+- **Automatic failure detection** - Logs all failures to `../io/failures/`
+- **Gemini AI integration** - AI-assisted code refactoring (Google Colab only)
+- **Complete coverage** - All 8 implementation phases in one notebook
+- **Performance metrics** - Real-time benchmarking
+
+### Sections
+
+1. Setup and Configuration
+2. Ultra-Verbose Configuration
+3. ML Surrogate Models Setup
+4. Core RG Flow Computation (§1.2-1.3)
+5. Observable Extraction (§3)
+6. Standard Model Emergence (§3.1-3.4)
+7. Cosmology and Predictions (§6-7)
+8. Performance Summary
+9. ⚠️ Failure Analysis and Gemini Refactoring
+10. Final Summary and Results Export
+
+**Runtime**: 10-15 minutes (2-3 minutes with ML surrogates)
+
+---
+
+## 📚 Core Notebooks
+
+### 00_quickstart.ipynb
+
+**Purpose**: Fast introduction to IRH framework  
+**Runtime**: ~5 minutes  
+
+[![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/00_quickstart.ipynb)
+
+**Topics**:
+- Fixed point computation
+- Basic observable extraction
+- Minimal dependencies
+
+---
+
+### 01_group_manifold_visualization.ipynb
+
+**Purpose**: Visualize G_inf = SU(2) × U(1)_φ manifold  
+**Runtime**: ~3 minutes  
+
+[![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/01_group_manifold_visualization.ipynb)
+
+**Topics**:
+- Quaternionic representation of SU(2)
+- QNCD metric visualization
+- Group geodesics
+
+**Theoretical Reference**: IRH v21.4 Part 1 §1.1
+
+---
+
+### 02_rg_flow_interactive.ipynb
+
+**Purpose**: Interactive RG flow explorer  
+**Runtime**: ~5 minutes  
+
+[![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/02_rg_flow_interactive.ipynb)
+
+**Topics**:
+- β-functions (Eq. 1.13)
+- Fixed point search (Eq. 1.14)
+- Trajectory visualization
+- **NEW**: ML surrogate comparison
+
+**Theoretical Reference**: IRH v21.4 Part 1 §1.2-1.3
+
+---
+
+### 03_observable_extraction.ipynb
+
+**Purpose**: Extract physical constants from fixed point  
+**Runtime**: ~10 minutes  
+
+[![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/03_observable_extraction.ipynb)
+
+**Topics**:
+- Fine structure constant α⁻¹ (Eq. 3.4-3.5)
+- Universal exponent C_H (Eq. 1.16)
+- Dark energy w₀ (Eq. 2.21-2.23)
+- LIV parameter ξ (Eq. 2.24)
+- **NEW**: ML-accelerated parameter scans
+
+**Theoretical Reference**: IRH v21.4 Part 1 §3
+
+---
+
+### 04_falsification_analysis.ipynb
+
+**Purpose**: Testable predictions and falsification criteria  
+**Runtime**: ~8 minutes  
+
+[![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/04_falsification_analysis.ipynb)
+
+**Topics**:
+- LIV in gamma-ray astronomy
+- Muon g-2 predictions (Appendix J.3)
+- Gravitational wave sidebands (Appendix J.2)
+- Neutrino mass hierarchy
+- Dark energy evolution
+
+**Theoretical Reference**: IRH v21.4 Part 2 §8, Appendices J-K
+
+---
+
+### 05_full_stack_execution.ipynb
+
+**Purpose**: Complete end-to-end demonstration with scale selection  
+**Runtime**: Configurable (30s to 1+ hour)  
+
+[![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/05_full_stack_execution.ipynb)
+
+**Topics**:
+- All phases: RG flow → observables → SM → cosmology
+- Computation scale selector (quick/standard/full/exascale)
+- Performance benchmarking
+
+**Theoretical Reference**: Complete IRH v21.4 manuscript
+
+---
+
+### 05b_exascale_ml.ipynb
+
+**Purpose**: ML surrogate models demonstration (Phase 4.3)  
+**Runtime**: ~15 minutes (training included)  
+
+[![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/05b_exascale_ml.ipynb)
+
+**Topics**:
+- RG flow surrogate training
+- Uncertainty quantification (ensemble + MC dropout)
+- Bayesian parameter optimization
+- Performance benchmarking (10,000× speedup)
+
+**Theoretical Reference**: IRH v21.4 Part 1 §1.2-1.3 + Phase 4.3 implementation
+
+---
+
+## 🔧 Technical Details
+
+### Dependencies
+
+All notebooks auto-install required dependencies in Colab. For local use:
+
+```bash
+pip install numpy scipy matplotlib jupyter
+```
+
+Optional (for ML features):
+```bash
+pip install scikit-learn  # ML surrogates (Phase 4.3)
+```
+
+### Data Files
+
+Notebooks generate results in:
+- **Colab**: `/content/drive/MyDrive/IRH_Results/` (if Drive mounted) or `/content/irh_results/`
+- **Local**: `../results/` relative to notebook directory
+
+### Failure Logs
+
+All computational failures are logged to `../io/failures/` as JSON files with:
+- Error details
+- Parameters that caused failure
+- Stack trace
+- Suggested fixes (pattern-based)
+- Gemini AI suggestions (Colab only)
+
+### Transparency Logging
+
+All notebooks use `TransparencyEngine` with configurable verbosity:
+- **SILENT**: No output (not recommended)
+- **MINIMAL**: Only results
+- **STANDARD**: Results + validation
+- **DETAILED**: + step-by-step derivation
+- **FULL**: + all intermediate values (exascale_full_repo_ultra.ipynb)
+
+---
+
+## 📊 Update History
+
+### December 27, 2025 - Major Update
+
+**Changes applied to all notebooks**:
+- ✅ Fixed v21.1 → v21.4 manuscript references (147 cells updated)
+- ✅ Added ML surrogate model integration
+- ✅ Added transparency logging infrastructure
+- ✅ Added failure detection and logging
+- ✅ Created `exascale_full_repo_ultra.ipynb` (new)
+- ✅ Removed redundant `05_full_stack_execution_corrected.ipynb` from root
+
+**Files modified**:
+- `00_quickstart.ipynb` - 35 cells updated
+- `01_group_manifold_visualization.ipynb` - 15 cells updated
+- `02_rg_flow_interactive.ipynb` - 15 cells updated
+- `03_observable_extraction.ipynb` - 34 cells updated
+- `04_falsification_analysis.ipynb` - 18 cells updated
+- `05_full_stack_execution.ipynb` - 17 cells updated
+- `05b_exascale_ml.ipynb` - 13 cells updated
+
+See `UPDATE_SUMMARY.json` for complete details.
+
+### Computational Findings
 
 **Important**: See [`docs/NOTEBOOK_FINDINGS.md`](../docs/NOTEBOOK_FINDINGS.md) for documented computational discrepancies and their theoretical explanations:
 
@@ -29,86 +236,29 @@ Click any "Open in Colab" button to run notebooks directly in Google Colab - no 
 
 3. **Universal Exponent C_H**: Two values exist - ratio formula (0.75) and spectral zeta (0.045935703598). The spectral value is used for physical predictions.
 
-## Topics Covered
+---
 
-### 00_quickstart
-- Installation and setup
-- Core concepts overview
-- Computing the Cosmic Fixed Point
-- Deriving physical constants
-- Standard Model emergence
+## 🤝 Contributing
 
-### 01_group_manifold_visualization
-- SU(2) as the 3-sphere (quaternions)
-- U(1) phase circle
-- Product manifold G_inf = SU(2) × U(1)_φ
-- QNCD metric visualization
+To add or modify notebooks:
 
-### 02_rg_flow_interactive
-- β-functions (Eq. 1.13)
-- Cosmic Fixed Point (Eq. 1.14)
-- Flow trajectories in coupling space
-- Stability analysis
-- Spectral dimension flow
+1. Follow IRH v21.4 manuscript references
+2. Use `TransparencyEngine` for logging
+3. Add Colab badge at top
+4. Test in both Colab and local Jupyter
+5. Update this README
 
-### 03_observable_extraction
-- Universal exponent C_H (Eq. 1.16)
-- Fine-structure constant α⁻¹ (Eqs. 3.4-3.5)
-- Standard Model predictions
-- Comparison with experiment
+---
 
-### 04_falsification_analysis
-- Dark energy equation of state w₀
-- Lorentz Invariance Violation
-- Neutrino mass hierarchy
-- Muon g-2 anomaly
-- Falsification timeline (2026-2030)
+## 📖 References
 
-### 05_full_stack_execution (NEW)
-- **Complete end-to-end demonstration**
-- **Configurable computation scale**: quick, standard, full, exascale
-- RG flow integration
-- Observable extraction
-- Standard Model emergence
-- Cosmological predictions
-- ML surrogate model training
-- Full report generation
+- **IRH v21.4 Manuscript Part 1**: Foundation & Framework (Sections 1-4)
+- **IRH v21.4 Manuscript Part 2**: QM, Cosmology, Predictions (Sections 5-8 + Appendices)
+- **GitHub**: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography
+- **Technical Docs**: `../docs/TECHNICAL_REFERENCE.md`
 
-## Running Locally
+---
 
-```bash
-# Navigate to notebooks directory
-cd notebooks/
-
-# Launch Jupyter Lab
-jupyter lab
-
-# Or launch specific notebook
-jupyter notebook 00_quickstart.ipynb
-```
-
-## Requirements
-
-For local execution:
-- Python 3.10+
-- NumPy, SciPy, Matplotlib
-- IRH modules in Python path
-
-Colab notebooks auto-install dependencies.
-
-## Theoretical Reference
-
-All notebooks reference the canonical manuscript:
-- [IRH v21.1 Manuscript Part 1](../Intrinsic_Resonance_Holography-v21.1-Part1.md) (Sections 1-4)
-- [IRH v21.1 Manuscript Part 2](../Intrinsic_Resonance_Holography-v21.1-Part2.md) (Sections 5-8 + Appendices)
-
-## Citation
-
-```bibtex
-@software{IRH_v21_computational_2025,
-  title={Intrinsic Resonance Holography v21.1: Computational Framework},
-  author={McCrary, Brandon D.},
-  year={2025},
-  url={https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-}
-}
-```
+**Last Updated**: December 27, 2025  
+**Total Notebooks**: 8 (including exascale ultra)  
+**Total Cells Updated**: 147+ cells across 7 existing notebooks

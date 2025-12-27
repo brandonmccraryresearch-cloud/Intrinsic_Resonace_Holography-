@@ -1,0 +1,13 @@
+{
+  "timestamp": "2025-12-27T13:20:38Z",
+  "violations": [],
+  "warnings": [
+    {
+      "category": "TEST_ERROR",
+      "message": "Could not run tests: [Errno 2] No such file or directory: 'pytest'",
+      "file": null
+    }
+  ],
+  "passes_count": 991,
+  "compliant": true
+}

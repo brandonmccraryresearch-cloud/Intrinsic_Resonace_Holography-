@@ -1,0 +1,19 @@
+{
+  "timestamp": "2025-12-27",
+  "updates_applied": [
+    "Fixed v21.1 \u2192 v21.4 manuscript references",
+    "Added ML surrogate imports where applicable",
+    "Added transparency logging infrastructure",
+    "Maintained backward compatibility"
+  ],
+  "notebooks_updated": [
+    "00_quickstart.ipynb",
+    "01_group_manifold_visualization.ipynb",
+    "02_rg_flow_interactive.ipynb",
+    "03_observable_extraction.ipynb",
+    "04_falsification_analysis.ipynb",
+    "05_full_stack_execution.ipynb",
+    "05b_exascale_ml.ipynb"
+  ],
+  "total_cells_modified": 147
+}

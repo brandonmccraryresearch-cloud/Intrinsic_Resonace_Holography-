@@ -1,0 +1,61 @@
+{
+  "timestamp": "2025-12-27T13:19:14Z",
+  "violations": [
+    {
+      "category": "MISSING_CITATION",
+      "message": "Function 'analyze_latest_failure' lacks manuscript reference",
+      "file": "src/utilities/failure_analysis.py",
+      "line": 558
+    },
+    {
+      "category": "MISSING_CITATION",
+      "message": "Function 'to_json' lacks manuscript reference",
+      "file": "src/utilities/failure_analysis.py",
+      "line": 80
+    },
+    {
+      "category": "NO_DOCSTRING",
+      "message": "Function '__init__' has no docstring",
+      "file": "src/utilities/failure_analysis.py",
+      "line": 107
+    },
+    {
+      "category": "NO_DOCSTRING",
+      "message": "Function '__init__' has no docstring",
+      "file": "src/utilities/failure_analysis.py",
+      "line": 329
+    },
+    {
+      "category": "MISSING_CITATION",
+      "message": "Function 'analyze' lacks manuscript reference",
+      "file": "src/utilities/failure_analysis.py",
+      "line": 346
+    },
+    {
+      "category": "MISSING_CITATION",
+      "message": "Function 'generate_refactoring_code' lacks manuscript reference",
+      "file": "src/utilities/failure_analysis.py",
+      "line": 436
+    },
+    {
+      "category": "NO_DOCSTRING",
+      "message": "Function 'failing_computation' has no docstring",
+      "file": "src/utilities/failure_analysis.py",
+      "line": 605
+    }
+  ],
+  "warnings": [
+    {
+      "category": "INCOMPLETE_COVERAGE",
+      "message": "Citation coverage 99.3% - target is 100%",
+      "file": null
+    },
+    {
+      "category": "TEST_ERROR",
+      "message": "Could not run tests: [Errno 2] No such file or directory: 'pytest'",
+      "file": null
+    }
+  ],
+  "passes_count": 984,
+  "compliant": false
+}

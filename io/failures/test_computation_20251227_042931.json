@@ -1,0 +1,13 @@
+{
+  "timestamp": "2025-12-27T04:29:31.756454+00:00",
+  "computation": "test_computation",
+  "theoretical_ref": "Test reference",
+  "error_type": "ValueError",
+  "error_message": "Test error for verification",
+  "parameters": {
+    "test": "params"
+  },
+  "stack_trace": "Traceback (most recent call last):\n  File \"<string>\", line 13, in <module>\nValueError: Test error for verification\n",
+  "context": {},
+  "suggested_fixes": []
+}

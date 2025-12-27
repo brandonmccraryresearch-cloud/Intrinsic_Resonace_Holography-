@@ -1,0 +1,25 @@
+{
+  "timestamp": "2025-12-27T13:20:07Z",
+  "violations": [
+    {
+      "category": "MISSING_CITATION",
+      "message": "Function 'failing_computation' lacks manuscript reference",
+      "file": "src/utilities/failure_analysis.py",
+      "line": 657
+    }
+  ],
+  "warnings": [
+    {
+      "category": "INCOMPLETE_COVERAGE",
+      "message": "Citation coverage 99.9% - target is 100%",
+      "file": null
+    },
+    {
+      "category": "TEST_ERROR",
+      "message": "Could not run tests: [Errno 2] No such file or directory: 'pytest'",
+      "file": null
+    }
+  ],
+  "passes_count": 990,
+  "compliant": false
+}
